@@ -17,24 +17,34 @@ use Illuminate\Support\Facades\Route;
 
 
 // -----------Jojo Member---------------------
-Route::get('/product-purchased', function () {
-    return view('pages.user.product-purchased.index');
+Route::get('/info-produk', function () {
+    return view('pages.member.info-produk.index');
 });
 Route::get('/referral', function () {
-    return view('pages.user.referral.index');
+    return view('pages.member.referral.index');
 });
-Route::get('/point', function () {
-    return view('pages.user.point.index');
+Route::get('/poin', function () {
+    return view('pages.member.poin.index');
 });
-Route::get('/balance', function () {
-    return view('pages.user.balance.index');
+Route::get('/withdraw-affiliate', function () {
+    return view('pages.member.withdraw-affiliate.index');
 });
-Route::get('/transaction', function () {
-    return view('pages.user.transaction.index');
+Route::get('/transaksi', function () {
+    return view('pages.member.transaksi.index');
 });
-Route::get('/waiting-payment', function () {
-    return view('pages.user.transaction.waiting-payment.index');
+Route::get('/menunggu-pembayaran', function () {
+    return view('pages.member.transaksi.menunggu-pembayaran.index');
 });
+
+Route::prefix('transaksi')->group(function () {
+    Route::get('/', function () {
+        return view('pages.member.index');
+    });
+    Route::get('/menunggu-pembayaran', function () {
+        return view('pages.member.menunggu-pembayaran.index');
+    });
+});
+
 
 // ----------Hanggit Admin--------------------
 Route::get('/', function () {
