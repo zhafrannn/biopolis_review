@@ -15,6 +15,28 @@ use Illuminate\Support\Facades\Route;
 
 // ----------------- Lihat Ke figma,Route Route ini menyesuaikan dari figma -------------
 
+
+// -----------Jojo Member---------------------
+Route::get('/product-purchased', function () {
+    return view('pages.user.product-purchased.index');
+});
+Route::get('/referral', function () {
+    return view('pages.user.referral.index');
+});
+Route::get('/point', function () {
+    return view('pages.user.point.index');
+});
+Route::get('/balance', function () {
+    return view('pages.user.balance.index');
+});
+Route::get('/transaction', function () {
+    return view('pages.user.transaction.index');
+});
+Route::get('/waiting-payment', function () {
+    return view('pages.user.transaction.waiting-payment.index');
+});
+
+// ----------Hanggit Admin--------------------
 Route::get('/', function () {
     return view('pages.dashboard.index');
 });
