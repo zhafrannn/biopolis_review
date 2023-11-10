@@ -1,11 +1,3 @@
-@extends('layouts.auth-member')
-
-@section('title')
-Saldo
-@endsection
-
-@section('content')
-
 <section class="mb-[27.92px]">
     <h2 class="mb-[19.95px] text-[27.09px] font-semibold">Laporan Saldo</h2>
     <div class="rounded-xl bg-white p-[20.32px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)]">

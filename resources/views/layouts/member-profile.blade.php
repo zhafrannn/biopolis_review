@@ -19,10 +19,13 @@
 </style>
 
 <body>
-    @include('components.member.navbar')
+    <div class="flex items-start">
 
-    <div class="pt-[100px] p-[40px]">
-        @yield('content')
+        @include('components.member.sidebar')
+
+        <div class=" w-[100%] pl-[380px] px-[44px] py-[47.41px]">
+            @yield('content')
+        </div>
     </div>
 </body>
 
