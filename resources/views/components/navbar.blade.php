@@ -13,12 +13,12 @@
             <p>Kemitraan</p>
         </a>
 
-        <a href=""
+        <a href="{{ url('/login') }}"
             class="flex w-[93px] justify-center rounded-[10px] border border-primary p-[10px] font-medium">
             <p>Login</p>
         </a>
 
-        <a href=""
+        <a href="{{ url('/register') }}"
             class="flex w-[93px] justify-center rounded-[10px] border border-primary bg-primary p-[10px] font-medium text-white">
             <p>Register</p>
         </a>
