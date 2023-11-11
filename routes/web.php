@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.guest.landing-page.index');
 });
+Route::get('/login', function () {
+    return view('pages.guest.login.index');
+});
+Route::get('/register', function () {
+    return view('pages.guest.register.index');
+});
 
 // -----------Jojo Member---------------------
 Route::prefix('profile')->group(function () {
