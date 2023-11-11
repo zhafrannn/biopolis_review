@@ -3,7 +3,7 @@
 @section('content')
     <section class="my-10">
         <div class="mb-10">
-            <h3 class="text-[20.32px] font-semibold">Tambah User </h3>
+            <h3 class="text-[20.32px] font-semibold">Detail Informasi User </h3>
         </div>
 
         {{-- start: Card --}}

@@ -35,7 +35,7 @@
                 </div>
             </button>
             <div class="dropdown-ctn max-h-0 overflow-hidden transition-all duration-300">
-                <a href="">
+                <a href="{{ url('/admin/produk/create') }}">
                     <div class="relative mb-[12.17px] pl-10">
                         <p class="">Tambah Produk</p>
                         {{-- if active remove hidden --}}
@@ -44,7 +44,7 @@
                         {{-- if active remove hidden --}}
                     </div>
                 </a>
-                <a href="">
+                <a href="{{ url('/admin/produk') }}">
                     <div class="relative pl-10">
                         <p class="">Daftar Produk</p>
                         {{-- if active remove hidden --}}
@@ -57,7 +57,7 @@
         </div>
         {{-- end: nav item dropdown --}}
         {{-- start: nav item --}}
-        <a href="">
+        <a href="{{ url('/admin/order') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
                 <img src="{{ asset('images/icons/truck-time.svg') }}" alt="">
                 <p class="font-semibold">Pesanan</p>
@@ -68,7 +68,7 @@
         </a>
         {{-- end: nav item --}}
         {{-- start: nav item --}}
-        <a href="">
+        <a href="{{ url('/admin/user-management') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
                 <img src="{{ asset('images/icons/people.svg') }}" alt="">
                 <p class="font-semibold">User Management</p>
@@ -91,7 +91,7 @@
         {{-- end: nav item --}}
 
         {{-- start: nav item --}}
-        <a href="">
+        <a href="{{ url('/admin/pengajuan-penukaran-poin') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
                 <img src="{{ asset('images/icons/money-change.svg') }}" alt="">
                 <p class="font-semibold">Penukaran Poin</p>
@@ -103,7 +103,7 @@
         {{-- end: nav item --}}
 
         {{-- start: nav item --}}
-        <a href="">
+        <a href="{{ url('/admin/pengajuan-penggantian-rekening') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
                 <img src="{{ asset('images/icons/card-edit.svg') }}" alt="">
                 <p class="font-semibold">Penggantian Rekening</p>
@@ -115,7 +115,7 @@
         {{-- end: nav item --}}
 
         {{-- start: nav item --}}
-        <a href="">
+        <a href="{{ url('/admin/pengajuan-pencairan') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
                 <img src="{{ asset('images/icons/empty-wallet-time.svg') }}" alt="">
                 <p class="font-semibold">Pencairan Afiliasi</p>

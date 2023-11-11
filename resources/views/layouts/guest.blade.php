@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -19,9 +19,9 @@
     </style>
 </head>
 
-<body>
-
-    <main>@yield('content')</main>
+<body class="bg-white">
+    @include('components.navbar')
+    <main class="mt-[109px]">@yield('content')</main>
 </body>
 
 </html>

@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 // ----------------- Lihat Ke figma,Route Route ini menyesuaikan dari figma -------------
 
 
+Route::get('/', function () {
+    return view('pages.guest.landing-page.index');
+});
+
 // -----------Jojo Member---------------------
 Route::prefix('profile')->group(function () {
     Route::get('/', function () {
@@ -36,6 +40,9 @@ Route::prefix('profile')->group(function () {
         });
     });
 });
+
+// ----------------- Role User
+
 Route::get('/dashboard-user', function () {
     return view('pages.member.dashboard.index');
 });
@@ -67,65 +74,67 @@ Route::get('/notification', function () {
 
 Route::prefix('transaksi')->group(function () {
     Route::get('/', function () {
-        return view('pages.member.index');
+        return view('pages.member.transaksi.index');
     });
     Route::get('/menunggu-pembayaran', function () {
-        return view('pages.member.menunggu-pembayaran.index');
+        return view('pages.member.transaksi.menunggu-pembayaran.index');
     });
 });
+// --------------- Ebd Role User
 
 
 // ----------Hanggit Admin--------------------
-Route::get('/', function () {
-    return view('pages.admin.dashboard.index');
-});
-Route::get('/mitra', function () {
-    return view('pages.admin.mitra.index');
-});
-Route::get('/penjualan', function () {
-    return view('pages.admin.penjualan.index');
-});
-
-Route::prefix('produk')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/', function () {
-        return view('pages.admin.produk.index');
+        return view('pages.admin.dashboard.index');
     });
-    Route::get('/create', function () {
-        return view('pages.admin.produk.create');
+    Route::get('/mitra', function () {
+        return view('pages.admin.mitra.index');
     });
-    Route::get('/edit', function () {
-        return view('pages.admin.produk.edit');
+    Route::get('/penjualan', function () {
+        return view('pages.admin.penjualan.index');
     });
-});
+    Route::prefix('produk')->group(function () {
+        Route::get('/', function () {
+            return view('pages.admin.produk.index');
+        });
+        Route::get('/create', function () {
+            return view('pages.admin.produk.create');
+        });
+        Route::get('/edit', function () {
+            return view('pages.admin.produk.edit');
+        });
+    });
 
-Route::prefix('order')->group(function () {
-    Route::get('/', function () {
-        return view('pages.admin.order.index');
+    Route::prefix('order')->group(function () {
+        Route::get('/', function () {
+            return view('pages.admin.order.index');
+        });
+        Route::get('/waiting-order', function () {
+            return view('pages.admin.order.waiting-order.index');
+        });
     });
-    Route::get('/waiting-order', function () {
-        return view('pages.admin.order.waiting-order.index');
-    });
-});
 
-Route::prefix('user-management')->group(function () {
-    Route::get('/', function () {
-        return view('pages.admin.user-management.index');
+    Route::prefix('user-management')->group(function () {
+        Route::get('/', function () {
+            return view('pages.admin.user-management.index');
+        });
+        Route::get('/show', function () {
+            return view('pages.admin.user-management.show');
+        });
+        Route::get('/edit', function () {
+            return view('pages.admin.user-management.edit');
+        });
     });
-    Route::get('/create', function () {
-        return view('pages.admin.user-management.create');
-    });
-    Route::get('/edit', function () {
-        return view('pages.admin.user-management.edit');
-    });
-});
 
-Route::get('/pengajuan-pencairan', function () {
-    return view('pages.admin.pengajuan-pencairan.index');
-});
+    Route::get('/pengajuan-pencairan', function () {
+        return view('pages.admin.pengajuan-pencairan.index');
+    });
 
-Route::get('/pengajuan-penukaran-poin', function () {
-    return view('pages.admin.pengajuan-penukaran-poin.index');
-});
-Route::get('/pengajuan-penggantian-rekening', function () {
-    return view('pages.admin.pengajuan-penggantian-rekening.index');
+    Route::get('/pengajuan-penukaran-poin', function () {
+        return view('pages.admin.pengajuan-penukaran-poin.index');
+    });
+    Route::get('/pengajuan-penggantian-rekening', function () {
+        return view('pages.admin.pengajuan-penggantian-rekening.index');
+    });
 });

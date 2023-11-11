@@ -32,18 +32,20 @@
             </div>
         </div>
 
-        <div class="mb-[20px] flex justify-between rounded-xl border border-[#969EBA] p-[13.54px]">
-            <div class="flex items-center gap-[13.54px]">
-                <img src="{{ asset('images/icons/empty-wallet-time.svg') }}" alt="">
-                <p class="text-[16.93px]">Menunggu Pembayaran</p>
+        <a href="{{ url('/admin/order/waiting-order') }}">
+            <div class="mb-[20px] flex justify-between rounded-xl border border-[#969EBA] p-[13.54px]">
+                <div class="flex items-center gap-[13.54px]">
+                    <img src="{{ asset('images/icons/empty-wallet-time.svg') }}" alt="">
+                    <p class="text-[16.93px]">Menunggu Pembayaran</p>
+                </div>
+                <div class="flex items-center">
+                    <div
+                        class="flex min-h-[30px] min-w-[30px] items-center justify-center rounded-xl bg-error p-2 text-center align-middle text-[12px] text-white">
+                        10</div>
+                    <img src="{{ asset('images/icons/arrow-right.svg') }}" alt="">
+                </div>
             </div>
-            <div class="flex items-center">
-                <div
-                    class="flex min-h-[30px] min-w-[30px] items-center justify-center rounded-xl bg-error p-2 text-center align-middle text-[12px] text-white">
-                    10</div>
-                <img src="{{ asset('images/icons/arrow-right.svg') }}" alt="">
-            </div>
-        </div>
+        </a>
 
         {{-- start: Card --}}
         <div class="mb-[20px] rounded-xl bg-white p-[20.32px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)]">
