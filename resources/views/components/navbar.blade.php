@@ -1,4 +1,4 @@
-<nav class="fixed left-0 top-0 flex h-[109px] w-screen items-center justify-between bg-white px-[120px]">
+<nav class="fixed left-0 top-0 z-[999] flex h-[109px] w-screen items-center justify-between bg-white px-[120px]">
     <div class="flex items-center justify-center">
         <img src="{{ asset('images/logo.svg') }}" alt="">
     </div>

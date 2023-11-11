@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-    <section class="grid grid-cols-2 px-[120px]">
+    <section class="grid grid-cols-2 px-[120px] py-[80px]">
         <div class="h-full overflow-hidden">
             <h1 class="mb-[60px] w-[427px] text-[32px] font-semibold">Daftar dulu ya, sebelum lanjut checkout!</h1>
             <div class="flex h-full pl-3">
@@ -142,11 +142,9 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-center">
-            <div class="fixed right-[12.5%] top-[55%] -translate-y-1/2">
-                <div class="flex items-center justify-center">
-                    <img src="{{ asset('images/img-hero.png') }}" alt="">
-                </div>
+        <div class="relative">
+            <div class="sticky right-1/2 top-0 w-full pt-[100px]">
+                <img src="{{ asset('images/img-hero.png') }}" class="translate-x-[150px]" alt="">
             </div>
         </div>
     </section>
