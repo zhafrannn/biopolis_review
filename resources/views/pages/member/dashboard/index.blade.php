@@ -140,24 +140,58 @@
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: [
-                    '19 Oktokber 2023',
-                    '20 Oktokber 2023',
-                    '21 Oktokber 2023',
-                    '22 Oktokber 2023',
-                    '23 Oktokber 2023',
-                    '24 Oktokber 2023',
-
-                ],
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                 datasets: [{
                     label: '# of Votes',
-                    data: [12000, 19000, 3000, 5000, 2000, 3000],
-                    borderWidth: 1
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 4, // Mengatur ketebalan garis menjadi 4px
+                    borderColor: '#20B15A'
                 }]
             },
             options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        font: {
+                            family: 'Poppins',
+                            size: 14, // Mengatur ukuran font menjadi 14px
+                            weight: 600 // Mengatur berat jenis font menjadi bold (600)
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            font: {
+                                family: 'Poppins',
+                                size: 14, // Mengatur ukuran font legenda menjadi 14px
+                                weight: 600 // Mengatur berat jenis font legenda menjadi bold (600)
+                            }
+                        }
+                    }
+                },
                 scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                family: 'Poppins',
+                                size: 14, // Mengatur ukuran font sumbu X menjadi 14px
+                                weight: 600 // Mengatur berat jenis font sumbu X menjadi bold (600)
+                            }
+                        },
+                        grid: {
+                            color: 'transparent' // Mengatur warna garis sumbu X di belakang chart
+                        }
+                    },
                     y: {
+                        ticks: {
+                            font: {
+                                family: 'Poppins',
+                                size: 14, // Mengatur ukuran font sumbu Y menjadi 14px
+                                weight: 600 // Mengatur berat jenis font sumbu Y menjadi bold (600)
+                            }
+                        },
+                        grid: {
+                            color: 'transparent' // Mengatur warna garis sumbu Y di belakang chart
+                        },
                         beginAtZero: true
                     }
                 }
