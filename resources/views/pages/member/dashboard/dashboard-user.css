@@ -1,0 +1,217 @@
+    /* * {
+    border: 1px solid red;
+} */
+*,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.navbar-container {
+    background: white;
+    height: 84px;
+    padding: 0 40px;
+    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.09);
+}
+.navbar-menu {
+    text-decoration: none;
+    color: #0a0a0b;
+    height: 100%;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-menu.active {
+    text-decoration: none;
+    color: #20b15a;
+    position: relative;
+}
+.navbar-menu.active::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #20b15a;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.product-card{
+
+    box-shadow: -1px 1px 4px 0px rgba(0, 0, 0, 0.10), -5px 5px 7px 0px rgba(0, 0, 0, 0.09), -11px 11px 9px 0px rgba(0, 0, 0, 0.05), -19px 19px 11px 0px rgba(0, 0, 0, 0.01), -30px 30px 12px 0px rgba(0, 0, 0, 0.00);
+    width: 254px; 
+    height: 490px;
+    border-radius: 15px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-button{
+    width: 217px; 
+    height: 40px; 
+    margin-top: 26px;
+    border-radius: 12px;
+    background-color: #20B15A; 
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.checkout-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.detail-checkout-container{
+    display: flex;
+    align-items: flex-start;
+    height: 541px;
+    width: 850px;
+    margin: 5px;
+    padding: 24px;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 15px 7px rgba(0, 0, 0, 0.15);
+}
+
+.payment-container{
+    /* margin-left: 10px; */
+    display: flex;
+    width: 420px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    height: 500px;
+    border-radius: 15px;
+    border: 1px solid #E5E5E5;
+}
+
+.receiver-detail{
+    margin-top: 24x;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 20px;
+}
+
+.address-button{
+    margin-top: 24;
+    margin-bottom: 24;
+    display: flex;
+    width: 231px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: #20B15A;
+    gap: 8px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFF;
+    text-align: center;
+}
+
+.tipe-pengambilan-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.tipe-pengiriman-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-pengiriman{
+    display: flex;
+    padding: 8px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    width: 102px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.detail-harga{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ringkasan-belanja{
+    color: #0A0A0B;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.garis-pembayaran{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    width: 370px;
+    border:1px solid #E5E5E5;
+}
+
+.text-belanja-ongkir{
+    color: #0A0A0B;
+    font-size: 16px;
+    font-weight: 400;
+    width: 185px;
+}
+
+.text-total-pembayaran{
+    display: flex;
+    justify-content: space-between;
+    color: #0A0A0B;
+    font-size: 16px;
+    font-weight: 600;
+    width: 185px;
+}
+
+.text-akhir{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-pembayaran{
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    background-color: #20B15A;
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 600;
+    width: 360px;
+    height: 45px;
+    }
+
+.button-pembayaran-container{
+    width: 370px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
