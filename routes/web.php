@@ -36,6 +36,9 @@ Route::prefix('profile')->group(function () {
         });
     });
 });
+Route::get('/dashboard-user', function () {
+    return view('pages.member.dashboard.index');
+});
 Route::get('/profile', function () {
     return view('pages.member.profile.index');
 });

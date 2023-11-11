@@ -1,3 +1,10 @@
+@extends('layouts.auth-member')
+
+@section('title')
+Point
+@endsection
+
+@section('content')
 <section class="mb-[27.92px]">
     <h2 class="mb-[19.95px] text-[27.09px] font-semibold">Laporan Saldo</h2>
     <div class="rounded-xl bg-white p-[20.32px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)]">
@@ -12,8 +19,8 @@
             </div>
             <div class="w-5/12">
                 <h2 class="mb-[7px] text-[20px] font-semibold">Rincian Saldo</h2>
-                <div class="flex justify-around">
-                    <div class="">
+                <div class="flex w-[100%]">
+                    <div class="grid-flow">
                         <h4 class="mb-[10px] text-[20.32px] text-[#969EBA]">Order Affiliate</h4>
                         <h3 class="text-[33px]">Rp2.000.000</h3>
                     </div>
