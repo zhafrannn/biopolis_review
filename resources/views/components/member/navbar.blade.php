@@ -1,12 +1,14 @@
+{{-- Navbar for deskto --}}
 <nav class="z-999 fixed left-0 top-0 z-50 flex h-[84px] w-[100%] items-center justify-between bg-white shadow-md">
     <div class="m-5 flex w-[867px] items-center pl-5">
-        <a href="{{ url('/dashboard-user') }}"><img src="{{ asset('images/logo.svg') }}" alt="logo"
-                class="w-[63px]"></a>
+        <a href="{{ url('/user/dashboard') }}">
+            <img src="{{ asset('images/logo.svg') }}" alt="logo" class="w-[63px]">
+        </a>
         <div class="ml-[64px] flex h-[80px] w-[400px] items-center justify-between">
-            <a href="{{ url('/dashboard-user') }}"
+            <a href="{{ url('/user/dashboard') }}"
                 class="active flex items-center text-[16px] font-semibold">Dashboard</a>
-            <a href="{{ url('/beli-produk') }}" class="flex items-center text-[16px] font-semibold">Produk</a>
-            <a href="{{ url('/transaksi') }}" class="flex items-center text-[16px] font-semibold">Transaksi</a>
+            <a href="{{ url('/member/product') }}" class="flex items-center text-[16px] font-semibold">Produk</a>
+            <a href="{{ url('/member/transaction') }}" class="flex items-center text-[16px] font-semibold">Transaksi</a>
         </div>
     </div>
 
@@ -18,36 +20,38 @@
         </div>
         {{-- End Notification --}}
         {{-- Profile --}}
-        <div class="flex items-center" style="gap: 16px">
+        <div class="flex items-center gap-[16px]">
 
 
-
+            <div class="dropdown-end dropdown">
+                <button tabindex="0" class="btn border-0 bg-white hover:border-0 hover:bg-white">
+                    <img src="{{ asset('icons/bell-rounded.svg') }}" alt="">
+                </button>
+                <ul tabindex="0" class="menu dropdown-content rounded-box z-[1] w-96 bg-base-100 p-2 shadow">
+                    <div class="flex flex-col gap-2">
+                        <div class="flex flex-col gap-2" id="notication-container"></div>
+                        <div>
+                            <a href="">Lihat Semua</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
 
             <div class="flex cursor-pointer items-center gap-[8px]" onclick="HandleClose()">
                 <div tabindex="0" class="m-1 flex cursor-pointer items-center">
                     <img src="{{ asset('images/icons/sample-avatar-profile.svg') }}" alt="">
-                    <p class="ml-[13.54px] text-[16.93px] font-semibold">Farisku</p>
+                    <p class="ml-[13.54px] text-[16.93px] font-semibold">{{ Auth::user()->name }}</p>
                     <img src="{{ asset('images/icon/arrow-down.svg') }}" class="ml-[6.77px]" alt="">
                 </div>
-                {{-- <div class="dropdown-end dropdown">
-                    
-                    <ul tabindex="0" class="menu dropdown-content rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
-                        <li><a class="font-semibold">Profile</a></li>
-                        <li><a class="font-semibold" href=""
-                                onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                        </li>
-                        <form id=" logout-form" action="" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </ul>
-                </div> --}}
+
             </div>
         </div>
         {{-- End Profile --}}
     </div>
 
 </nav>
+
+
 
 <div class="fixed z-[999] hidden h-screen w-screen bg-black bg-opacity-30 pt-[85px]" id="container-profile">
     <div class="relative h-full w-screen">
@@ -99,7 +103,9 @@
                         <a href="" class="pl-2">
                             <div class="flex items-center gap-[6.77px] px-[14px]">
                                 <img class="w-6" src="{{ asset('images/icons/logout.svg') }}" alt="">
-                                <p class="text-[20px] font-semibold text-[#E30613]">Keluar</p>
+                                <a href="{{ url('/logout') }}">
+                                    <p class="text-[20px] font-semibold text-[#E30613]">Keluar</p>
+                                </a>
                                 {{-- if active remove hidden --}}
                                 <div class="absolute left-0 hidden w-[3.39px] rounded-r-[12.7px] bg-primary"></div>
                                 {{-- if active remove hidden --}}
@@ -416,9 +422,35 @@
     </div>
 </div>
 
+{{-- Notification --}}
+<script>
+    $(document).ready(function() {
+        setInterval(() => {
+            $.ajax({
+                url: 'http://localhost:8000/api/notification/user/{{ Auth::user()->id }}',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    let element = '';
+                    data && data.map((item, index) => {
+                        element += `
+                    <div>
+                        <p>${item.description}</p>
+                    </div>
+                `
+                    })
+                    $('#notication-container').html(element)
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }, 10000)
+    });
+</script>
 
-<script></script>
-
+{{-- Tab Profile --}}
 <script>
     let currentTab = "profil-pengguna"
     let navbarModal = document.getElementById("container-profile")

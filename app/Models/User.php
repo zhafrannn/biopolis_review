@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use  App\Models\UserBiodata;
 
 class User extends Authenticatable
 {
@@ -17,11 +18,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,4 +39,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function user_biodata()
+    {
+        return $this->hasOne(UserBiodata::class); // Sesuaikan dengan model Biodata Anda
+    }
+
+    public function user_payment()
+    {
+        return $this->hasMany(UserPayment::class, "user_id"); // Sesuaikan dengan model Biodata Anda
+    }
+
+    public function user_wallet()
+    {
+        return $this->hasOne(UserWallet::class); // Sesuaikan dengan model Biodata Anda
+    }
+    public function user_notification()
+    {
+        return $this->hasMany(Notification::class, "user_id"); // Sesuaikan dengan model Biodata Anda
+    }
 }

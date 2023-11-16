@@ -1,6 +1,23 @@
 <?php
 
+use App\Utilities\GenerateRefferal;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestingController;
+use App\Http\Controllers\guest\LoginController;
+use App\Http\Controllers\guest\LogoutController;
+use App\Http\Controllers\guest\RegisterController;
+use App\Http\Controllers\user\UserPaymentController;
+use App\Http\Controllers\member\MemberPointController;
+use App\Http\Controllers\user\UserDashboardController;
+use App\Http\Controllers\member\MemberPaymentController;
+use App\Http\Controllers\member\MemberProductController;
+use App\Http\Controllers\member\MemberCheckoutController;
+use App\Http\Controllers\member\MemberDashboardController;
+use App\Http\Controllers\member\MemberTransactionController;
+use App\Http\Controllers\member\MemberWaitingCheckoutController;
+use App\Http\Controllers\admin\AdminContentManagementSystemController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +32,40 @@ use Illuminate\Support\Facades\Route;
 
 // ----------------- Lihat Ke figma,Route Route ini menyesuaikan dari figma -------------
 
-
+Route::get('/testing', [TestingController::class, 'index']);
 Route::get('/', function () {
     return view('pages.guest.landing-page.index');
 });
-Route::get('/login', function () {
-    return view('pages.guest.login.index');
-});
-Route::get('/register', function () {
-    return view('pages.guest.register.index');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/logout', [LogoutController::class, 'index'])->middleware('auth');
 
 // -----------Jojo Member---------------------
+Route::prefix('member')->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [MemberDashboardController::class, 'index'])->middleware('auth');
+    // Product
+    Route::get('/product', [MemberProductController::class, 'index']);
+    // Checkout
+    Route::get('/checkout/{slug}', [MemberCheckoutController::class, 'show']);
+    // Payment
+    Route::post('/payment', [MemberPaymentController::class, 'store']);
+
+    // Transaction
+    Route::prefix('transaction')->group(function () {
+        Route::get('/', [MemberTransactionController::class, 'index']);
+        Route::get('/waiting-order', [MemberWaitingCheckoutController::class, 'index']);
+    });
+    Route::get('/point', [MemberPointController::class, "index"]);
+});
+
+
+
+
 Route::prefix('profile')->group(function () {
     Route::get('/', function () {
         return view('pages.member.profile.index');
@@ -49,28 +88,23 @@ Route::prefix('profile')->group(function () {
 
 // ----------------- Role User
 
-Route::get('/dashboard-user', function () {
-    return view('pages.member.dashboard.index');
-});
+Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->middleware('auth');
+
+Route::post('/user-payment-activation', [UserPaymentController::class, 'store'])->middleware('auth');
+
 Route::get('/profile', function () {
     return view('pages.member.profile.index');
 });
 Route::get('/info-produk', function () {
     return view('pages.member.info-produk.index');
 });
-Route::get('/beli-produk', function () {
-    return view('pages.member.produk.index');
-});
-Route::get('/checkout', function () {
-    return view('pages.member.produk.checkout.index');
-});
+
+
 
 Route::get('/referral', function () {
     return view('pages.member.referral.index');
 });
-Route::get('/poin', function () {
-    return view('pages.member.poin.index');
-});
+
 Route::get('/withdraw-affiliate', function () {
     return view('pages.member.withdraw-affiliate.index');
 });
@@ -78,19 +112,26 @@ Route::get('/notification', function () {
     return view('pages.member.notification.index');
 });
 
-Route::prefix('transaksi')->group(function () {
-    Route::get('/', function () {
-        return view('pages.member.transaksi.index');
-    });
-    Route::get('/menunggu-pembayaran', function () {
-        return view('pages.member.transaksi.menunggu-pembayaran.index');
-    });
-});
+
 // --------------- Ebd Role User
+
+Route::get('/testing-asd', function () {
+    return view('pages.admin.content-management-system.index');
+});
+
+Route::get('/testing-123', function () {
+    return view('pages.admin.content-management-system.index');
+})->name('cms_update');
+
+Route::get('/content-management-system', [AdminContentManagementSystemController::class, 'edit']);
+Route::put('/content-management-system/update', [AdminContentManagementSystemController::class, 'update'])->name('cms_update');
 
 
 // ----------Hanggit Admin--------------------
 Route::prefix('admin')->group(function () {
+
+
+
     Route::get('/', function () {
         return view('pages.admin.dashboard.index');
     });

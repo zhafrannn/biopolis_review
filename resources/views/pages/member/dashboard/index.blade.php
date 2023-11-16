@@ -1,20 +1,20 @@
 @extends('layouts.auth-member')
 
 @section('title')
-    Saldo
+    Dashboard | Biopolis Propolis
 @endsection
 
 @section('content')
     <div class="p-5">
-        <h1 class="mb-7 text-[40px]">Hi, Vann! Selamat datang kembali. </h1>
+        <h1 class="mb-7 text-[40px]">Hi, {{ Auth::user()->name }}! Selamat datang kembali. </h1>
         <div class="flex items-center justify-between">
             <h3 class="text-[20px] font-semibold">Performa Affiliate Kamu</h3>
             <div class="flex">
-                <select name="" id=""
+                <select name="" id="select-graphic"
                     class="h-[33.86px] w-[331.85px] rounded-[10.16px] border bg-white text-center text-[12.7px] text-[#969EBA]">
-                    <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
-                    <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
-                    <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
+                    <option value="week">Mingguan</option>
+                    <option value="month">Bulanan</option>
+                    <option value="year">Tahunan</option>
                 </select>
             </div>
         </div>
@@ -25,35 +25,47 @@
                         <p class="text-[20px]">Total Poin</p>
                         <div class="mt-4 flex items-center justify-between">
                             <div>
-                                <p class="text-[40px] font-semibold">20 Poin</p>
-                                <p class="text-[24px] font-semibold text-primary">10 Poin</p>
+                                <p class="text-[40px] font-semibold">{{ $data['refferal_point']['current_point'] }} Poin
+                                </p>
+                                {{-- <p class="text-[24px] font-semibold text-primary">10 Poin</p> --}}
                             </div>
                             <p class="text-[24px] text-primary">+100%</p>
                         </div>
                         <div class="mt-2 flex justify-between">
                             <p class="text-[16px] text-[#969EBA]">Poin Affiliate</p>
-                            <p class="text-[16px] text-[#969EBA]">15</p>
+                            <p class="text-[16px] text-[#969EBA]">
+                                {{ $data['refferal_point']['total_point'] - $data['point_user_buy_product'] }}</p>
                         </div>
                         <div class="flex justify-between">
-                            <p class="text-[16px] text-[#969EBA]">Poin Referral</p>
-                            <p class="text-[16px] text-[#969EBA]">15</p>
+                            <p class="text-[16px] text-[#969EBA]">Total Referral</p>
+                            <p class="text-[16px] text-[#969EBA]">{{ $data['refferal_point']['total_refferal'] }}</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="text-[16px] text-[#969EBA]">Poin Pembelian Produk</p>
+                            <p class="text-[16px] text-[#969EBA]">{{ $data['point_user_buy_product'] }}
+                            </p>
                         </div>
 
-                        <a href="{{ url('/poin') }}" class="mt-3 flex items-end justify-end text-[16px] text-primary">Lihat
-                            Detail</a>
+                        <a href="{{ url('/member/point') }}"
+                            class="mt-3 flex items-end justify-end text-[16px] text-primary">
+                            Lihat Detail
+                        </a>
                     </div>
-                    <div class="w-[50%] rounded-xl border border-[#E5E5E5] p-[16px_24px_24px_24px]">
+                    <div class="relative w-[50%] rounded-xl border border-[#E5E5E5] p-[16px_24px_24px_24px]">
                         <p class="text-[20px]">Total Produk</p>
                         <div class="mt-4 flex items-center justify-between">
                             <div>
-                                <p class="text-[40px] font-semibold">20 Produk</p>
-                                <p class="text-[24px] font-semibold text-primary">10 Produk</p>
+                                <p class="text-[40px] font-semibold">{{ $data['user_total_buy_packet'] }}</p>
+                                <p class="text-[24px] font-semibold text-primary" id="total-packet-season">
+                                    {{ $data['user_total_packet']['weekly'] }} Paket
+                                </p>
                             </div>
-                            <p class="text-[24px] text-primary">+100%</p>
+
                         </div>
 
-                        <a href="" class="flex items-end justify-end pt-[66px] text-[16px] text-primary">Lihat
-                            Detail</a>
+                        <a href="" class="absolute bottom-5 right-5 z-50 text-[16px] text-primary">
+                            Lihat Detail
+                        </a>
                     </div>
                 </div>
 
@@ -82,10 +94,12 @@
 
                         <div class="absolute top-8 p-5">
                             <h3 class="text-left text-[20px] font-semibold text-white">Komisi Affiliate</h3>
-                            <h3 class="mt-14 text-left text-[36px] font-semibold text-white">Rp2.000.000</h3>
+                            <h3 class="mt-14 text-left text-[36px] font-semibold text-white">
+                                Rp{{ number_format(Auth::user()->user_wallet->total_balance) }}</h3>
                             <div class="flex w-[320px] justify-between">
-                                <p href="" class="text-[20px] text-primary">Rp1.000.000</p>
-                                <p href="" class="text-[20px] text-primary">+100%</p>
+                                <p href="" class="text-[20px] text-primary">
+                                    Rp{{ number_format(Auth::user()->user_wallet->total_balance) }}</p>
+
                             </div>
                         </div>
 
@@ -110,34 +124,68 @@
 
 
                         <a href="{{ url('/withdraw-affiliate') }}"
-                            class="btn btn-primary flex w-[100%] justify-items-center text-white">Cairkan</a>
+                            class="btn btn-primary flex w-full justify-items-center text-white">Cairkan</a>
                     </div>
                     <div class="mt-4 gap-6 rounded-xl border border-[#E5E5E5] p-6">
                         <h1 class="text-[22px] font-semibold">Ajak Temanmu dan Dapatkan Komisinya</h1>
                         <p class="text-end">Kode Referal Kamu</p>
-                        <div class="flex items-center justify-end">
-                            <p class="text-end text-[40px] font-semibold">24A17XU</p>
-                            <img src="{{ asset('images/icons/document-copy.svg') }}" alt="" class="h-6 w-6">
-                        </div>
 
+                        <div class="relative flex justify-end">
+                            <button onclick="CopyToClipboard()" class="flex items-center justify-end">
+                                <p class="text-end text-[40px] font-semibold">{{ Auth::user()->kode_referal }}</p>
+                                <img src="{{ asset('images/icons/document-copy.svg') }}" alt="" class="h-5 w-5">
+                            </button>
+                        </div>
                         <a href="{{ url('/info-produk') }}" class="font-[16px] text-primary">Lihat Detail</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
+    {{-- Javascript --}}
     <script src=" https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const selectAffiliate = document.getElementById('select-graphic')
+    </script>
+
+    <script>
+        let total_paket_weekly = {{ $data['user_total_packet']['weekly'] }};
+        let total_paket_monthly = {{ $data['user_total_packet']['monthly'] }};
+        let total_paket_yearly = {{ $data['user_total_packet']['yearly'] }};
+        console.log(total_paket_weekly);
+        selectAffiliate.addEventListener('change', () => {
+            if (selectAffiliate.value == "week") {
+                $('#total-packet-season').text(`${total_paket_weekly} Paket`)
+            }
+            if (selectAffiliate.value == "month") {
+                $('#total-packet-season').text(`${total_paket_monthly} Paket`)
+            }
+            if (selectAffiliate.value == "year") {
+                $('#total-packet-season').text(`${total_paket_yearly} Paket`)
+            }
+        })
+    </script>
+
+    <script>
+        let value = `http://localhost:8000/register?referral_code={{ Auth::user()->kode_referal }}`;
+
+        const CopyToClipboard = () => {
+            navigator.clipboard.writeText(value)
+                .then(() => {
+                    console.log('Teks berhasil disalin ke clipboard:', value);
+                    // Atau tambahkan logika atau tindakan lain setelah berhasil menyalin ke clipboard
+                })
+                .catch(err => {
+                    console.error('Gagal menyalin teks ke clipboard: ', err);
+                    // Handle kesalahan saat menyalin ke clipboard
+                });
+        };
+    </script>
 
     <script>
         const ctx = document.getElementById('myChart');
 
-        new Chart(ctx, {
+        const myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -197,5 +245,68 @@
                 }
             }
         });
+        selectAffiliate.addEventListener('change', () => {
+            myChart.destroy()
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Senin', 'Selasa', 'Rabu', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 4, // Mengatur ketebalan garis menjadi 4px
+                        borderColor: '#20B15A'
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            font: {
+                                family: 'Poppins',
+                                size: 14, // Mengatur ukuran font menjadi 14px
+                                weight: 600 // Mengatur berat jenis font menjadi bold (600)
+                            }
+                        },
+                        legend: {
+                            labels: {
+                                font: {
+                                    family: 'Poppins',
+                                    size: 14, // Mengatur ukuran font legenda menjadi 14px
+                                    weight: 600 // Mengatur berat jenis font legenda menjadi bold (600)
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                font: {
+                                    family: 'Poppins',
+                                    size: 14, // Mengatur ukuran font sumbu X menjadi 14px
+                                    weight: 600 // Mengatur berat jenis font sumbu X menjadi bold (600)
+                                }
+                            },
+                            grid: {
+                                color: 'transparent' // Mengatur warna garis sumbu X di belakang chart
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                font: {
+                                    family: 'Poppins',
+                                    size: 14, // Mengatur ukuran font sumbu Y menjadi 14px
+                                    weight: 600 // Mengatur berat jenis font sumbu Y menjadi bold (600)
+                                }
+                            },
+                            grid: {
+                                color: 'transparent' // Mengatur warna garis sumbu Y di belakang chart
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
     </script>
 @endsection
