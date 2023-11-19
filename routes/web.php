@@ -16,8 +16,9 @@ use App\Http\Controllers\member\MemberDashboardController;
 use App\Http\Controllers\member\MemberTransactionController;
 use App\Http\Controllers\member\MemberWaitingCheckoutController;
 use App\Http\Controllers\admin\AdminContentManagementSystemController;
-
-
+use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\member\MemberProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,8 @@ use App\Http\Controllers\admin\AdminContentManagementSystemController;
 // ----------------- Lihat Ke figma,Route Route ini menyesuaikan dari figma -------------
 
 Route::get('/testing', [TestingController::class, 'index']);
-Route::get('/', function () {
-    return view('pages.guest.landing-page.index');
-});
+Route::get('/', [HomeController::class, 'index']);
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
@@ -61,9 +61,13 @@ Route::prefix('member')->group(function () {
         Route::get('/waiting-order', [MemberWaitingCheckoutController::class, 'index']);
     });
     Route::get('/point', [MemberPointController::class, "index"]);
+
+    Route::post('/profile/update/{id}', [MemberProfileController::class, 'update'])->name('profile_update');
 });
 
-
+Route::get('/info-produk', function () {
+    return view('pages.member.info-produk.index');
+});
 
 
 Route::prefix('profile')->group(function () {
@@ -131,10 +135,8 @@ Route::put('/content-management-system/update', [AdminContentManagementSystemCon
 Route::prefix('admin')->group(function () {
 
 
+    Route::get('/', [AdminDashboardController::class, 'index']);
 
-    Route::get('/', function () {
-        return view('pages.admin.dashboard.index');
-    });
     Route::get('/mitra', function () {
         return view('pages.admin.mitra.index');
     });

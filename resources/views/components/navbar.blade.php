@@ -1,5 +1,4 @@
-<nav
-    class="fixed left-0 top-0 z-[999] hidden h-[109px] w-screen items-center justify-between bg-white px-[120px] lg:flex">
+<nav class="fixed left-0 top-0 z-[999] hidden h-[109px] w-screen items-center justify-between bg-white px-[120px] lg:flex">
     <div class="flex items-center justify-center">
         <img src="{{ asset('images/logo.svg') }}" alt="">
     </div>
@@ -14,13 +13,11 @@
             <p>Kemitraan</p>
         </a>
 
-        <a href="{{ url('/login') }}"
-            class="flex justify-center border border-primary font-medium lg:w-[93px] lg:rounded-[10px] lg:p-[10px]">
+        <a href="{{ url('/login') }}" class="flex justify-center border border-primary font-medium lg:w-[93px] lg:rounded-[10px] lg:p-[10px]">
             <p>Login</p>
         </a>
 
-        <a href="{{ url('/register') }}"
-            class="flex justify-center border border-primary bg-primary font-medium text-white lg:w-[93px] lg:rounded-[10px] lg:p-[10px]">
+        <a href="{{ url('/register') }}" class="flex justify-center border border-primary bg-primary font-medium text-white lg:w-[93px] lg:rounded-[10px] lg:p-[10px]">
             <p>Register</p>
         </a>
     </div>

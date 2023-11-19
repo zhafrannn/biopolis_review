@@ -1,19 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
 use App\Models\ContentManagementSystem;
+use Illuminate\Http\Request;
 
-class AdminContentManagementSystemController extends Controller
+class HomeController extends Controller
 {
     public function index()
-    {
-    }
-
-    public function edit()
     {
         // Tentang Kami
         // Judul Besar
@@ -117,7 +111,7 @@ class AdminContentManagementSystemController extends Controller
         $link_button_pdf = ContentManagementSystem::where('key', 'link_button_pdf')->first();
         $link_button_whatsapp = ContentManagementSystem::where('key', 'link_button_whatsapp')->first();
 
-        return view('pages.admin.content-management-system.index', compact(
+        return view('pages.guest.landing-page.index', compact(
             'teks_judul_tentang_kami_1',
             'teks_sub_judul_tentang_kami_1',
             'gambar_tentang_kami_1',
@@ -189,18 +183,5 @@ class AdminContentManagementSystemController extends Controller
             'link_button_whatsapp'
 
         ));
-    }
-
-    public function update(Request $request)
-    {
-        $data_array = $request->input('data');
-
-        DB::transaction(function () use ($data_array) {
-            foreach ($data_array as $key => $value) {
-                echo json_encode($key);
-                ContentManagementSystem::where(['key' => $key])->update(['value' => $value]);
-            }
-        }, 3);
-        return back();
     }
 }

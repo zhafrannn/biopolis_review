@@ -20,7 +20,6 @@
                 <div class="flex flex-col mt-9">
                     <label for="" class="text-[13.54px]">Teks Judul</label>
                     <input type="text" name="data[{{ $teks_judul_tentang_kami_1->key }}]" class="border border-[#E5E5E5] rounded-xl h-[56px] px-[24px] font-semibold" value="{{ $teks_judul_tentang_kami_1->value }}">
-
                 </div>
                 <div class="flex flex-col mt-9">
                     <label for="" class="text-[13.54px]">Teks Sub Judul</label>

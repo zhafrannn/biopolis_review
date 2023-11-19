@@ -45,12 +45,6 @@
             <p class="mb-[21px] text-[8px]">Some footer text about the Agency. Just a little
                 description to help
                 people understand you better</p>
-            <div class="flex gap-[16px]">
-                <img src="{{ asset('images/facebook.png') }}" alt="">
-                <img src="{{ asset('images/twitter.png') }}" alt="">
-                <img src="{{ asset('images/linkedin.png') }}" alt="">
-                <img src="{{ asset('images/instagram.png') }}" alt="">
-            </div>
         </div>
 
         <div class="mb-[23px] grid grid-cols-2 gap-[20px] px-[30px]">
@@ -69,6 +63,12 @@
                     <img src="{{ asset('images/bpom.png') }}" alt="" class="h-[31px]">
                 </div>
             </div>
+        </div>
+        <div class="flex justify-center gap-[16px]">
+            <img src="{{ asset('images/facebook.png') }}" alt="" class="w-[36.28px]">
+            <img src="{{ asset('images/twitter.png') }}" alt="" class="w-[36.28px]">
+            <img src="{{ asset('images/linkedin.png') }}" alt="" class="w-[36.28px]">
+            <img src="{{ asset('images/instagram.png') }}" alt="" class="w-[36.28px]">
         </div>
 
     </div>

@@ -14,7 +14,6 @@ class MemberCheckoutController extends Controller
         if ($product) {
             return view('pages.member.produk.checkout.index', compact('product'));
         }
-
         return abort(404);
     }
 }
