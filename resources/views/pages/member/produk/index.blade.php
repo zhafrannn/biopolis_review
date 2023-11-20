@@ -19,7 +19,7 @@ Product | Biopolis Propolis
         <div class="card-body">
             <h2 class="card-title">Paket Biopolis</h2>
             <p class="text-[16px] text-primary">+{{ $item->point }} poin</p>
-            <p class="mt-2 text-[20px] font-semibold text-[#0A0A0B]">Rp{{ number_format($item->price) }},-</p>
+            <p class="mt-2 text-[20px] font-semibold text-[#0A0A0B]">Rp{{ number_format($item->price) }}</p>
             <div class="flex">
                 <?php $discount = explode(' ', $item->product_name); ?>
                 <span class="text-[16px] text-[#969EBA] line-through">Rp{{ $multiple * 1950000 }}
@@ -36,7 +36,7 @@ Product | Biopolis Propolis
 
     </div>
 
-    <div id="tab-{{ $item->product_code }}" class="tab-product fixed -bottom-[1000px] left-0 z-[0] h-screen w-screen bg-black bg-opacity-30 pt-[100px] transition-all duration-300">
+    <div id="tab-{{ $item->product_code }}" class="tab-product fixed -bottom-[1000px] left-0 z-[999] h-screen w-screen bg-black bg-opacity-30 pt-[100px] transition-all duration-300">
         <div class="relative h-full rounded-t-[30px] bg-white px-5 pt-20">
             {{-- Close --}}
             <div class="absolute right-5 top-5">
@@ -62,9 +62,9 @@ Product | Biopolis Propolis
                                 Provinsi : {{ $provinsi[1] }}
                             </p>
                         </div>
-                        <div class="mb-6 mt-6 h-[1px] w-[100%] border"></div>
-                        <button class="btn btn-primary w-[231px]" onclick="modal_pilih_alamat.showModal()">Pilih Alamat Lain</button>
-                        @include('components.member.modal-pilih-alamat.index')
+                        <!-- <div class="mb-6 mt-6 h-[1px] w-[100%] border"></div> -->
+                        <!-- <button class="btn btn-primary w-[231px]">Pilih Alamat Lain</button> -->
+
                         <div class="mb-6 mt-6 h-[1px] w-[100%] border-[3px]"></div>
                         <p class="text-[20px] font-semibold text-[#0A0A0B]">Biopolis</p>
                         <p class="text-[14px] text-[#0A0A0B]">Kota Bandung</p>
@@ -75,7 +75,7 @@ Product | Biopolis Propolis
                                     <p class="text-[20px] font-semibold text-[#0A0A0B]">Paket Biopolis</p>
                                     <div>
                                         <span class="text-[16px] text-[#969EBA] line-through">Rp4.000.0000</span>
-                                        <span class="text-[16px] text-[#20B15A]">Rp{{ number_format($item->price) }},-</span>
+                                        <span class="text-[16px] text-[#20B15A]">Rp{{ number_format($item->price) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -98,17 +98,17 @@ Product | Biopolis Propolis
                         <p class="text-[16px] font-semibold text-[#0A0A0B]">Ringkasan Belanja</p>
                         <div class="mt-8 flex justify-between">
                             <p class="text-[16px] text-[#0A0A0B]">Total Belanja</p>
-                            <p class="text-[16px] text-[#0A0A0B]">Rp{{ number_format($item->price) }},-</p>
+                            <p class="text-[16px] text-[#0A0A0B]">Rp{{ number_format($item->price) }}</p>
                         </div>
-                        <div class="flex justify-between">
+                        <!-- <div class="flex justify-between">
                             <p class="text-[16px] text-[#0A0A0B]">Total Ongkir</p>
-                            <p class="text-[16px] text-[#0A0A0B]">Rp0,-</p>
-                        </div>
+                            <p class="text-[16px] text-[#0A0A0B]">Rp0</p>
+                        </div> -->
                         <div class="mb-6 mt-6 h-[1px] w-[100%] border"></div>
                         <div class="flex justify-between">
                             <p class="text-[16px] font-semibold text-[#0A0A0B]">Total Pembayaran</p>
                             <p class="text-[16px] font-semibold text-[#0A0A0B]">
-                                Rp{{ number_format($item->price) }},-</p>
+                                Rp{{ number_format($item->price) }}</p>
                         </div>
 
                         <button class="btn btn-primary mt-6 w-[100%]" onclick="HandlePayment({{ $item->id }})">Konfirmasi
@@ -136,7 +136,7 @@ Product | Biopolis Propolis
             <div class="p-2">
                 <h2 class="card-title text-[14px]">Paket Biopolis</h2>
                 <p class="text-[12px] text-primary">+{{ $item->point }} poin</p>
-                <p class="mt-2 text-[14px] font-semibold text-[#0A0A0B]">Rp{{ number_format($item->price) }},-</p>
+                <p class="mt-2 text-[14px] font-semibold text-[#0A0A0B]">Rp{{ number_format($item->price) }}</p>
                 <div class="flex">
                     <?php $discount = explode(' ', $item->product_name); ?>
                     <span class="text-[12px] text-[#969EBA] line-through">Rp{{ $multiple * 1950000 }}
@@ -144,18 +144,17 @@ Product | Biopolis Propolis
                     <span class="ml-1 text-[12px] text-[#E30613]">35%</span>
                 </div>
                 <div class="card-actions mt-4 items-center justify-center">
-                    <button onclick="HandleTab('tab-{{ $item->product_code }}')" class="w-full text-[12px] text-white bg-primary rounded-lg p-2" type="button">Beli
-                        Sekarang
-                    </button>
+                    <button onclick="HandleMobileTab('tab-mobile-{{ $item->product_code }}')" class="w-full text-[12px] text-white bg-primary rounded-lg p-2" type="button">
+                        Beli Sekarang
                 </div>
             </div>
         </div>
 
-        <div id="tab-{{ $item->product_code }}" class="tab-product fixed left-0 z-[900] h-full w-screen bg-black bg-opacity-30 transition-all duration-300">
+        <div id="tab-mobile-{{ $item->product_code }}" class="tab-product-mobile fixed -bottom-[1000px] left-0 z-[900] h-full w-screen bg-black bg-opacity-30 transition-all duration-300">
             <div class="relative h-full bg-white">
                 {{-- Close --}}
                 <div class="absolute right-5 top-5">
-                    <button onclick="HandleCloseTab()">Close</button>
+                    <button onclick="HandleMobileCloseTab()">Close</button>
                 </div>
                 <div class="h-full w-screen  overflow-y-auto">
                     <h1 class="mb-[26px] ml-3 text-[16px] font-semibold">Checkout</h1>
@@ -177,8 +176,7 @@ Product | Biopolis Propolis
                                     {{ Auth::user()->user_biodata->alamat_lengkap }}
                                 </p>
                             </div>
-                            <button class="btn btn-primary w-[231px]" onclick="modal_pilih_halaman.showModal()">Pilih Alamat Lain</button>
-                            @include('components.member.modal-pilih-alamat.index')
+                            <!-- <button class="btn btn-primary w-[231px]">Pilih Alamat Lain</button> -->
                             <div class="mb-6 mt-6 h-[1px] w-full border-[5px]"></div>
                             <p class="text-[14px] font-semibold text-[#0A0A0B]">Biopolis</p>
                             <p class="text-[12px] text-[#0A0A0B]">Kota Bandung</p>
@@ -189,7 +187,7 @@ Product | Biopolis Propolis
                                         <p class="text-[14px] font-semibold text-[#0A0A0B]">Paket Biopolis</p>
                                         <div>
                                             <span class="text-[13px] text-[#969EBA] line-through">Rp4.000.0000</span>
-                                            <span class="text-[13px] text-[#20B15A]">Rp{{ number_format($item->price) }},-</span>
+                                            <span class="text-[13px] text-[#20B15A]">Rp{{ number_format($item->price) }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -209,17 +207,17 @@ Product | Biopolis Propolis
                                     <p class="text-[14px] font-semibold text-[#0A0A0B]">Ringkasan Belanja</p>
                                     <div class="mt-6 flex justify-between">
                                         <p class="text-[14px] text-[#0A0A0B]">Total Belanja</p>
-                                        <p class="text-[14px] text-[#0A0A0B]">Rp{{ number_format($item->price) }},-</p>
+                                        <p class="text-[14px] text-[#0A0A0B]">Rp{{ number_format($item->price) }}</p>
                                     </div>
-                                    <div class="flex justify-between">
+                                    <!-- <div class="flex justify-between">
                                         <p class="text-[14px] text-[#0A0A0B]">Total Ongkir</p>
-                                        <p class="text-[14px] text-[#0A0A0B]">Rp0,-</p>
-                                    </div>
+                                        <p class="text-[14px] text-[#0A0A0B]">Rp0</p>
+                                    </div> -->
                                     <div class="mb-4 mt-4 h-[1px] w-[100%] border"></div>
                                     <div class="flex justify-between">
                                         <p class="text-[14px] font-semibold text-[#0A0A0B]">Total Pembayaran</p>
                                         <p class="text-[14px] font-semibold text-[#0A0A0B]">
-                                            Rp{{ number_format($item->price) }},-</p>
+                                            Rp{{ number_format($item->price) }}</p>
                                     </div>
 
                                     <button class="btn btn-primary mt-6 w-[100%]" onclick="HandlePayment({{ $item->id }})">Konfirmasi
@@ -275,11 +273,21 @@ Product | Biopolis Propolis
     }
 
 
-
     let tabComponent = $('.tab-product');
     const HandleTab = (tabCode) => {
         for (let index = 0; index < tabComponent.length; index++) {
             let elem = $('.tab-product')[index];
+            if (!elem.classList.contains('-bottom-[1000px]')) {
+                elem.classList.add('-bottom-[1000px]');
+
+            }
+        }
+        $(`#${tabCode}`).removeClass('-bottom-[1000px]').addClass('bottom-0');
+    }
+    let tabMobileComponent = $('.tab-product-mobile');
+    const HandleMobileTab = (tabCode) => {
+        for (let index = 0; index < tabMobileComponent.length; index++) {
+            let elem = $('.tab-product-mobile')[index];
             if (!elem.classList.contains('-bottom-[1000px]')) {
                 elem.classList.add('-bottom-[1000px]');
 
@@ -296,7 +304,18 @@ Product | Biopolis Propolis
                 elem.classList.add('-bottom-[1000px]');
             }
             if (elem.classList.contains('bottom-0')) {
-                elem.classList.add('bottom-0');
+                elem.classList.add('bottom-[1000px]');
+            }
+        }
+    }
+    const HandleMobileCloseTab = () => {
+        for (let index = 0; index < tabComponent.length; index++) {
+            let elem = $('.tab-product-mobile')[index];
+            if (!elem.classList.contains('-bottom-[1000px]')) {
+                elem.classList.add('-bottom-[1000px]');
+            }
+            if (elem.classList.contains('bottom-0')) {
+                elem.classList.add('bottom-[1000px]');
             }
         }
     }

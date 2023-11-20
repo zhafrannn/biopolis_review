@@ -37,8 +37,8 @@ Transaksi | Biopolis Propolis
                 <p class="text-[16.93px]">Menunggu Pembayaran</p>
             </div>
             <div class="flex items-center">
-                <div class="flex min-h-[30px] min-w-[30px] items-center justify-center rounded-xl bg-error p-2 text-center align-middle text-[12px] text-white">
-                    10</div>
+                <!-- <div class="flex min-h-[30px] min-w-[30px] items-center justify-center rounded-xl bg-error p-2 text-center align-middle text-[12px] text-white">
+                    10</div> -->
                 <img src="{{ asset('images/icons/arrow-right.svg') }}" alt="">
             </div>
         </div>
@@ -57,7 +57,7 @@ Transaksi | Biopolis Propolis
                 <p class="text-[10px] font-semibold">Dikemas</p>
             </div>
             <div>
-                <p class="text-[13.54px]">No Invoice</p>
+                <p class="text-[13.54px]">No Invoice : {{$item->payment_code}}</p>
             </div>
         </div>
         <div class="flex items-center justify-between">
@@ -73,7 +73,7 @@ Transaksi | Biopolis Propolis
             <div class="pl-[13.54px]">
                 <p class="flex justify-end text-[16px]">Total Belanja</p>
                 <h3 class="flex justify-end text-[16px] font-semibold">
-                    Rp{{ number_format($item->total_payment) }},-
+                    Rp{{ number_format($item->total_payment) }}
                 </h3>
 
             </div>
@@ -143,8 +143,8 @@ Transaksi | Biopolis Propolis
                 <p class="text-[12px]">Menunggu Pembayaran</p>
             </div>
             <div class="flex items-center">
-                <div class="flex min-h-[30px] min-w-[30px] w-[20px] h-[20px] items-center justify-center rounded-xl bg-error p-2 text-center align-middle text-[12px] text-white">
-                    10</div>
+                <!-- <div class="flex min-h-[30px] min-w-[30px] w-[20px] h-[20px] items-center justify-center rounded-xl bg-error p-2 text-center align-middle text-[12px] text-white">
+                    10</div> -->
                 <img src="{{ asset('images/icons/arrow-right.svg') }}" alt="">
             </div>
         </div>
@@ -160,7 +160,7 @@ Transaksi | Biopolis Propolis
                     <p class="font-semibold text-[14px]">{{ Auth::user()->name }}</p>
                 </div>
                 <p class="text-[12px]">{{ $item->date }}</p>
-                <p class="text-[12.54px]">No Invoice</p>
+                <p class="text-[12.54px]">No Invoice: {{ $item->payment_code  }}</p>
             </div>
             <div class="rounded-[5px] bg-[#FFF7F2] px-[6.67px] py-[3.39px] text-[#FF8345]">
                 <p class="text-[10px] font-semibold">Dikemas</p>
@@ -179,7 +179,7 @@ Transaksi | Biopolis Propolis
             <div class="">
                 <p class="text-[14px]">Total Belanja</p>
                 <h3 class="text-[14px] font-semibold">
-                    Rp{{ number_format($item->total_payment) }},-
+                    Rp{{ number_format($item->total_payment) }}
                 </h3>
             </div>
             <div class="flex justify-end items-end">

@@ -12,6 +12,7 @@ class MemberTransactionController extends Controller
     public function index()
     {
         $transaction = UserPayment::where('user_id', Auth::user()->id)->where('product_id', "!=", 1)->where("status", "!=", "pending")->latest()->get();
+        // dd($transaction);
         return view('pages.member.transaksi.index', compact('transaction'));
     }
 }

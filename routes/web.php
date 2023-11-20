@@ -19,6 +19,7 @@ use App\Http\Controllers\admin\AdminContentManagementSystemController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\member\MemberProfileController;
+use App\Http\Controllers\member\MemberWithdrawController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,12 +63,19 @@ Route::prefix('member')->group(function () {
     });
     Route::get('/point', [MemberPointController::class, "index"]);
 
-    Route::post('/profile/update/{id}', [MemberProfileController::class, 'update'])->name('profile_update');
+    Route::post('/profile/update/{id}', [MemberProfileController::class, 'update']);
+
+    Route::post('/withdraw/{id}', [MemberWithdrawController::class, 'update']);
+
+    Route::get('/info-produk', function () {
+        return view('pages.member.info-produk.index');
+    });
+
+    Route::get('/referral', function () {
+        return view('pages.member.referral.index');
+    });
 });
 
-Route::get('/info-produk', function () {
-    return view('pages.member.info-produk.index');
-});
 
 
 Route::prefix('profile')->group(function () {
@@ -105,9 +113,7 @@ Route::get('/info-produk', function () {
 
 
 
-Route::get('/referral', function () {
-    return view('pages.member.referral.index');
-});
+
 
 Route::get('/withdraw-affiliate', function () {
     return view('pages.member.withdraw-affiliate.index');

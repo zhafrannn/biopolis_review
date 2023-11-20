@@ -7,7 +7,7 @@ Dashboard | Biopolis Propolis
 @section('content')
 <div class="p-5 hidden lg:block">
     <h1 class="mb-7 text-[40px]">Hi, {{ Auth::user()->name }}! Selamat datang kembali. </h1>
-    <div class="flex items-center justify-between">
+    <!-- <div class="flex items-center justify-between">
         <h3 class="text-[20px] font-semibold">Performa Affiliate Kamu</h3>
         <div class="flex">
             <select name="" id="select-graphic" class="h-[33.86px] w-[331.85px] rounded-[10.16px] border bg-white text-center text-[12.7px] text-[#969EBA]">
@@ -16,7 +16,7 @@ Dashboard | Biopolis Propolis
                 <option value="year">Tahunan</option>
             </select>
         </div>
-    </div>
+    </div> -->
     <div class="mt-6 flex">
         <div class="w-8/12">
             <div class="flex w-[100%] gap-5">
@@ -62,7 +62,7 @@ Dashboard | Biopolis Propolis
 
                     </div>
 
-                    <a href="" class="absolute bottom-5 right-5 z-50 text-[16px] text-primary">
+                    <a href="{{ url('/member/info-produk') }}" class="absolute bottom-5 right-5 z-50 text-[16px] text-primary">
                         Lihat Detail
                     </a>
                 </div>
@@ -92,10 +92,10 @@ Dashboard | Biopolis Propolis
                     <div class="absolute top-8 p-5">
                         <h3 class="text-left text-[20px] font-semibold text-white">Komisi Affiliate</h3>
                         <h3 class="mt-14 text-left text-[36px] font-semibold text-white">
-                            Rp{{ number_format(Auth::user()->user_wallet->total_balance) }}</h3>
+                            Rp{{ number_format(Auth::user()->user_wallet->current_balance) }}</h3>
                         <div class="flex w-[320px] justify-between">
                             <p href="" class="text-[20px] text-primary">
-                                Rp{{ number_format(Auth::user()->user_wallet->total_balance) }}</p>
+                                Rp{{ number_format(Auth::user()->user_wallet->current_balance) }}</p>
 
                         </div>
                     </div>
@@ -130,7 +130,7 @@ Dashboard | Biopolis Propolis
                             <img src="{{ asset('images/icons/document-copy.svg') }}" alt="" class="h-5 w-5">
                         </button>
                     </div>
-                    <a href="{{ url('/info-produk') }}" class="font-[16px] text-primary">Lihat Detail</a>
+                    <a href="{{ url('/member/referral') }}" class="font-[16px] text-primary">Lihat Detail</a>
                 </div>
             </div>
         </div>
@@ -140,7 +140,7 @@ Dashboard | Biopolis Propolis
 <!-- mobile -->
 <div class="lg:hidden bg-white">
     <h1 class="mb-7 text-[20px]">Hi, {{ Auth::user()->name }}! Selamat datang kembali. </h1>
-    <div class="flex flex-col items-start   ">
+    <!-- <div class="flex flex-col items-start   ">
         <h3 class="text-[14px] font-semibold">Performa Affiliate Kamu</h3>
         <div class="flex w-full">
             <select name="" id="select-graphic" class="h-[33.86px] w-full rounded-[10.16px] border bg-white text-center text-[12.7px] text-[#969EBA]">
@@ -149,7 +149,7 @@ Dashboard | Biopolis Propolis
                 <option value="year">Tahunan</option>
             </select>
         </div>
-    </div>
+    </div> -->
     <div class="mt-6">
         <div class="w-full">
             <div class="w-[100%] mb-6">
@@ -162,8 +162,8 @@ Dashboard | Biopolis Propolis
                         <a href="" class="text-[16px] text-primary">Lihat Semua</a>
                     </div>
                     <div class="mb-2">
-                        <p class="text-[20px] font-semibold">Rp{{ number_format(Auth::user()->user_wallet->total_balance) }}</p>
-                        <p class="text-[#color: #969EBA] text-[14px]">Rp{{ number_format(Auth::user()->user_wallet->total_balance) }}</p>
+                        <p class="text-[20px] font-semibold">Rp{{ number_format(Auth::user()->user_wallet->current_balance) }}</p>
+                        <p class="text-[#color: #969EBA] text-[14px]">Rp{{ number_format(Auth::user()->user_wallet->current_balance) }}</p>
                     </div>
                     <a href="{{ url('/withdraw-affiliate') }}" class="btn btn-primary flex w-full justify-items-center text-white">Cairkan</a>
                 </div>
@@ -207,7 +207,7 @@ Dashboard | Biopolis Propolis
                                 </p>
                             </div>
                         </div>
-                        <a href="{{ url('/member/point') }}" class="mt-[54px] flex items-end justify-end text-[11px] text-primary">
+                        <a href="{{ url('/member/info-produk') }}" class="mt-[54px] flex items-end justify-end text-[11px] text-primary">
                             Lihat Detail
                         </a>
                     </div>
@@ -231,7 +231,7 @@ Dashboard | Biopolis Propolis
                             <img src="{{ asset('images/icons/document-copy.svg') }}" alt="" class="h-5 w-5">
                         </button>
                     </div>
-                    <a href="{{ url('/info-produk') }}" class="font-[11px] text-primary">Lihat Detail</a>
+                    <a href="{{ url('/member/referral') }}" class="font-[11px] text-primary">Lihat Detail</a>
                 </div>
             </div>
 

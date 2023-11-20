@@ -173,7 +173,7 @@ Point
                 <h3 class="text-[18px] font-semibold">{{ Auth::user()->user_wallet->current_point }} Poin</h3>
             </div>
             <div class="w-[100%]">
-                @include('components.member.modal-poin.index')
+                @include('components.member.modal-poin.mobile')
             </div>
         </div>
         <div class="w-full mt-5">

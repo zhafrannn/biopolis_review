@@ -1,10 +1,10 @@
 <!-- You can open the modal using ID.showModal() method -->
 
-<button onclick="modal_point.showModal()" class="btn h-16 w-[100%] bg-primary text-[20px] font-semibold text-white">Tukar
+<button onclick="modal_point_mobile.showModal()" class="btn h-16 w-[100%] bg-primary text-[20px] font-semibold text-white">Tukar
     Poin</button>
-<dialog id="modal_point" class="modal">
-    <div class="relative w-[447px] rounded-[15px] bg-white">
-        <div class="flex items-center gap-2 border-b p-6 shadow-[0_2px_4px_0_rgba(0,0,0,0.15)]">
+<dialog id="modal_point_mobile" class="modal p-5">
+    <div class="relative w-full rounded-[15px] bg-white overflow-y-auto">
+        <div class="flex items-center gap-2 border-b p-4 shadow-[0_2px_4px_0_rgba(0,0,0,0.15)]">
             <form method="dialog">
                 <button class="w- h-[32px] w-[32px] rounded-full border-2 border-black">✕</button>
             </form>
@@ -15,7 +15,7 @@
         </div>
         {{-- Content --}}
         {{-- Title --}}
-        <div class="p-6">
+        <div class="p-4">
             <div class="flex justify-between">
                 <h4 class="text-[16px] font-semibold">Pilih Reward</h4>
                 <div class="flex flex-col items-end text-[16px] font-semibold text-primary">
@@ -28,7 +28,7 @@
         {{-- Choose Point --}}
         <div>
             {{-- Point Item --}}
-            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] p-6">
+            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] p-4">
                 <div class="flex items-center justify-between">
                     <div>
                         <h4 class="text-[20px] font-semibold">Rp4.000.000</h4>
@@ -43,7 +43,7 @@
             </div>
             {{-- end: Point Item --}}
             {{-- Point Item --}}
-            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] p-6">
+            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] p-4">
                 <div class="flex items-center justify-between">
                     <div>
                         <h4 class="text-[20px] font-semibold">Rp10.000.000</h4>
@@ -58,7 +58,7 @@
             </div>
             {{-- end: Point Item --}}
             {{-- Point Item --}}
-            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] p-6">
+            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] p-4">
                 <div class="flex items-center justify-between">
                     <div>
                         <h4 class="text-[20px] font-semibold">Motor + Rp5.000.000</h4>
@@ -73,7 +73,7 @@
             </div>
             {{-- end: Point Item --}}
             {{-- Point Item --}}
-            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] p-6">
+            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] p-4">
                 <div class="flex items-center justify-between">
                     <div>
                         <h4 class="text-[20px] font-semibold">Umroh + Rp10.000.000</h4>
@@ -91,7 +91,7 @@
         </div>
         {{-- end: Choose Point --}}
         {{-- Point Action --}}
-        <div class="p-6">
+        <div class="p-4">
             <div class="flex items-center justify-between">
                 <div>
                     <h4 class="text-[16px] font-semibold">Penukaran Poin</h4>

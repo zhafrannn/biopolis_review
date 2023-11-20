@@ -13,7 +13,7 @@ Point
                 <div class="w-5/12">
                     <h2 class="mb-[7px] text-[27px] font-semibold">Saldo Saya</h2>
                     <h4 class="mb-[10px] text-[20.32px] text-[#969EBA]">Total Saldo</h4>
-                    <h3 class="text-[40px]">20 Saldo</h3>
+                    <h3 class="text-[40px]">Rp</h3>
                 </div>
                 <div class="flex w-2/12 items-center justify-center">
                     <div class="h-[118px] w-[1px] border"></div>
@@ -127,12 +127,12 @@ Point
                 <div class="mb-4">
                     <h3 class="text-[16px] font-semibold">Pendapatan Saya</h3>
                     <h4 class="mt-[10px] text-[16px] text-[#969EBA]">Total Saldo</h4>
-                    <h3 class="text-[18px] font-semibold">Rp2.000.000</h3>
+                    <h3 class="text-[18px] font-semibold">{{ Auth::user()->user_wallet->current_balance }}</h3>
                 </div>
-                <button class="btn bg-primary text-white text-[16px] font-semibold w-[100%] h-4" onclick="modal_input_nominal.showModal()">Cairkan Saldo</button>
-                @include('components.member.modal-withdraw.index')
+                <button class="btn bg-primary text-white text-[16px] font-semibold w-[100%] h-4" onclick="modal_input_nominal_mobile.showModal()">Cairkan Saldo</button>
+                @include('components.member.modal-withdraw.mobile')
             </div>
-            <div class="w-full mt-5">
+            <!-- <div class="w-full mt-5">
                 <h2 class="mb-[10px] text-[20px] font-semibold">Rincian Saldo</h2>
                 <div class=" w-[100%]">
                     <div class="flex justify-between">
@@ -144,7 +144,7 @@ Point
                         <h3 class="text-[15px] text-[#0A0A0B]">Rp100.000</h3>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- <div class="rounded-xl border p-[20.23px]">
