@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Benefit;
 use App\Models\ContentManagementSystem;
+use App\Models\FrequentlyAskedQuestion;
+use App\Models\Testimony;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -39,11 +42,7 @@ class HomeController extends Controller
         $teks_sub_judul_manfaat_1 = ContentManagementSystem::where('key', 'teks_sub_judul_manfaat_1')->first();
         $gambar_manfaat_1 = ContentManagementSystem::where('key', 'gambar_manfaat_1')->first();
 
-        $teks_judul_manfaat_2 = ContentManagementSystem::where('key', 'teks_judul_manfaat_2')->first();
-        $teks_sub_judul_manfaat_2 = ContentManagementSystem::where('key', 'teks_sub_judul_manfaat_2')->first();
-
-        $teks_judul_manfaat_3 = ContentManagementSystem::where('key', 'teks_judul_manfaat_3')->first();
-        $teks_sub_judul_manfaat_3 = ContentManagementSystem::where('key', 'teks_sub_judul_manfaat_3')->first();
+        $benefits = Benefit::all();
 
         // Kemitraan
         $teks_judul_kemitraan_1 = ContentManagementSystem::where('key', 'teks_judul_kemitraan_1')->first();
@@ -88,23 +87,9 @@ class HomeController extends Controller
 
 
         // Testimoni & FaQ
-        $teks_nama_testimoni_1 = ContentManagementSystem::where('key', 'teks_nama_testimoni_1')->first();
-        $teks_usia_testimoni_1 = ContentManagementSystem::where('key', 'teks_usia_testimoni_1')->first();
-        $teks_testimoni_1 = ContentManagementSystem::where('key', 'teks_testimoni_1')->first();
+        $testimonies = Testimony::all();
 
-        $teks_nama_testimoni_2 = ContentManagementSystem::where('key', 'teks_nama_testimoni_2')->first();
-        $teks_usia_testimoni_2 = ContentManagementSystem::where('key', 'teks_usia_testimoni_2')->first();
-        $teks_testimoni_2 = ContentManagementSystem::where('key', 'teks_testimoni_2')->first();
-
-        $teks_nama_testimoni_3 = ContentManagementSystem::where('key', 'teks_nama_testimoni_3')->first();
-        $teks_usia_testimoni_3 = ContentManagementSystem::where('key', 'teks_usia_testimoni_3')->first();
-        $teks_testimoni_3 = ContentManagementSystem::where('key', 'teks_testimoni_3')->first();
-
-        $teks_judul_testimoni_1 = ContentManagementSystem::where('key', 'teks_judul_testimoni_1')->first();
-        $teks_sub_judul_testimoni_1 = ContentManagementSystem::where('key', 'teks_sub_judul_testimoni_1')->first();
-
-        $teks_judul_testimoni_2 = ContentManagementSystem::where('key', 'teks_judul_testimoni_2')->first();
-        $teks_sub_judul_testimoni_2 = ContentManagementSystem::where('key', 'teks_sub_judul_testimoni_2')->first();
+        $faqs = FrequentlyAskedQuestion::all();
 
         $gambar_testimoni_1 = ContentManagementSystem::where('key', 'gambar_testimoni_1')->first();
         $teks_testimoni_4 = ContentManagementSystem::where('key', 'teks_testimoni_4')->first();
@@ -129,11 +114,7 @@ class HomeController extends Controller
             'teks_judul_tentang_kami_2',
             'teks_judul_tentang_kami_3',
             'teks_judul_manfaat_1',
-            'teks_judul_manfaat_2',
-            'teks_judul_manfaat_3',
             'teks_sub_judul_manfaat_1',
-            'teks_sub_judul_manfaat_2',
-            'teks_sub_judul_manfaat_3',
             'gambar_manfaat_1',
             'teks_judul_kemitraan_1',
             'teks_judul_kemitraan_2',
@@ -154,19 +135,6 @@ class HomeController extends Controller
             'teks_sub_judul_kemitraan_8',
             'teks_sub_judul_kemitraan_9',
             'gambar_kemitraan_1',
-            'teks_nama_testimoni_1',
-            'teks_nama_testimoni_2',
-            'teks_nama_testimoni_3',
-            'teks_usia_testimoni_1',
-            'teks_usia_testimoni_2',
-            'teks_usia_testimoni_3',
-            'teks_testimoni_1',
-            'teks_testimoni_2',
-            'teks_testimoni_3',
-            'teks_judul_testimoni_1',
-            'teks_judul_testimoni_2',
-            'teks_sub_judul_testimoni_1',
-            'teks_sub_judul_testimoni_2',
             'gambar_testimoni_1',
             'teks_testimoni_4',
             'teks_judul_kemitraan_10',
@@ -180,7 +148,10 @@ class HomeController extends Controller
             'gambar_kemitraan_4',
             'gambar_kemitraan_5',
             'link_button_pdf',
-            'link_button_whatsapp'
+            'link_button_whatsapp',
+            'testimonies',
+            'faqs',
+            'benefits'
 
         ));
     }

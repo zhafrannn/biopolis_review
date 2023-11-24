@@ -6,8 +6,7 @@
         background-color: #f1f1f1;
     }
 </style>
-<aside
-    class="fixed h-screen w-[264.13px] border bg-white px-[20.32px] py-[47.41px] text-[#0A0A0B] drop-shadow-[1.6px_0px_5px_#00000040]">
+<aside class="fixed h-screen w-[264.13px] border bg-white px-[20.32px] py-[47.41px] text-[#0A0A0B] drop-shadow-[1.6px_0px_5px_#00000040]">
     <img src="{{ asset('images/logo.svg') }}" class="mb-[44.02px]" alt="">
     {{-- start: Side Menu --}}
     <div class="flex flex-col justify-between gap-[20.32px] rounded-[12.7px] border border-[#E5E5E5] py-[20.32px]">
@@ -79,7 +78,7 @@
         </a>
         {{-- end: nav item --}}
         {{-- start: nav item --}}
-        <a href="">
+        <a href="{{ url('/admin/content-management') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
                 <img src="{{ asset('images/icons/element-equal.svg') }}" alt="">
                 <p class="font-semibold">Content Management</p>

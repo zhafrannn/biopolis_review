@@ -2,10 +2,37 @@
 
 @section('content')
 <h1 class="mb-8 text-[20.317px] font-semibold text-[#0A0A0B]">Content Management System</h1>
+<div class="flex gap-11">
+    <div class="flex flex-col justify-between h-1">
+        <button class="" onclick="handleTentangKami()">
+            Tentang Kami
+        </button>
+        <div class="border border-green-500 mt-2 " id="line-tentang-kami"></div>
+    </div>
+    <div class="flex flex-col justify-between h-1">
+        <button class="" onclick="handleManfaat()">
+            Manfaat
+        </button>
+        <div class="border border-green-500 mt-2 hidden" id="line-manfaat"></div>
+    </div>
+    <div class="flex flex-col justify-between h-1">
+        <button class="" onclick="handleKemitraan()">
+            Kemitraan
+        </button>
+        <div class="border border-green-500 mt-2 hidden" id="line-kemitraan"></div>
+    </div>
+    <div class="flex flex-col justify-between h-1">
+        <button class="" onclick="handleTestimoni()">
+            Testimoni & FaQ
+        </button>
+        <div class="border border-green-500 mt-2 hidden" id="line-testimoni"></div>
+    </div>
+</div>
+<div class="border w-full mt-7"></div>
 <!-- Tentang Kami -->
 <div class="" id="tentang-kami">
     <!-- Start tentang_kami_1 -->
-    <div class="w-[100%] rounded-2xl border">
+    <div class="w-[100%] rounded-2xl border mt-5">
         <div class="px-[20px] py-[32px]">
             <div class="flex justify-between">
                 <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Tentang Kami 1</h3>
@@ -35,7 +62,7 @@
     <!--End tentang_kami_1 -->
 
     <!-- Start banner_rating -->
-    <div class="mt-6 w-[100%] rounded-2xl border">
+    <div class="mt-6 w-[100%] rounded-2xl border ">
         <div class="px-[20px] py-[32px]">
             <div class="flex justify-between">
                 <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Banner Rating</h3>
@@ -127,7 +154,7 @@
     <!-- End tentang_kami_2 -->
 
     <!-- Start tentang_kami_3 -->
-    <div class="mt-6 w-[100%] rounded-2xl border">
+    <div class="mt-6 w-[100%] rounded-2xl border mb-5">
         <div class="px-[20px] py-[32px]">
             <div class="flex justify-between">
                 <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Tentang Kami 3</h3>
@@ -151,9 +178,9 @@
 </div>
 
 <!-- Manfaat -->
-<div class="" id="manfaat">
+<div class="hidden" id="manfaat">
     <!-- Start manfaat_1 -->
-    <div class="w-[100%] rounded-2xl border">
+    <div class="w-[100%] rounded-2xl border mt-5">
         <div class="px-[20px] py-[32px]">
             <div class="flex justify-between">
                 <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Manfaat</h3>
@@ -184,44 +211,42 @@
     <!-- End manfaat_1 -->
 
     <!-- Start manfaat_2 -->
-    <div class="mt-6 w-[100%] rounded-2xl border">
+    <div class="mt-6 w-[100%] rounded-2xl border mb-5">
         <div class="px-[20px] py-[32px]">
             <div class="flex justify-between">
                 <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Manfaat Dropdown</h3>
-                <button class="btn btn-primary h-[36px] w-[66,14px] p-[10px] text-white" onclick="edit_manfaat_2.showModal()">
-                    <img src="{{ asset('images/icons/edit.svg') }}" alt="">Edit
+                <button class="btn btn-primary h-[36px] w-[66,14px] p-[10px] text-white" onclick="create_benefit.showModal()">
+                    <img src="{{ asset('images/icons/edit.svg') }}" alt="">Add
                 </button>
-                @include('components/admin/content-management-system/manfaat/modal-manfaat-2')
+                @include('components/admin/content-management-system/manfaat/benefit/create')
             </div>
-            <div class="mt-9 flex flex-col">
-                <label for="" class="text-[13.54px] text-[#969EBA]">Teks Judul</label>
-                <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] font-semibold text-[#969EBA]" value="{{ $teks_judul_manfaat_2->value }}">
+            @foreach($benefits as $benefit)
+            <div class="p-5 rounded-lg border w-full mt-5">
+                <div class="flex justify-end gap-5">
+                    <a class="btn btn-error text-white" href="{{ url('/admin/content-management-system/benefit/delete/'. $benefit->id ) }}">Delete</a>
+                    <button class="btn btn-primary text-white" onclick="edit_benefit{{ $benefit->id }}.showModal()">Edit</button>
+                </div>
+                @include('components/admin/content-management-system/manfaat/benefit/edit')
+                <div class="mt-9 flex flex-col">
+                    <label for="" class="text-[13.54px] text-[#969EBA]">Judul</label>
+                    <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] text-[#969EBA]" value="{{ $benefit->title }}">
+                </div>
+                <div class="mt-9 flex flex-col">
+                    <label for="" class="text-[13.54px] text-[#969EBA]">Teks Sub Judul</label>
+                    <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[20px] pt-2 text-[#969EBA]" readonly>{{ $benefit->description }}
+                    </textarea>
+                </div>
             </div>
-
-            <div class="mt-9 flex flex-col">
-                <label for="" class="text-[13.54px] text-[#969EBA]">Teks Sub Judul</label>
-                <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[20px] pt-2 text-[#969EBA]" readonly>{{ $teks_sub_judul_manfaat_2->value }}
-                </textarea>
-            </div>
-            <div class="my-[32px] border border-[#E5E5E5]"></div>
-            <div class="mt-9 flex flex-col">
-                <label for="" class="text-[13.54px] text-[#969EBA]">Teks Judul</label>
-                <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] font-semibold text-[#969EBA]" value="{{ $teks_judul_manfaat_3->value }}">
-            </div>
-
-            <div class="mt-9 flex flex-col">
-                <label for="" class="text-[13.54px] text-[#969EBA]">Teks Sub Judul</label>
-                <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[20px] pt-2 text-[#969EBA]" readonly>{{ $teks_sub_judul_manfaat_3->value }}</textarea>
-            </div>
+            @endforeach
         </div>
     </div>
     <!-- End manfaat_2 -->
 </div>
 
 <!-- Kemitraan -->
-<div class="" id="kemitraan">
+<div class="hidden" id="kemitraan">
     <!-- Start kemitraan_1 -->
-    <div class="mt-6 w-[100%] rounded-2xl border">
+    <div class="mt-5 w-[100%] rounded-2xl border">
         <div class="px-[20px] py-[32px]">
             <div class="flex justify-between">
                 <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Kemitraan 1</h3>
@@ -433,7 +458,7 @@
     <!-- End kemitraan_3 -->
 
     <!-- Start Gambar Sebelum footer  -->
-    <div class="mt-6 w-[100%] rounded-2xl border">
+    <div class="mt-6 w-[100%] rounded-2xl border mb-5">
         <div class="px-[20px] py-[32px]">
             <div class="flex justify-between">
                 <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Memulai Kemitraan</h3>
@@ -457,4 +482,210 @@
     </div>
     <!-- Gambar Sebelum footer  -->
 </div>
+
+<!-- Testimony & FaQ -->
+<div class="hidden" id="testimoni">
+    <!-- Start Testimony -->
+    <div class="mt-5 w-[100%] rounded-2xl border border-[#0A0A0B]">
+        <div class="px-[20px] py-[32px]">
+            <div class="flex justify-between">
+                <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Testimoni</h3>
+                <button class="btn btn-primary text-white" onclick="create_testimoni.showModal()">Add</button>
+                @include('components/admin/content-management-system/testimoni/create')
+            </div>
+            @foreach($testimonies as $testimony)
+            <div class="p-5 rounded-lg border w-full mt-5">
+                <div class="flex justify-end gap-5">
+                    <a class="btn btn-error text-white" href="{{ url('/admin/content-management-system/testimony/delete/'. $testimony->id ) }}">Delete</a>
+                    <button class="btn btn-primary text-white" onclick="edit_testimoni{{ $testimony->id }}.showModal()">Edit</button>
+                </div>
+                @include('components/admin/content-management-system/testimoni/edit')
+                <div class="flex justify-between">
+                    <div class="mt-9 flex w-[500px] flex-col">
+                        <label for="" class="text-[13.54px] text-[#969EBA]">Nama</label>
+                        <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] font-semibold text-[#969EBA]" value="{{$testimony->name}}">
+                    </div>
+                    <div class="mt-9 flex w-[500px] flex-col">
+                        <label for="" class="text-[13.54px] text-[#969EBA]">Umur</label>
+                        <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] text-[#969EBA]" value="{{$testimony->age}} Tahun">
+                    </div>
+                </div>
+                <div class="mt-9 flex flex-col">
+                    <label for="" class="text-[13.54px] text-[#969EBA]">Keterangan</label>
+                    <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[20px] pt-2 text-[#969EBA]" readonly>{{ $testimony->description}}
+                    </textarea>
+                </div>
+                <div class="mt-9 flex w-full flex-col">
+                    <label for="" class="text-[13.54px] text-[#969EBA]">Rating</label>
+                    <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] text-[#969EBA]" value="{{$testimony->rate}}">
+                </div>
+            </div>
+            @endforeach
+
+        </div>
+    </div>
+    <!-- End Testimony -->
+
+    <!-- Start FaQ -->
+    <div class="mt-6 w-[100%] rounded-2xl border border-[#0A0A0B]">
+        <div class="px-[20px] py-[32px]">
+            <div class="flex justify-between">
+                <h3 class="text-[13.54px] font-semibold text-[#0A0A0B]">Frequently Asked Question</h3>
+                <button class="btn btn-primary text-white" onclick="create_faq.showModal()">Add</button>
+                @include('components/admin/content-management-system/faq/create')
+            </div>
+            @foreach($faqs as $faq)
+            <div class="p-5 rounded-lg border w-full mt-5">
+                <div class="flex justify-end gap-5">
+                    <a class="btn btn-error text-white" href="{{ url('/admin/content-management-system/faq/delete/'. $faq->id ) }}">Delete</a>
+                    <button class="btn btn-primary text-white" onclick="edit_faq{{ $faq->id }}.showModal()">Edit</button>
+                </div>
+                @include('components/admin/content-management-system/faq/edit')
+                <div class="mt-9 flex flex-col">
+                    <label for="" class="text-[13.54px] text-[#969EBA]">Judul</label>
+                    <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] text-[#969EBA]" value="{{ $faq->title }}">
+                </div>
+                <div class="mt-9 flex flex-col">
+                    <label for="" class="text-[13.54px] text-[#969EBA]">Teks Sub Judul</label>
+                    <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[20px] pt-2 text-[#969EBA]" readonly>{{ $faq->description }}
+                    </textarea>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    <!-- End FaQ -->
+</div>
+
+<script>
+    let tabTentangKami = document.getElementById("tentang-kami")
+    let tabManfaat = document.getElementById("manfaat")
+    let tabKemitraan = document.getElementById("kemitraan")
+    let tabTestimoni = document.getElementById("testimoni")
+
+    let lineTentangKami = document.getElementById("line-tentang-kami")
+    let lineManfaat = document.getElementById("line-manfaat")
+    let lineKemitraan = document.getElementById("line-kemitraan")
+    let lineTestimoni = document.getElementById("line-testimoni")
+
+    const handleTentangKami = () => {
+
+        tabTentangKami.classList.remove('hidden')
+        lineTentangKami.classList.remove('hidden')
+
+        if (!tabManfaat.classList.contains('hidden')) {
+            tabManfaat.classList.add('hidden')
+        }
+
+        if (!tabKemitraan.classList.contains('hidden')) {
+            tabKemitraan.classList.add('hidden')
+        }
+
+        if (!tabTestimoni.classList.contains('hidden')) {
+            tabTestimoni.classList.add('hidden')
+        }
+
+        if (!lineManfaat.classList.contains('hidden')) {
+            lineManfaat.classList.add('hidden')
+        }
+
+        if (!lineKemitraan.classList.contains('hidden')) {
+            lineKemitraan.classList.add('hidden')
+        }
+
+        if (!lineTestimoni.classList.contains('hidden')) {
+            lineTestimoni.classList.add('hidden')
+        }
+    }
+
+    const handleManfaat = () => {
+
+        tabManfaat.classList.remove('hidden')
+        lineManfaat.classList.remove('hidden')
+
+        if (!tabTentangKami.classList.contains('hidden')) {
+            tabTentangKami.classList.add('hidden')
+        }
+
+        if (!tabKemitraan.classList.contains('hidden')) {
+            tabKemitraan.classList.add('hidden')
+        }
+
+        if (!tabTestimoni.classList.contains('hidden')) {
+            tabTestimoni.classList.add('hidden')
+        }
+
+        if (!lineTentangKami.classList.contains('hidden')) {
+            lineTentangKami.classList.add('hidden')
+        }
+
+        if (!lineKemitraan.classList.contains('hidden')) {
+            lineKemitraan.classList.add('hidden')
+        }
+
+        if (!lineTestimoni.classList.contains('hidden')) {
+            lineTestimoni.classList.add('hidden')
+        }
+    }
+
+    const handleKemitraan = () => {
+
+        tabKemitraan.classList.remove('hidden')
+        lineKemitraan.classList.remove('hidden')
+
+        if (!tabManfaat.classList.contains('hidden')) {
+            tabManfaat.classList.add('hidden')
+        }
+
+        if (!tabTentangKami.classList.contains('hidden')) {
+            tabTentangKami.classList.add('hidden')
+        }
+
+        if (!tabTestimoni.classList.contains('hidden')) {
+            tabTestimoni.classList.add('hidden')
+        }
+
+        if (!lineManfaat.classList.contains('hidden')) {
+            lineManfaat.classList.add('hidden')
+        }
+
+        if (!lineTentangKami.classList.contains('hidden')) {
+            lineTentangKami.classList.add('hidden')
+        }
+
+        if (!lineTestimoni.classList.contains('hidden')) {
+            lineTestimoni.classList.add('hidden')
+        }
+    }
+
+    const handleTestimoni = () => {
+
+        tabTestimoni.classList.remove('hidden')
+        lineTestimoni.classList.remove('hidden')
+
+        if (!tabManfaat.classList.contains('hidden')) {
+            tabManfaat.classList.add('hidden')
+        }
+
+        if (!tabTentangKami.classList.contains('hidden')) {
+            tabTentangKami.classList.add('hidden')
+        }
+
+        if (!tabKemitraan.classList.contains('hidden')) {
+            tabKemitraan.classList.add('hidden')
+        }
+
+        if (!lineManfaat.classList.contains('hidden')) {
+            lineManfaat.classList.add('hidden')
+        }
+
+        if (!lineTentangKami.classList.contains('hidden')) {
+            lineTentangKami.classList.add('hidden')
+        }
+
+        if (!lineKemitraan.classList.contains('hidden')) {
+            lineKemitraan.classList.add('hidden')
+        }
+    }
+</script>
 @endsection

@@ -21,7 +21,6 @@
         {{-- Profile --}}
         <div class="flex items-center gap-[16px]">
 
-
             <div class="dropdown-end dropdown">
                 <button tabindex="0" class="btn border-0 bg-white hover:border-0 hover:bg-white">
                     <img src="{{ asset('icons/bell-rounded.svg') }}" alt="">
@@ -47,7 +46,6 @@
         </div>
         {{-- End Profile --}}
     </div>
-
 </nav>
 
 <div class="fixed z-[999] hidden h-screen w-screen bg-black bg-opacity-30 pt-[85px]" id="container-profile">
@@ -66,17 +64,6 @@
                                 {{-- if active remove hidden --}}
                             </div>
                         </button>
-                        {{-- end: nav item --}}
-
-                        {{-- start: nav item --}}
-                        <!-- <button onclick="handleDaftarAlamat()" class="pl-2">
-                            <div class="flex items-center gap-[6.77px] px-[14px]">
-                                <p class="text-[20px] font-semibold">Alamat Penerima</p>
-                                {{-- if active remove hidden --}}
-                                <div class="absolute left-0 hidden w-[3.39px] rounded-r-[12.7px] bg-primary"></div>
-                                {{-- if active remove hidden --}}
-                            </div>
-                        </button> -->
                         {{-- end: nav item --}}
 
                         {{-- start: nav item --}}
@@ -154,7 +141,7 @@
                             </div>
                             <div class="flex w-full flex-col">
                                 <label class="flex text-start text-[20px] font-semibold text-[#969EBA]">Alamat Lengkap</label>
-                                <textarea rows="5" class="rounded-lg border border-[#969EBA] pl-3 text-[20px]" name="alamat">{{Auth::user()->user_biodata->alamat_lengkap}}</textarea>
+                                <textarea rows="5" class="rounded-lg border border-[#969EBA] pl-3 text-[20px]" name="alamat_lengkap">{{Auth::user()->user_biodata->alamat_lengkap}}</textarea>
                             </div>
 
                             <p class="mt-8 text-[24px] font-semibold text-[#0A0A0B]">Informasi Akun</p>
@@ -169,203 +156,45 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary w-[100%] text-[20px] font-semibold" type="submit">Simpan</button>
+                            <button class="btn btn-primary w-[100%] text-[20px] font-semibold" type="submit">Ubah Profile</button>
 
                         </div>
                     </form>
                 </div>
 
-                <!-- Tab Daftar Alamat -->
-                <!-- <div id="daftar-alamat" class="hidden w-[100%] px-[44px] py-[47.41px] pl-[380px]">
-                    <p class="text-[32px] font-semibold text-[#0A0A0B]">Daftar Alamat Pengiriman</p>
-                    <div class="mt-7 flex w-[100%] flex-col justify-between gap-6 rounded-2xl border border-[#E5E5E5] px-[24px] py-[24px]">
-                        <button class="btn btn-primary w-[312px] rounded-xl px-6 py-4 text-[20px] font-semibold text-white">Tambah
-                            Alamat Baru</button>
-
-                        <div class="flex h-[236px] w-[100%] flex-col justify-between rounded-2xl border border-primary bg-[#F2FFF5] px-[24px] py-[24px]">
-                            <div class="flex items-center justify-between">
-                                <div class="flex w-[806px] flex-col gap-6">
-                                    <p class="text-[16px] font-semibold text-[#0A0A0B]">Alamat Rumah</p>
-                                    <div>
-                                        <p class="text-[16px] font-semibold text-[#0A0A0B]">Faris Ku</p>
-                                        <p class="text-[16px] text-[#0A0A0B]">+62 858 0536 8655</p>
-                                        <p class="text-[16px] text-[#0A0A0B]">Alamat Rumah Saya Disini</p>
-                                    </div>
-                                    <div class="gap-6 pt-4">
-                                        <a href="" class="mr-6 text-[16px] font-semibold text-primary">Ubah
-                                            Alamat</a>
-                                        <a href="" class="text-[16px] font-semibold text-[#E30613]">Alamat
-                                            Alamat</a>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <button class="btn btn-primary w-fit rounded-xl px-6 py-4 text-[12px] font-semibold text-white">Pilih</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex h-[236px] w-[100%] flex-col justify-between rounded-2xl border border-[#E5E5E5] px-[24px] py-[24px]">
-                            <div class="flex items-center justify-between">
-                                <div class="flex w-[806px] flex-col gap-6">
-                                    <p class="text-[16px] font-semibold text-[#0A0A0B]">Alamat Rumah</p>
-                                    <div>
-                                        <p class="text-[16px] font-semibold text-[#0A0A0B]">Faris Ku</p>
-                                        <p class="text-[16px] text-[#0A0A0B]">+62 858 0536 8655</p>
-                                        <p class="text-[16px] text-[#0A0A0B]">Alamat Rumah Saya Disini</p>
-                                    </div>
-                                    <div class="gap-6 pt-4">
-                                        <a href="" class="mr-6 text-[16px] font-semibold text-primary">Ubah
-                                            Alamat</a>
-                                        <a href="" class="text-[16px] font-semibold text-[#E30613]">Alamat
-                                            Alamat</a>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <button class="btn btn-primary w-fit rounded-xl px-6 py-4 text-[12px] font-semibold text-white">Pilih</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- Tab Ubah Alamat -->
-                <!-- <div id="ubah-alamat" class="hidden w-[100%] px-[44px] py-[47.41px] pl-[380px]">
-                    <p class="text-[32px] font-semibold text-[#0A0A0B]">Ubah Alamat Pengiriman</p>
-                    <div class="mt-8 flex w-[100%] flex-col justify-between gap-8 rounded-2xl border border-[#E5E5E5] px-[24px] py-[24px]">
-
-                        <div class="flex justify-between">
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Nama Penerima</label>
-                                <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" value="Farisku">
-                            </div>
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Nomor HP</label>
-                                <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" value="1234567890132456">
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Provinsi</label>
-                                <select class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" value="Farisku">
-                                    <option value="0">-- pilih provinsi tujuan --</option>
-                                    <option value="0">-- pilih provinsi tujuan --</option>
-                                </select>
-                            </div>
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Kota/Kabupaten</label>
-                                <select class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" value="Farisku">
-                                    <option value="0">-- pilih kota/kabupaten tujuan --</option>
-                                    <option value="0">-- pilih kota/kabupaten tujuan --</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Kecamatan</label>
-                                <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" value="Farisku">
-                            </div>
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Kode Pos</label>
-                                <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" value="1234567890132456">
-                            </div>
-                        </div>
-
-                        <div class="flex w-[100%] flex-col">
-                            <label class="text-[20px] font-semibold text-[#0A0A0B]">Alamat Lengkap</label>
-                            <textarea type="text" class="h-[130px] rounded-lg border border-[#969EBA] py-2 pl-3 text-[20px]" value="Alamat Saya Disini "></textarea>
-                        </div>
-                        <div class="flex">
-                            <button class="btn btn-error btn-outline mr-6 w-fit text-[20px] font-semibold">Batal</button>
-                            <button class="btn btn-primary w-fit text-[20px] font-semibold">Simpan</button>
-
-                        </div>
-                    </div>
-                </div> -->
-                <!-- Tab Tambah Alamat -->
-                <!-- <div id="tambah-alamat" class="hidden w-[100%] px-[44px] py-[47.41px] pl-[380px]">
-                    <p class="text-[32px] font-semibold text-[#0A0A0B]">Tambah Alamat Pengiriman</p>
-                    <div class="mt-8 flex w-[100%] flex-col justify-between gap-8 rounded-2xl border border-[#E5E5E5] px-[24px] py-[24px]">
-
-                        <div class="flex justify-between">
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Nama Penerima</label>
-                                <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" placeholder="Farisku">
-                            </div>
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Nomor HP</label>
-                                <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" placeholder="1234567890132456">
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Provinsi</label>
-                                <select class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" placeholder="Farisku">
-                                    <option value="0">-- pilih provinsi tujuan --</option>
-                                    <option value="0">-- pilih provinsi tujuan --</option>
-                                </select>
-                            </div>
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Kota/Kabupaten</label>
-                                <select class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" placeholder="Farisku">
-                                    <option value="0">-- pilih kota/kabupaten tujuan --</option>
-                                    <option value="0">-- pilih kota/kabupaten tujuan --</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Kecamatan</label>
-                                <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" placeholder="Farisku">
-                            </div>
-                            <div class="flex w-[472px] flex-col">
-                                <label class="text-[20px] font-semibold text-[#0A0A0B]">Kode Pos</label>
-                                <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" placeholder="1234567890132456">
-                            </div>
-                        </div>
-
-                        <div class="flex w-[100%] flex-col">
-                            <label class="text-[20px] font-semibold text-[#0A0A0B]">Alamat Lengkap</label>
-                            <textarea type="text" class="h-[130px] rounded-lg border border-[#969EBA] py-2 pl-3 text-[20px]" placeholder="Alamat Saya Disini "></textarea>
-                        </div>
-                        <div class="flex">
-                            <button class="btn btn-error btn-outline mr-6 w-fit text-[20px] font-semibold">Batal</button>
-                            <button class="btn btn-primary w-fit text-[20px] font-semibold">Simpan</button>
-
-                        </div>
-                    </div>
-                </div> -->
                 <!-- Tab Rekening -->
                 <div id="rekening" class="hidden w-[100%] px-[44px] py-[47.41px] pl-[380px]">
                     <form action="">
                         <p class="text-[32px] font-semibold text-[#0A0A0B]">Rekening Anda</p>
                         <div class="mt-7 flex w-[100%] flex-col justify-between rounded-2xl border border-[#E5E5E5] px-[24px] py-[24px]">
                             <div class="flex w-[100%] flex-col justify-between rounded-2xl border border-primary bg-[#F2FFF5] px-[24px] py-[24px]">
-                                <div class="flex items-center">
-                                    <img src="{{ asset('images/icons/card.svg') }}" alt="icon" class="px-6">
-                                    <div class="flex h-[208px] w-[806px] flex-col gap-8">
-                                        <div class="flex w-[100%] flex-col">
-                                            <label class="text-[20px] font-semibold text-[#969EBA]">Pemilik
-                                                Rekening</label>
-                                            <input type="text" class="flex h-[50px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->nama_rekening }}" readonly>
-                                        </div>
-                                        <div class="W-[100%] flex justify-between">
-                                            <div class="w-[387px]] flex flex-col">
-                                                <label class="text-[20px] font-semibold text-[#969EBA]">Bank</label>
-                                                <input type="text" class="flex h-[50px] w-[387px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->nama_bank }}" readonly>
+                                <form action="{{ route('bank')}}" method="post">
+                                    @csrf
+                                    <div class="flex items-center">
+                                        <img src="{{ asset('images/icons/card.svg') }}" alt="icon" class="px-6">
+                                        <div class="flex h-[208px] w-[806px] flex-col gap-8">
+                                            <div class="flex w-[100%] flex-col">
+                                                <label class="text-[20px] font-semibold text-[#969EBA]">Pemilik
+                                                    Rekening</label>
+                                                <input type="text" class="flex h-[50px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->nama_rekening }}" name="nama_rekening">
                                             </div>
-                                            <div class="flex w-[387px] flex-col">
-                                                <label class="text-[20px] font-semibold text-[#969EBA]">No Rekening</label>
-                                                <input type="text" class="flex h-[50px] w-[387px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->no_rekening }}" readonly>
+                                            <div class="W-[100%] flex justify-between">
+                                                <div class="w-[387px]] flex flex-col">
+                                                    <label class="text-[20px] font-semibold text-[#969EBA]">Bank</label>
+                                                    <input type="text" class="flex h-[50px] w-[387px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->nama_bank }}" name="nama_bank">
+                                                </div>
+                                                <div class="flex w-[387px] flex-col">
+                                                    <label class="text-[20px] font-semibold text-[#969EBA]">No Rekening</label>
+                                                    <input type="text" class="flex h-[50px] w-[387px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->no_rekening }}" name="no_rekening">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- <div class="mt-3 flex justify-end">
-                                    <button class="btn w-fit rounded-xl px-6 py-4 text-[12px] font-semibold text-[#969EBA]">Ganti
-                                        Rekening</button>
-                                </div> -->
+                                    <div class="mt-3 flex justify-end">
+                                        <button class="btn w-fit rounded-xl px-6 py-4 text-[12px] font-semibold text-[#969EBA]" type="submit">Ganti
+                                            Rekening</button>
+                                    </div>
+                                </form>
                             </div>
                     </form>
 
@@ -406,6 +235,26 @@
 {{-- Notification --}}
 <script>
     $(document).ready(function() {
+        $.ajax({
+            url: 'http://localhost:8000/api/notification/user/{{ Auth::user()->id }}',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                let element = '';
+                data && data.map((item, index) => {
+                    element += `
+                    <div>
+                        <p>${item.description}</p>
+                    </div>
+                `
+                })
+                $('#notication-container').html(element)
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
         setInterval(() => {
             $.ajax({
                 url: 'http://localhost:8000/api/notification/user/{{ Auth::user()->id }}',

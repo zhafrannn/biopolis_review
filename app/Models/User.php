@@ -66,10 +66,6 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserBank::class, "user_id"); // Sesuaikan dengan model Biodata Anda
     }
-    public function user_address()
-    {
-        return $this->hasMany(UserAddress::class, "user_id"); // Sesuaikan dengan model Biodata Anda
-    }
 
     public function user_withdraw_point()
     {

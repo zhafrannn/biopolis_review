@@ -1,20 +1,20 @@
-<div class="lg:hidden fixed -left-[100%] top-0 z-[999] h-screen w-screen bg-white p-5 transition-all duration-300" id="navbar-mobile">
+<div class="fixed -left-[100%] top-0 z-[999] h-screen w-screen bg-white p-5 transition-all duration-300" id="navbar-mobile">
     <div class="flex flex-col">
         <div class="flex items-center justify-end">
-            <button onclick="HandleButton()">
+            <button onclick="HandleClose()">
                 <img src="{{ asset('images/icons/arrow-left.svg') }}" alt="" class="w-6">
             </button>
         </div>
         <div class="mt-[60px] flex flex-col p-3 text-[16px]">
             <div class="flex flex-col gap-[60px] text-[16px]">
                 <a href="{{ url('/#tentang-kami-section') }}" class="font-medium">
-                    <p>Tentang Kami</p>
+                    <button onclick="HandleClose()">Tentang Kami</button>
                 </a>
                 <a href="{{ url('/#manfaat-section') }}" class="font-medium">
-                    <p>Manfaat</p>
+                    <button onclick="HandleClose()">Manfaat</button>
                 </a>
                 <a href="{{ url('/#mitra-section') }}" class="font-medium">
-                    <p>Kemitraan</p>
+                    <button onclick="HandleClose()">Kemitraan</button>
                 </a>
             </div>
             <div class="mt-[215px]">
@@ -26,8 +26,6 @@
                     <p>Register</p>
                 </a>
             </div>
-            <p class="-right-[0%]"></p>
-            <p class="-right-[100%]"></p>
         </div>
     </div>
 </div>
@@ -36,6 +34,17 @@
     let navbarMobile = document.getElementById("navbar-mobile")
 
     const HandleButton = () => {
-        navbarMobile.classList.toggle('-left-[0%]')
+        if (navbarMobile.classList.contains('-left-[100%]')) {
+            navbarMobile.classList.remove('-left-[100%]')
+            navbarMobile.classList.add('left-0')
+        }
+    }
+    const HandleClose = () => {
+        if (navbarMobile.classList.contains('left-0')) {
+            navbarMobile.classList.remove('left-0')
+            navbarMobile.classList.add('-left-[100%]')
+
+        }
+
     }
 </script>

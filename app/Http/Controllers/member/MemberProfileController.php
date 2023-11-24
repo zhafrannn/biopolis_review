@@ -13,11 +13,16 @@ class MemberProfileController extends Controller
     public function update($id, Request $request)
     {
         $user = User::where('id', $id)->first();
+        if (!empty($request->password)) {
+            $password = bcrypt($request->password);
+        } else {
+            $password = $user->password;
+        }
         $user->update(
             [
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password
+                'password' => $password
             ]
         );
         $userBiodata = UserBiodata::where('user_id', $id)->first();

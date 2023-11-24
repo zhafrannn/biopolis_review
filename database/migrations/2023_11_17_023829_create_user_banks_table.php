@@ -14,12 +14,8 @@ return new class extends Migration
         Schema::create('user_banks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('select_bank');
-            $table->string('owner_name');
-            $table->bigInteger('account_number');
+            $table->string('no_rekening');
             $table->string('status');
-
-
             $table->timestamps();
         });
     }
