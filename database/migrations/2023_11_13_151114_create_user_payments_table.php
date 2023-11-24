@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('redirect_url');
             $table->string('shipping_type')->default('on_send');
             $table->string('shipping_courier')->nullable();
+            $table->string('shipping_status')->nullable();
+            $table->string('shipping_code')->nullable();
             $table->timestamps();
         });
     }

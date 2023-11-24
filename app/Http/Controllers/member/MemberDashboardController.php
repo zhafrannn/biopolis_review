@@ -29,17 +29,41 @@ class MemberDashboardController extends Controller
         $packet_user_total_week = 0;
         $packet_user_total_month = 0;
         $packet_user_total_year = 0;
+        $user_total_buy_payment = 0;
+        $user_total_buy_packet_fix = 0;
 
         $product_user_buy = UserPayment::where('user_id', Auth::user()->id)->where('status', "paid")->where('product_id', "!=", 1)->get();
 
+        $user_total_payment_product = UserPayment::where('user_id', Auth::user()->id)->where('status', "paid")->get();
 
-        foreach ($product_user_buy as $item) {
+        foreach ($user_total_payment_product as $item) {
+            $user_total_buy_payment += $item->total_payment;
+        }
+
+
+
+        foreach ($user_total_payment_product as $item) {
             $user_buy_product_point = Product::where('id', $item->product_id)->first();
             $point_user_buy_product += $user_buy_product_point->point;
+
+            if ($item->product_id == 1) {
+                $user_total_buy_packet_fix += 1;
+            } else {
+                $product_fix = Product::where('id', $item->product_id)->first();
+                $product_packet_total_fix = explode(' ', $product_fix->product_name);
+                $user_total_buy_packet_fix += intval($product_packet_total_fix[0]);
+            }
         }
+
+
+
+
 
         foreach ($user_buy_product as $item) {
             $payment_code = explode('-', $item->payment_code);
+
+
+
             if ($payment_code[0] != "P00") {
                 $product = Product::where('id', $item->product_id)->first();
                 $product_packet_total = explode(' ', $product->product_name);
@@ -84,7 +108,8 @@ class MemberDashboardController extends Controller
         $data = [
             "user" => Auth::user(),
             "point_user_buy_product" => $point_user_buy_product,
-            "user_total_buy_packet" => $user_total_packet_buy . " Paket",
+            "user_total_buy_packet" => $user_total_buy_packet_fix . " Paket",
+            "user_total_buy_payment" => $user_total_buy_payment,
             "refferal_point" => [
                 "current_point" => $user_wallet->current_point,
                 "current_balance" => $user_wallet->current_balance,

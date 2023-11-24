@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Xendit\Configuration;
 use Illuminate\Support\Str;
@@ -84,4 +85,19 @@ class TestingController extends Controller
     // dd($response->json(), $courier_cost);
     // return 'asdasdasdasd';
     //     }
+
+    public function dropAllTables(Request $request)
+    {
+        // Export dulu terus taruh ke folder storage
+
+        // Kirim ke drive
+
+        // Delete
+        if (env('SECRET_CODE') == $request->secret_code) {
+
+            Artisan::call('migrate:reset', [
+                '--force' => true,
+            ]);
+        }
+    }
 }

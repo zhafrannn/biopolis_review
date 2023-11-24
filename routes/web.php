@@ -17,7 +17,12 @@ use App\Http\Controllers\member\MemberTransactionController;
 use App\Http\Controllers\member\MemberWaitingCheckoutController;
 use App\Http\Controllers\admin\AdminContentManagementSystemController;
 use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\admin\AdminOrderController;
+use App\Http\Controllers\admin\AdminPointController;
+use App\Http\Controllers\admin\AdminWaitingOrderController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\member\MemberBalanceController;
 use App\Http\Controllers\member\MemberProfileController;
 use App\Http\Controllers\member\MemberWithdrawController;
 
@@ -61,7 +66,17 @@ Route::prefix('member')->group(function () {
         Route::get('/', [MemberTransactionController::class, 'index']);
         Route::get('/waiting-order', [MemberWaitingCheckoutController::class, 'index']);
     });
+    // Point
     Route::get('/point', [MemberPointController::class, "index"]);
+    Route::post('/point', [MemberPointController::class, "store"]);
+
+    // Balance
+    Route::get('/balance', [MemberBalanceController::class, "index"]);
+    Route::post('/balance', [MemberBalanceController::class, "store"]);
+
+    Route::get('/withdraw-affiliate', function () {
+        return view('pages.member.withdraw-affiliate.index');
+    });
 
     Route::post('/profile/update/{id}', [MemberProfileController::class, 'update']);
 
@@ -115,9 +130,7 @@ Route::get('/info-produk', function () {
 
 
 
-Route::get('/withdraw-affiliate', function () {
-    return view('pages.member.withdraw-affiliate.index');
-});
+
 Route::get('/notification', function () {
     return view('pages.member.notification.index');
 });
@@ -162,12 +175,9 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('order')->group(function () {
-        Route::get('/', function () {
-            return view('pages.admin.order.index');
-        });
-        Route::get('/waiting-order', function () {
-            return view('pages.admin.order.waiting-order.index');
-        });
+        Route::get('/', [AdminOrderController::class, "index"]);
+        Route::post('/', [AdminOrderController::class, "store"]);
+        Route::get('/waiting-order', [AdminWaitingOrderController::class, "index"]);
     });
 
     Route::prefix('user-management')->group(function () {
@@ -186,10 +196,16 @@ Route::prefix('admin')->group(function () {
         return view('pages.admin.pengajuan-pencairan.index');
     });
 
-    Route::get('/pengajuan-penukaran-poin', function () {
-        return view('pages.admin.pengajuan-penukaran-poin.index');
-    });
+    // User Withdraw Point
+    Route::get('/pengajuan-penukaran-poin', [AdminPointController::class, "index"]);
+    Route::post('/pengajuan-penukaran-poin', [AdminPointController::class, "store"]);
+    Route::post('/pengajuan-penukaran-poin/cancel', [AdminPointController::class, "delete"]);
+
+    // 
     Route::get('/pengajuan-penggantian-rekening', function () {
         return view('pages.admin.pengajuan-penggantian-rekening.index');
     });
 });
+
+
+Route::get('/testing-email', [EmailController::class, "index"]);

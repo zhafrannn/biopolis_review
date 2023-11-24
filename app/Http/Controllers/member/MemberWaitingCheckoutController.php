@@ -11,7 +11,6 @@ class MemberWaitingCheckoutController extends Controller
     public function index()
     {
         $user_payment = UserPayment::where('status', "pending")->latest()->get();
-        // dd($user_payment);
         return view('pages.member.transaksi.menunggu-pembayaran.index', compact('user_payment'));
     }
 }

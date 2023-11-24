@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendEmail;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\UserBiodata;
@@ -9,6 +10,7 @@ use App\Models\UserPayment;
 use App\Models\Notification;
 use App\Models\UserWallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use PhpParser\Node\Stmt\Else_;
 use Xendit\Invoice\InvoiceApi;
@@ -129,7 +131,22 @@ class PaymentController extends Controller
                 ]);
             }
             $payment->status = 'paid';
+            $payment->shipping_status = 'packing';
             $payment->save();
+
+
+
+            $data = [
+                "total_pembayaran" => $payment->total_payment,
+                "tanggal" => $payment->date,
+                "nama_produk" => $payment->product->name,
+                "pembelian" => $payment->product->description,
+                "kode_pembayaran" => $payment->payment_code,
+
+            ];
+
+            $email = $payment->user->email;
+            Mail::to("zhafran858@gmail.com")->send(new SendEmail($data));
         }
 
         return response()->json(["data" => "Pembayaran Selesai"]);

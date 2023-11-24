@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\member;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
+use App\Models\PointExchange;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\UserBiodata;
 use App\Models\UserPayment;
 use App\Models\UserWallet;
+use App\Models\UserWithdrawPoint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,14 +57,31 @@ class MemberPointController extends Controller
             "point_repeat_order" => $point_repeat_order,
         ];
 
-        // dd([
-        //     "user_id_login" => Auth::user()->id,
-        //     "kode_refferal" => Auth::user()->kode_referal,
-        //     "user_target_yang_menggunakan_refferal" => $user_target,
-        //     "payment_user_use" => $payment_user_use,
-        //     "point_register" => $point_register,
-        //     "point_repeat_order" => $point_repeat_order,
-        // ]);
-        return view('pages.member.poin.index', compact('res'));
+        $point_exchange = PointExchange::all();
+        return view('pages.member.poin.index', compact('res', 'point_exchange'));
+    }
+
+    public function store(Request $request)
+    {
+        $point_exchange = PointExchange::where('id', $request->point_exchange_id)->first();
+
+        Auth::user()->user_wallet->update([
+            'current_point' => Auth::user()->user_wallet->current_point - $point_exchange->point,
+        ]);
+
+        $withdraw_code = "WD" . date('YmdHis') . Auth::user()->id;
+
+        UserWithdrawPoint::create([
+            "user_id" => Auth::user()->id,
+            "point_exchange_id" => $point_exchange->id,
+            "withdraw_code" => $withdraw_code,
+        ]);
+
+        Notification::create([
+            "user_id" => Auth::user()->id,
+            "description" => "Pengajuan penukaran poin di proses dan menunggu konfirmasi",
+        ]);
+
+        return back();
     }
 }
