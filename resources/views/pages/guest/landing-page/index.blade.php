@@ -11,13 +11,13 @@ $str1 = explode(" ", $teks_judul_tentang_kami_1->value);
                 <p class="text-[8px] lg:mb-[37px] lg:text-[21px] lg:leading-[30px]">
                     {{ $teks_sub_judul_tentang_kami_1->value }}
                 </p>
-                <a href="" class="hidden justify-center bg-primary text-white lg:flex lg:w-[210px] lg:rounded-[16px] lg:px-[30px] lg:py-[20px]">Order
+                <a href="{{route('register')}}" class="hidden justify-center bg-primary text-white lg:flex lg:w-[210px] lg:rounded-[16px] lg:px-[30px] lg:py-[20px]">Order
                     Sekarang</a>
     </div>
     <div class="flex flex-col items-center">
         <img src="{{ asset('images/'. $gambar_tentang_kami_1->value) }}" alt="" class="w-[303.836px] lg:w-[359px]">
         <!-- button Mobile -->
-        <a href="" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
+        <a href="{{route('register')}}" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
             Sekarang</a>
         <!-- end button mobile -->
     </div>
@@ -97,7 +97,7 @@ $num = count($str2);
             <h1 class="mb-[10px] text-[50px] font-bold leading-[77.77px]">@for($i=0; $i< (count($str2)-1); $i++) {{ $str2[$i] . " " }} @endfor <span class="text-primary">{{ $str2[$num - 1] }}</span>
             </h1>
             <p class="mb-[37px] w-[554px] text-[20px]">{{$teks_sub_judul_tentang_kami_2->value}}</p>
-            <a href="" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
+            <a href="{{route('register')}}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
         </div>
     </div>
 </section>
@@ -112,7 +112,7 @@ $num = count($str2);
             <h1 class="mb-[10px] text-[20px] font-bold leading-[77.77px]">@for($i=0; $i< (count($str2)-1); $i++) {{ $str2[$i] . " " }} @endfor <span class="text-primary">{{ $str2[$num - 1] }}</span>
             </h1>
             <p class="text-[10px]">{{$teks_sub_judul_tentang_kami_2->value}}</p>
-            <a href="" class="my-4 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
+            <a href="{{route('register')}}" class="my-4 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
                 Sekarang</a>
         </div>
     </div>
@@ -167,10 +167,11 @@ $str4 = explode(" ", $teks_judul_manfaat_1->value);
 
     <div class="flex flex-col gap-[15px] px-[20px] lg:gap-[30px] lg:px-[121px]">
         {{-- start: Collapsible --}}
+        @foreach($benefits as $benefit)
         <div class="group rounded-[7.424px] border border-[#D9D9D9] p-[12.993px_25.985px] lg:rounded-[16px] lg:px-[56px] lg:py-[28px]" tabindex="0">
             <div class="flex items-center justify-between">
                 <div class="text-[14px] font-medium lg:text-[32px]">
-                    <h2>Tinggi Antioksidan</h2>
+                    <h2>{{ $benefit->title }}</h2>
                 </div>
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
@@ -180,36 +181,13 @@ $str4 = explode(" ", $teks_judul_manfaat_1->value);
             </div>
             <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
                 <div class="mt-3 text-justify text-[12px] lg:mt-5 lg:text-[28px]">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
+                    <p>{{ $benefit->description }}</p>
                 </div>
             </div>
         </div>
+        @endforeach
         {{-- start: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[7.424px] border border-[#D9D9D9] p-[12.993px_25.985px] lg:rounded-[16px] lg:px-[56px] lg:py-[28px]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[14px] font-medium lg:text-[32px]">
-                    <h2>Proteksi Paru Paru</h2>
-                </div>
 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-3 text-justify text-[12px] lg:mt-5 lg:text-[28px]">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- start: Collapsible --}}
     </div>
 </section>
 
@@ -314,11 +292,11 @@ $str4 = explode(" ", $teks_judul_manfaat_1->value);
         <img src="{{ asset('images/'. $gambar_kemitraan_1) }}" alt="">
     </div>
     <div class="hidden justify-center lg:flex">
-        <a href="" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
+        <a href="{{route('register')}}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
     </div>
     <!-- mobile -->
     <div class="flex justify-center lg:hidden">
-        <a href="" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
+        <a href="{{route('register')}}" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
             Sekarang</a>
     </div>
     <!-- end mobile -->
@@ -360,10 +338,9 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
                     </h3>
                     <div class="flex items-center gap-[28px]">
 
-                        <a href="" class="rounded-[16px] border border-primary bg-primary px-[30px] py-[20px] text-white">Order
-                            Sekarang</a>
+                        <a href="{{route('register')}}" class="rounded-[16px] border border-primary bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
 
-                        <a href="" class="flex items-center justify-center gap-5 rounded-[16px] border border-primary bg-white px-[30px] py-[20px] text-primary">
+                        <a href="{{ url('/reseller_biopolis') }}" class="flex items-center justify-center gap-5 rounded-[16px] border border-primary bg-white px-[30px] py-[20px] text-primary">
                             <p>
                                 Pelajari
                                 Keuntungan
@@ -414,10 +391,10 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
 
                     <h3 class="mb-[29px] text-[16px] font-bold">{{$teks_sub_judul_kemitraan_11_3->value}}</h3>
                     <div class="flex items-center gap-[28px] px-[37px]">
-                        <a href="" class="rounded-[9px] border border-primary bg-primary p-[9.714px_14.571px] text-[9.714px] text-white">Order
+                        <a href="{{route('register')}}" class="rounded-[9px] border border-primary bg-primary p-[9.714px_14.571px] text-[9.714px] text-white">Order
                             Sekarang</a>
 
-                        <a href="" class="flex items-center justify-center gap-5 rounded-[9px] border border-primary bg-white p-[9.714px_14.571px] text-[9.714px] text-primary">
+                        <a href="{{ url('/reseller_biopolis') }}" class="flex items-center justify-center gap-5 rounded-[9px] border border-primary bg-white p-[9.714px_14.571px] text-[9.714px] text-primary">
                             <p>
                                 Pelajari Keuntungan
                             </p>
@@ -567,114 +544,34 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
 <!-- end mobile -->
 
 <section class="mb-[241px] hidden lg:block">
-    <h1 class="mb-[15px] text-center text-[50px] font-bold text-black"> </h1>
+    <h1 class="mb-[15px] text-center text-[50px] font-bold text-black">Apa Kata Mereka?</h1>
     <h3 class="mb-[55px] text-center text-[20px]">Ini kata mereka yang merasakan manfaat dari biopolis.</h3>
     {{-- start: Slider --}}
     <div class="h-[591px] bg-[#F5F5F5] px-[121px] py-[86px]">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
+                @foreach($testimonies as $testimony)
                 <div class="swiper-slide">
                     {{-- start: Card --}}
                     <div class="h-[371px] w-[561px] rounded-[30px] bg-white p-[40px]">
                         <h3 class="text-[28px] font-semibold">
-                            Rudi ahong
+                            {{ $testimony->name }}
                         </h3>
-                        <p class="mb-[18px] text-[20px] text-[#969EBA]">45 Tahun</p>
-                        <p class="mb-[18px] max-w-[400px] text-[16px] text-black">Saya seornag pekerja keras dan sering
-                            terpapara
-                            lingkungan
-                            yang tidak bersih. Sejak
-                            menggunakan Propolis Biopolis, saya merasakan lebih aman dari resiko infeksi. Ini adalah
-                            tambahan penting bagi rutinitas sehat saya</p>
+                        <p class="mb-[18px] text-[20px] text-[#969EBA]">{{ $testimony->age }}</p>
+                        <p class="mb-[18px] max-w-[400px] text-[16px] text-black">{{ $testimony->description }}</p>
                         {{-- start: rating star --}}
                         <div class="flex gap-2">
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                        </div>
-                        {{-- end: rating star --}}
-                    </div>
-                    {{-- end: Card --}}
-
-
-                </div>
-                <div class="swiper-slide">
-                    {{-- start: Card --}}
-                    <div class="h-[371px] w-[561px] rounded-[30px] bg-white p-[40px]">
-                        <h3 class="text-[28px] font-semibold">
-                            Nina
-                        </h3>
-                        <p class="mb-[18px] text-[20px] text-[#969EBA]">30 Tahun</p>
-                        <p class="mb-[18px] max-w-[400px] text-[16px] text-black">Saya selalu mencari cara alami untuk
-                            meningkatkan kekebalan tubuh, terutama selama musim flu. Propolis Biopolis adalah solusi
-                            yang sempurna. Rasanya enak dan memberi rasa ketenangan.</p>
-                        {{-- start: rating star --}}
-                        <div class="flex gap-2">
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
+                            @for($i=0; $i<$testimony->rate; $i++)
+                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
+                                </svg>
+                                @endfor
                         </div>
                         {{-- end: rating star --}}
                     </div>
                     {{-- end: Card --}}
                 </div>
-
-                <div class="swiper-slide">
-                    {{-- start: Card --}}
-                    <div class="h-[371px] w-[561px] rounded-[30px] bg-white p-[40px]">
-                        <h3 class="text-[28px] font-semibold">
-                            Siti
-                        </h3>
-                        <p class="mb-[18px] text-[20px] text-[#969EBA]">38 Tahun</p>
-                        <p class="mb-[18px] max-w-[400px] text-[16px] text-black">Saya sudah menggunakan Propolis
-                            Biopolis selama beberapa bulan, dan saya merasakan perubahan yang signifikan pada kesehatan
-                            saya. Mantap rekomended banget ini Propolis Biopolis</p>
-                        {{-- start: rating star --}}
-                        <div class="flex gap-2">
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                        </div>
-                        {{-- end: rating star --}}
-                    </div>
-                    {{-- end: Card --}}
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -689,109 +586,32 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
     <div class="h-[252px] overflow-hidden bg-[#F5F5F5] py-[37px] pl-[52px]">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
+                @foreach($testimonies as $testimony)
                 <div class="swiper-slide">
                     {{-- start: Card --}}
                     <div class="h-[159px] w-[238px] rounded-[8px] bg-white p-[17.026px_31.072px_17.026px_17.026px;]">
                         <h3 class="text-[12px] font-semibold">
-                            Rudi ahong
+                            {{ $testimony->name }}
                         </h3>
-                        <p class="mb-[18px] text-[8.513px] text-[#969EBA]">45 Tahun</p>
+                        <p class="mb-[18px] text-[8.513px] text-[#969EBA]">{{ $testimony->age }} Tahun</p>
                         <p class="mb-[18px] max-w-[400px] text-[6.81px] text-black">Saya seornag pekerja keras dan
-                            sering
-                            terpapara
-                            lingkungan
-                            yang tidak bersih. Sejak
-                            menggunakan Propolis Biopolis, saya merasakan lebih aman dari resiko infeksi. Ini adalah
-                            tambahan penting bagi rutinitas sehat saya</p>
+                            {{ $testimony->description }}
+                        </p>
                         {{-- start: rating star --}}
                         <div class="flex gap-1">
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                        </div>
-                        {{-- end: rating star --}}
-                    </div>
-                    {{-- end: Card --}}
-                </div>
+                            @for($i=0; $i<$testimony->rate; $i++) <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
+                                </svg>
+                                @endfor
 
-                <div class="swiper-slide">
-                    {{-- start: Card --}}
-                    <div class="h-[159px] w-[238px] rounded-[8px] bg-white p-[17.026px_31.072px_17.026px_17.026px;]">
-                        <h3 class="text-[12px] font-semibold">
-                            Nina
-                        </h3>
-                        <p class="mb-[18px] text-[8.513px] text-[#969EBA]">30 Tahun</p>
-                        <p class="mb-[18px] max-w-[400px] text-[6.81px] text-black">Saya selalu mencari cara alami
-                            untuk
-                            meningkatkan kekebalan tubuh, terutama selama musim flu. Propolis Biopolis adalah solusi
-                            yang sempurna. Rasanya enak dan memberi rasa ketenangan.</p>
-                        {{-- start: rating star --}}
-                        <div class="flex gap-1">
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
                         </div>
                         {{-- end: rating star --}}
                     </div>
                     {{-- end: Card --}}
                 </div>
+                @endforeach
 
-                <div class="swiper-slide">
-                    {{-- start: Card --}}
-                    <div class="h-[159px] w-[238px] rounded-[8px] bg-white p-[17.026px_31.072px_17.026px_17.026px;]">
-                        <h3 class="text-[12px] font-semibold">
-                            Siti
-                        </h3>
-                        <p class="mb-[18px] text-[8.513px] text-[#969EBA]">38 Tahun</p>
-                        <p class="mb-[18px] max-w-[400px] text-[6.81px] text-black">Saya sudah menggunakan Propolis
-                            Biopolis selama beberapa bulan, dan saya merasakan perubahan yang signifikan pada kesehatan
-                            saya. Mantap rekomended banget ini Propolis Biopolis</p>
-                        {{-- start: rating star --}}
-                        <div class="flex gap-1">
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                            <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
-                            </svg>
-                        </div>
-                        {{-- end: rating star --}}
-                    </div>
-                    {{-- end: Card --}}
-                </div>
+
             </div>
         </div>
     </div>
@@ -806,10 +626,11 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
 
     <div class="flex flex-col gap-[24px] px-[121px]">
         {{-- start: Collapsible --}}
+        @foreach($faqs as $faq)
         <div class="group rounded-[16px] border border-[#D9D9D9] px-[56px] py-[28px]" tabindex="0">
             <div class="flex items-center justify-between">
                 <div class="text-[24px] font-semibold">
-                    <h2>Apa yang dimaksud dengan Biopolis Propolis?</h2>
+                    <h2>{{ $faq->title }}</h2>
                 </div>
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
@@ -819,122 +640,11 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
             </div>
             <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
                 <div class="mt-5">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
+                    <p>{{$faq->description}}</p>
                 </div>
             </div>
         </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[16px] border border-[#D9D9D9] px-[56px] py-[28px]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[24px] font-semibold">
-                    <h2>Bagaimana cara menggunakan Biopolis Propolis?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-5">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[16px] border border-[#D9D9D9] px-[56px] py-[28px]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[24px] font-semibold">
-                    <h2>Dapatkag Biopolis Propolis digunakan oleh semua orang?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-5">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[16px] border border-[#D9D9D9] px-[56px] py-[28px]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[24px] font-semibold">
-                    <h2>Darimana Biopolis Propolis diperoleh?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-5">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[16px] border border-[#D9D9D9] px-[56px] py-[28px]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[24px] font-semibold">
-                    <h2>Bagaimana menjadi mitra biopolis?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-5">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[16px] border border-[#D9D9D9] px-[56px] py-[28px]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[24px] font-semibold">
-                    <h2>Apakah Biopolis Propolis memiliki efek samping?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-5">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
         {{-- end: Collapsible --}}
     </div>
 
@@ -948,32 +658,11 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
 
     <div class="flex flex-col gap-[24px] px-[20px]">
         {{-- start: Collapsible --}}
+        @foreach($faqs as $faq)
         <div class="group rounded-[5.94px] border border-[#D9D9D9] p-[10.394px_20.789px;]" tabindex="0">
             <div class="flex items-center justify-between">
                 <div class="text-[10px] font-semibold">
-                    <h2>Apa yang dimaksud dengan Biopolis Propolis?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-2 text-[9px] text-[9px]">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[5.94px] border border-[#D9D9D9] p-[10.394px_20.789px;]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[10px] font-semibold">
-                    <h2>Bagaimana cara menggunakan Biopolis Propolis?</h2>
+                    <h2>{{ $faq->title }}</h2>
                 </div>
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
@@ -983,100 +672,11 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
             </div>
             <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
                 <div class="mt-2 text-[9px]">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
+                    <p>{{$faq->description}}</p>
                 </div>
             </div>
         </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[5.94px] border border-[#D9D9D9] p-[10.394px_20.789px;]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[10px] font-semibold">
-                    <h2>Dapatkag Biopolis Propolis digunakan oleh semua orang?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-2 text-[9px]">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[5.94px] border border-[#D9D9D9] p-[10.394px_20.789px;]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[10px] font-semibold">
-                    <h2>Darimana Biopolis Propolis diperoleh?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-2 text-[9px]">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[5.94px] border border-[#D9D9D9] p-[10.394px_20.789px;]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[10px] font-semibold">
-                    <h2>Bagaimana menjadi mitra biopolis?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-2 text-[9px]">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
-        {{-- end: Collapsible --}}
-        {{-- start: Collapsible --}}
-        <div class="group rounded-[5.94px] border border-[#D9D9D9] p-[10.394px_20.789px;]" tabindex="0">
-            <div class="flex items-center justify-between">
-                <div class="text-[10px] font-semibold">
-                    <h2>Apakah Biopolis Propolis memiliki efek samping?</h2>
-                </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </div>
-            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                <div class="mt-2 text-[9px]">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure temporibus optio, explicabo maxime
-                        aliquam corrupti dolor rem sequi animi laboriosam ipsa voluptatem tempore soluta excepturi nihil
-                        ea
-                        inventore ad quasi!</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
         {{-- end: Collapsible --}}
     </div>
 
@@ -1095,10 +695,10 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
     <div class="flex justify-center">
         <div class="flex items-center gap-[28px]">
 
-            <a href="" class="rounded-[16px] border border-primary bg-primary px-[30px] py-[20px] text-white">Order
+            <a href="{{route('register')}}" class="rounded-[16px] border border-primary bg-primary px-[30px] py-[20px] text-white">Order
                 Sekarang</a>
 
-            <a href="" class="flex items-center justify-center gap-5 rounded-[16px] border border-primary bg-white px-[30px] py-[20px] text-primary">
+            <a href="{{$link_button_whatsapp->value}}" target="_blank" class="flex items-center justify-center gap-5 rounded-[16px] border border-primary bg-white px-[30px] py-[20px] text-primary">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.05004 24.033C9.80004 25.083 11.9 25.6663 14 25.6663C20.4167 25.6663 25.6667 20.4163 25.6667 13.9997C25.6667 7.58301 20.4167 2.33301 14 2.33301C7.58337 2.33301 2.33337 7.58301 2.33337 13.9997C2.33337 16.0997 2.91671 18.083 3.85004 19.833L2.84722 23.69C2.62005 24.5638 3.42879 25.3534 4.29686 25.1053L8.05004 24.033Z" stroke="#20B15A" stroke-width="1.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M19.25 17.3232C19.25 17.5122 19.2079 17.7065 19.1186 17.8955C19.0292 18.0845 18.9135 18.263 18.761 18.431C18.5034 18.7145 18.2195 18.9192 17.8987 19.0505C17.5833 19.1817 17.2415 19.25 16.8734 19.25C16.3371 19.25 15.764 19.124 15.1594 18.8667C14.5547 18.6095 13.9501 18.263 13.3507 17.8273C12.746 17.3863 12.1729 16.898 11.6261 16.3572C11.0845 15.8112 10.5955 15.239 10.1591 14.6405C9.72797 14.042 9.38095 13.4435 9.12857 12.8503C8.87619 12.2518 8.75 11.6795 8.75 11.1335C8.75 10.7765 8.81309 10.4353 8.93928 10.1203C9.06547 9.8 9.26527 9.506 9.54394 9.2435C9.88045 8.91275 10.2485 8.75 10.6376 8.75C10.7848 8.75 10.932 8.7815 11.0635 8.8445C11.2002 8.9075 11.3211 9.002 11.4157 9.1385L12.6356 10.8553C12.7302 10.9865 12.7986 11.1072 12.8459 11.2227C12.8932 11.333 12.9195 11.4432 12.9195 11.543C12.9195 11.669 12.8827 11.795 12.8091 11.9157C12.7407 12.0365 12.6408 12.1625 12.5146 12.2885L12.115 12.7032C12.0572 12.761 12.0309 12.8292 12.0309 12.9132C12.0309 12.9552 12.0362 12.992 12.0467 13.034C12.0625 13.076 12.0782 13.1075 12.0888 13.139C12.1834 13.3122 12.3464 13.538 12.5777 13.811C12.8143 14.084 13.0667 14.3622 13.3401 14.6405C13.6241 14.9187 13.8975 15.176 14.1761 15.4122C14.4495 15.6432 14.6756 15.8007 14.8544 15.8952C14.8807 15.9057 14.9122 15.9215 14.949 15.9372C14.9911 15.953 15.0332 15.9582 15.0805 15.9582C15.1699 15.9582 15.2382 15.9267 15.2961 15.869L15.6957 15.4752C15.8271 15.344 15.9533 15.2442 16.0742 15.1812C16.1952 15.1077 16.3161 15.071 16.4475 15.071C16.5474 15.071 16.6526 15.092 16.7683 15.1392C16.884 15.1865 17.0049 15.2547 17.1363 15.344L18.8767 16.5777C19.0134 16.6722 19.108 16.7825 19.1659 16.9137C19.2185 17.045 19.25 17.1762 19.25 17.3232Z" stroke="#20B15A" stroke-width="1.75" stroke-miterlimit="10" />
@@ -1121,15 +721,12 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
     <div class="mb-[30px] px-[20px]">
         <h1 class="text-center text-[20px] font-bold text-black">Pesan Sekarang!</h1>
         <h1 class="text-center text-[20px] font-bold text-primary">Dan Nikmati Manfaat serta Keuntungannya!</h1>
-
     </div>
     <div class="flex justify-center">
         <div class="flex items-center gap-[10px]">
-
-            <a href="" class="text rounded-[8px] border border-primary bg-primary p-[9.714px_14.571px] text-[9.714px] text-white">Order
+            <a href="{{route('register')}}" class="text rounded-[8px] border border-primary bg-primary p-[9.714px_14.571px] text-[9.714px] text-white">Order
                 Sekarang</a>
-
-            <a href="" class="flex items-center justify-center gap-1 rounded-[8px] border border-primary bg-white p-[9.714px_14.571px] text-[9.714px] text-primary">
+            <a href="{{$link_button_whatsapp->value}}" target="_blank" class="flex items-center justify-center gap-1 rounded-[8px] border border-primary bg-white p-[9.714px_14.571px] text-[9.714px] text-primary">
                 <svg width="13.6" height="13.6" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.05004 24.033C9.80004 25.083 11.9 25.6663 14 25.6663C20.4167 25.6663 25.6667 20.4163 25.6667 13.9997C25.6667 7.58301 20.4167 2.33301 14 2.33301C7.58337 2.33301 2.33337 7.58301 2.33337 13.9997C2.33337 16.0997 2.91671 18.083 3.85004 19.833L2.84722 23.69C2.62005 24.5638 3.42879 25.3534 4.29686 25.1053L8.05004 24.033Z" stroke="#20B15A" stroke-width="1.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M19.25 17.3232C19.25 17.5122 19.2079 17.7065 19.1186 17.8955C19.0292 18.0845 18.9135 18.263 18.761 18.431C18.5034 18.7145 18.2195 18.9192 17.8987 19.0505C17.5833 19.1817 17.2415 19.25 16.8734 19.25C16.3371 19.25 15.764 19.124 15.1594 18.8667C14.5547 18.6095 13.9501 18.263 13.3507 17.8273C12.746 17.3863 12.1729 16.898 11.6261 16.3572C11.0845 15.8112 10.5955 15.239 10.1591 14.6405C9.72797 14.042 9.38095 13.4435 9.12857 12.8503C8.87619 12.2518 8.75 11.6795 8.75 11.1335C8.75 10.7765 8.81309 10.4353 8.93928 10.1203C9.06547 9.8 9.26527 9.506 9.54394 9.2435C9.88045 8.91275 10.2485 8.75 10.6376 8.75C10.7848 8.75 10.932 8.7815 11.0635 8.8445C11.2002 8.9075 11.3211 9.002 11.4157 9.1385L12.6356 10.8553C12.7302 10.9865 12.7986 11.1072 12.8459 11.2227C12.8932 11.333 12.9195 11.4432 12.9195 11.543C12.9195 11.669 12.8827 11.795 12.8091 11.9157C12.7407 12.0365 12.6408 12.1625 12.5146 12.2885L12.115 12.7032C12.0572 12.761 12.0309 12.8292 12.0309 12.9132C12.0309 12.9552 12.0362 12.992 12.0467 13.034C12.0625 13.076 12.0782 13.1075 12.0888 13.139C12.1834 13.3122 12.3464 13.538 12.5777 13.811C12.8143 14.084 13.0667 14.3622 13.3401 14.6405C13.6241 14.9187 13.8975 15.176 14.1761 15.4122C14.4495 15.6432 14.6756 15.8007 14.8544 15.8952C14.8807 15.9057 14.9122 15.9215 14.949 15.9372C14.9911 15.953 15.0332 15.9582 15.0805 15.9582C15.1699 15.9582 15.2382 15.9267 15.2961 15.869L15.6957 15.4752C15.8271 15.344 15.9533 15.2442 16.0742 15.1812C16.1952 15.1077 16.3161 15.071 16.4475 15.071C16.5474 15.071 16.6526 15.092 16.7683 15.1392C16.884 15.1865 17.0049 15.2547 17.1363 15.344L18.8767 16.5777C19.0134 16.6722 19.108 16.7825 19.1659 16.9137C19.2185 17.045 19.25 17.1762 19.25 17.3232Z" stroke="#20B15A" stroke-width="1.75" stroke-miterlimit="10" />
@@ -1137,9 +734,7 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
                 <p>
                     Whatsapp Mimin
                 </p>
-
             </a>
-
         </div>
     </div>
 </section>

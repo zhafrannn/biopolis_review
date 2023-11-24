@@ -11,9 +11,9 @@ Product | Biopolis Propolis
     $no = 0; ?>
     @foreach ($product as $item)
     @if ($item->product_code != 'P00')
-    <div class="card-compact card h-[490px] w-[254px] bg-base-100 shadow-md">
-        <figure>
-            <img class="h-[254px] w-[254px] bg-[#D9D9D9]" src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+    <div class="card-compact card h-[490px] w-[254px] bg-base-100 shadow-md overflow-hidden">
+        <figure class="">
+            <img class="bg-[#D9D9D9] object-center object-cover" src="{{ asset('/images/biopolis.png') }}" alt="Shoes" />
         </figure>
 
         <div class="card-body">
@@ -182,7 +182,7 @@ Product | Biopolis Propolis
                             <p class="text-[12px] text-[#0A0A0B]">Kota Bandung</p>
                             <div class="mt-6">
                                 <div class="flex">
-                                    <img src="" class="h-[50px] w-[50px] rounded-[5px] bg-[#D9D9D9]">
+                                    <img src="{{asset('images/biopolis.png')}}" class="h-[50px] w-[50px] rounded-[5px] bg-[#D9D9D9]">
                                     <div class="ml-4 flex flex-col justify-around">
                                         <p class="text-[14px] font-semibold text-[#0A0A0B]">Paket Biopolis</p>
                                         <div>
