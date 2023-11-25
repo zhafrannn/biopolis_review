@@ -8,15 +8,15 @@
     <div class="hidden p-5 lg:block">
         <h1 class="mb-7 text-[40px]">Hi, {{ Auth::user()->name }}! Selamat datang kembali. </h1>
         <!-- <div class="flex items-center justify-between">
-                                                <h3 class="text-[20px] font-semibold">Performa Affiliate Kamu</h3>
-                                                <div class="flex">
-                                                    <select name="" id="select-graphic" class="h-[33.86px] w-[331.85px] rounded-[10.16px] border bg-white text-center text-[12.7px] text-[#969EBA]">
-                                                        <option value="week">Mingguan</option>
-                                                        <option value="month">Bulanan</option>
-                                                        <option value="year">Tahunan</option>
-                                                    </select>
-                                                </div>
-                                            </div> -->
+                                                                                                    <h3 class="text-[20px] font-semibold">Performa Affiliate Kamu</h3>
+                                                                                                    <div class="flex">
+                                                                                                        <select name="" id="select-graphic" class="h-[33.86px] w-[331.85px] rounded-[10.16px] border bg-white text-center text-[12.7px] text-[#969EBA]">
+                                                                                                            <option value="week">Mingguan</option>
+                                                                                                            <option value="month">Bulanan</option>
+                                                                                                            <option value="year">Tahunan</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div> -->
         <div class="mt-6 flex">
             <div class="w-8/12">
                 <div class="flex w-[100%] gap-5">
@@ -30,16 +30,31 @@
                             </div>
 
                         </div>
+                        {{-- Disini --}}
                         <div class="mt-2 flex justify-between">
-                            <p class="text-[16px] text-[#969EBA]">Poin Affiliate</p>
+                            <p class="text-[16px] text-[#969EBA]">Poin Affiliate Pengguna Baru</p>
                             <p class="text-[16px] text-[#969EBA]">
-                                {{ $data['refferal_point']['total_point'] - $data['point_user_buy_product'] }}
+                                @if ($data['refferal_point']['total_point'] != 0)
+                                    {{ $data['refferal_point']['total_point'] - $data['point_user_buy_product'] }}
+                                @endif
                             </p>
                         </div>
+                        <div class="flex justify-between">
+                            <p class="text-[16px] text-[#969EBA]">Poin Affiliate Pengguna Baru</p>
+                            <p class="text-[16px] text-[#969EBA]">
+                                @if ($data['refferal_point']['total_point'] != 0)
+                                    {{ $data['refferal_point']['total_point'] - $data['point_user_buy_product'] }}
+                                @endif
+
+                            </p>
+                        </div>
+                        {{-- End Disini --}}
+
                         <div class="flex justify-between">
                             <p class="text-[16px] text-[#969EBA]">Total Referral</p>
                             <p class="text-[16px] text-[#969EBA]">{{ $data['refferal_point']['total_refferal'] }}</p>
                         </div>
+
                         <div class="flex justify-between">
                             <p class="text-[16px] text-[#969EBA]">Poin Pembelian Produk</p>
                             <p class="text-[16px] text-[#969EBA]">{{ $data['point_user_buy_product'] }}
@@ -62,7 +77,6 @@
                             </div>
 
                         </div>
-
                         <a href="{{ url('/member/info-produk') }}"
                             class="absolute bottom-5 right-5 z-50 text-[16px] text-primary">
                             Lihat Detail
@@ -146,15 +160,15 @@
     <div class="bg-white lg:hidden">
         <h1 class="mb-7 text-[20px]">Hi, {{ Auth::user()->name }}! Selamat datang kembali. </h1>
         <!-- <div class="flex flex-col items-start">
-                                                <h3 class="text-[14px] font-semibold">Performa Affiliate Kamu</h3>
-                                                <div class="flex w-full">
-                                                    <select name="" id="select-graphic" class="h-[33.86px] w-full rounded-[10.16px] border bg-white text-center text-[12.7px] text-[#969EBA]">
-                                                        <option value="week">Mingguan</option>
-                                                        <option value="month">Bulanan</option>
-                                                        <option value="year">Tahunan</option>
-                                                    </select>
-                                                </div>
-                                            </div> -->
+                                                                                                    <h3 class="text-[14px] font-semibold">Performa Affiliate Kamu</h3>
+                                                                                                    <div class="flex w-full">
+                                                                                                        <select name="" id="select-graphic" class="h-[33.86px] w-full rounded-[10.16px] border bg-white text-center text-[12.7px] text-[#969EBA]">
+                                                                                                            <option value="week">Mingguan</option>
+                                                                                                            <option value="month">Bulanan</option>
+                                                                                                            <option value="year">Tahunan</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div> -->
         <div class="mt-6">
             <div class="w-full">
                 <div class="mb-6 w-[100%]">
@@ -227,13 +241,13 @@
                     </div>
 
                     <!-- <div class="mt-4 w-[100%]">
-                                                            <section class="mb-[20px] rounded-xl border p-3">
-                                                                <h3 class="mb-[27.09px] text-[16.93px] font-semibold">Grafik Pendapatan</h3>
-                                                                <div>
-                                                                    <canvas id="myChart"></canvas>
-                                                                </div>
-                                                            </section>
-                                                        </div> -->
+                                                                                                                <section class="mb-[20px] rounded-xl border p-3">
+                                                                                                                    <h3 class="mb-[27.09px] text-[16.93px] font-semibold">Grafik Pendapatan</h3>
+                                                                                                                    <div>
+                                                                                                                        <canvas id="myChart"></canvas>
+                                                                                                                    </div>
+                                                                                                                </section>
+                                                                                                            </div> -->
                     <div class="mt-2 gap-6 rounded-xl border border-[#E5E5E5] p-3">
                         <h1 class="text-[16px] font-semibold">Ajak Temanmu dan Dapatkan Komisinya</h1>
                         <p class="mt-4 text-end text-[12px]">Kode Referal Kamu</p>

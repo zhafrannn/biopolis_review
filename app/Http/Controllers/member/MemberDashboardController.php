@@ -40,8 +40,6 @@ class MemberDashboardController extends Controller
             $user_total_buy_payment += $item->total_payment;
         }
 
-
-
         foreach ($user_total_payment_product as $item) {
             $user_buy_product_point = Product::where('id', $item->product_id)->first();
             $point_user_buy_product += $user_buy_product_point->point;
@@ -55,13 +53,8 @@ class MemberDashboardController extends Controller
             }
         }
 
-
-
-
-
         foreach ($user_buy_product as $item) {
             $payment_code = explode('-', $item->payment_code);
-
 
 
             if ($payment_code[0] != "P00") {
@@ -103,7 +96,6 @@ class MemberDashboardController extends Controller
                 // 
             }
         }
-
 
         $data = [
             "user" => Auth::user(),

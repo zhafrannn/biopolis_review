@@ -126,7 +126,7 @@ Route::get('/testing-123', function () {
 })->name('cms_update');
 
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index']);
 
     Route::get('/content-management', [AdminContentManagementSystemController::class, 'edit']);

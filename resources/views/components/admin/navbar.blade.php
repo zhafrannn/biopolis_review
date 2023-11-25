@@ -4,7 +4,7 @@
             <img src="{{ asset('images/icons/bell-rounded.svg') }}" alt="">
         </button>
         <div>
-            <div class="dropdown-end dropdown">
+            <div class="dropdown dropdown-end">
                 <label tabindex="0" class="m-1 flex cursor-pointer items-center">
                     <img src="{{ asset('images/icons/sample-avatar-profile.svg') }}" alt="">
                     <p class="ml-[13.54px] text-[16.93px] font-semibold">{{ Auth::user()->name }}</p>
@@ -12,7 +12,7 @@
                 </label>
                 <ul tabindex="0" class="menu dropdown-content rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
                     <li><a class="font-semibold">Profile</a></li>
-                    <li><a class="font-semibold">Logout</a></li>
+                    <li><a class="font-semibold" href="{{ url('/logout') }}">Logout</a></li>
                 </ul>
             </div>
 

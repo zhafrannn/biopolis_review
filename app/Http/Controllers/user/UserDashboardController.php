@@ -19,6 +19,10 @@ class UserDashboardController extends Controller
             return redirect('/member/dashboard');
         }
 
+        if (Auth::user()->role == 'admin') {
+            return redirect('/admin');
+        }
+
         $product = Product::where('id', 1)->first();
         $user_payment = UserPayment::where('user_id', Auth::user()->id)->first();
 
