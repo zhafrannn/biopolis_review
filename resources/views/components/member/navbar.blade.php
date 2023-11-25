@@ -37,7 +37,7 @@
 
             <div class="flex cursor-pointer items-center gap-[8px]" onclick="HandleClose()">
                 <div tabindex="0" class="m-1 flex cursor-pointer items-center">
-                    <img src="{{ asset('images/icons/sample-avatar-profile.svg') }}" alt="">
+                    <img src="{{ asset('images/profile.png') }}" alt="" class="w-[30px]">
                     <p class="ml-[13.54px] text-[16.93px] font-semibold">{{ Auth::user()->name }}</p>
                     <img src="{{ asset('images/icon/arrow-down.svg') }}" class="ml-[6.77px]" alt="">
                 </div>
@@ -127,16 +127,19 @@
                                     <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" name="no_whatsapp" value="{{ Auth::user()->user_biodata->no_whatsapp }}">
                                 </div>
                             </div>
-
+                            <?php
+                            $str1 = explode('-', Auth::user()->user_biodata->provinsi);
+                            $str2 = explode('-', Auth::user()->user_biodata->kota);
+                            ?>
                             <p class="mt-8 text-[24px] font-semibold text-[#0A0A0B]">Informasi Alamat Pengiriman</p>
                             <div class="flex justify-between">
                                 <div class="flex w-[472px] flex-col">
                                     <label class="text-[20px] font-semibold text-[#969EBA]">Provinsi</label>
-                                    <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" name="provinsi" value="{{ Auth::user()->user_biodata->provinsi }}">
+                                    <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" name="provinsi" value="{{ $str1[1] }}" readonly>
                                 </div>
                                 <div class="flex w-[472px] flex-col">
                                     <label class="text-[20px] font-semibold text-[#969EBA]">Kota/Kabupaten</label>
-                                    <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" name="kota" value="{{ Auth::user()->user_biodata->provinsi }}">
+                                    <input type="text" class="flex h-[50px] rounded-lg border border-[#969EBA] pl-3 text-[20px]" name="kota" value="{{ $str2[1] }}" readonly>
                                 </div>
                             </div>
                             <div class="flex w-full flex-col">
@@ -164,46 +167,45 @@
 
                 <!-- Tab Rekening -->
                 <div id="rekening" class="hidden w-[100%] px-[44px] py-[47.41px] pl-[380px]">
-                    <form action="">
-                        <p class="text-[32px] font-semibold text-[#0A0A0B]">Rekening Anda</p>
-                        <div class="mt-7 flex w-[100%] flex-col justify-between rounded-2xl border border-[#E5E5E5] px-[24px] py-[24px]">
-                            <div class="flex w-[100%] flex-col justify-between rounded-2xl border border-primary bg-[#F2FFF5] px-[24px] py-[24px]">
-                                <form action="{{ route('bank')}}" method="post">
-                                    @csrf
-                                    <div class="flex items-center">
-                                        <img src="{{ asset('images/icons/card.svg') }}" alt="icon" class="px-6">
-                                        <div class="flex h-[208px] w-[806px] flex-col gap-8">
-                                            <div class="flex w-[100%] flex-col">
-                                                <label class="text-[20px] font-semibold text-[#969EBA]">Pemilik
-                                                    Rekening</label>
-                                                <input type="text" class="flex h-[50px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->nama_rekening }}" name="nama_rekening">
+                    <p class="text-[32px] font-semibold text-[#0A0A0B]">Rekening Anda</p>
+                    <div class="mt-7 flex w-[100%] flex-col justify-between rounded-2xl border border-[#E5E5E5] px-[24px] py-[24px]">
+                        <div class="flex w-[100%] flex-col justify-between rounded-2xl border border-primary bg-[#F2FFF5] px-[24px] py-[24px]">
+                            <form action="{{ route('bank')}}" method="POST">
+                                @csrf
+                                <div class="flex items-center">
+                                    <img src="{{ asset('images/icons/card.svg') }}" alt="icon" class="px-6">
+                                    <div class="flex h-[208px] w-[806px] flex-col gap-8">
+                                        <div class="flex w-[100%] flex-col">
+                                            <label class="text-[20px] font-semibold text-[#969EBA]">Pemilik
+                                                Rekening</label>
+                                            <input type="text" class="flex h-[50px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->nama_rekening }}" name="nama_rekening">
+                                        </div>
+                                        <div class="W-[100%] flex justify-between">
+                                            <div class="w-[387px]] flex flex-col">
+                                                <label class="text-[20px] font-semibold text-[#969EBA]">Bank</label>
+                                                <input type="text" class="flex h-[50px] w-[387px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->nama_bank }}" name="nama_bank">
                                             </div>
-                                            <div class="W-[100%] flex justify-between">
-                                                <div class="w-[387px]] flex flex-col">
-                                                    <label class="text-[20px] font-semibold text-[#969EBA]">Bank</label>
-                                                    <input type="text" class="flex h-[50px] w-[387px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->nama_bank }}" name="nama_bank">
-                                                </div>
-                                                <div class="flex w-[387px] flex-col">
-                                                    <label class="text-[20px] font-semibold text-[#969EBA]">No Rekening</label>
-                                                    <input type="text" class="flex h-[50px] w-[387px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->no_rekening }}" name="no_rekening">
-                                                </div>
+                                            <div class="flex w-[387px] flex-col">
+                                                <label class="text-[20px] font-semibold text-[#969EBA]">No Rekening</label>
+                                                <input type="text" class="flex h-[50px] w-[387px] rounded-2xl border border-[#969EBA] bg-transparent pl-3 text-[20px]" value="{{ Auth::user()->user_biodata->no_rekening }}" name="no_rekening">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mt-3 flex justify-end">
-                                        <button class="btn w-fit rounded-xl px-6 py-4 text-[12px] font-semibold text-[#969EBA]" type="submit">Ganti
-                                            Rekening</button>
-                                    </div>
-                                </form>
-                            </div>
-                    </form>
+                                </div>
+                                <div class="mt-3 flex justify-end">
+                                    <button class="btn w-fit rounded-xl px-6 py-4 text-[12px] font-semibold text-[#969EBA]" type="submit">Ganti
+                                        Rekening</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
 
                 </div>
             </div>
 
             <div class="bg-[#E30613] rounded-lg p-[12px_20px] absolute right-6 top-5 text-white" onclick="HandleClose()">
-                <button>Keluar</button>
+                <button>Kembali</button>
             </div>
         </div>
     </div>

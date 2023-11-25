@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('user_banks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('no_rekening');
+            $table->string('nama_bank');
+            $table->string('nama_rekening');
+            $table->bigInt('no_rekening');
             $table->string('status');
             $table->timestamps();
         });

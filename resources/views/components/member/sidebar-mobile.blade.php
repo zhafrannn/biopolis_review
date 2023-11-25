@@ -8,7 +8,7 @@
         <div class="mt-[30px] flex flex-col h-screen p-1 text-[16px] gap-[70px]">
             <div tabindex="0" class="cursor-pointer items-center">
                 <div class="flex items-center">
-                    <img src="{{ asset('images/icons/sample-avatar-profile.svg') }}" alt="" class="w-[60px]">
+                    <img src="{{ asset('images/profile.png') }}" alt="" class="w-[60px]">
                     <div class="flex flex-col">
                         <p class="ml-[13.54px] text-[16.93px] font-semibold">{{ Auth::user()->name }}</p>
                         <p class="ml-[13.54px] text-[16.93px]">{{ Auth::user()->user_biodata->no_whatsapp }}</p>
@@ -83,16 +83,19 @@
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Nomor Telepon</label>
                     <input type="text" class="rounded-[9.904px] border p-[10.56px]" value="{{ Auth::user()->user_biodata->no_whatsapp }}" name="no_whatsapp">
                 </div>
-
+                <?php
+                $str1 = explode('-', Auth::user()->user_biodata->provinsi);
+                $str2 = explode('-', Auth::user()->user_biodata->kota);
+                ?>
                 <h1 class="mt-[30px] font-semibold text-18">Informasi Alamat Pengiriman</h1>
                 <div class=" mb-[30px] w-full border"></div>
                 <div class="mb-[10px] flex flex-col">
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Provinsi</label>
-                    <input type="text" class="rounded-[9.904px] border p-[10.56px]" value="{{ Auth::user()->user_biodata->provinsi }}" name="provinsi">
+                    <input type="text" class="rounded-[9.904px] border p-[10.56px]" value="{{ $str1[1]}}" name="provinsi" readonly>
                 </div>
                 <div class="mb-[10px] flex flex-col">
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Kota</label>
-                    <input type="text" class="rounded-[9.904px] border p-[10.56px]" value="{{ Auth::user()->user_biodata->kota }}" name="kota">
+                    <input type="text" class="rounded-[9.904px] border p-[10.56px]" value="{{ $str2[1] }}" name="kota" readonly>
                 </div>
                 <div class="mb-[10px] flex flex-col">
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Alamat Lengkap</label>

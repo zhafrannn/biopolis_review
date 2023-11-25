@@ -7,16 +7,9 @@
 @section('content')
     <div class="hidden p-5 lg:block">
         <h1 class="mb-7 text-[40px]">Hi, {{ Auth::user()->name }}! Selamat datang kembali. </h1>
-        <!-- <div class="flex items-center justify-between">
-                                                <h3 class="text-[20px] font-semibold">Performa Affiliate Kamu</h3>
-                                                <div class="flex">
-                                                    <select name="" id="select-graphic" class="h-[33.86px] w-[331.85px] rounded-[10.16px] border bg-white text-center text-[12.7px] text-[#969EBA]">
-                                                        <option value="week">Mingguan</option>
-                                                        <option value="month">Bulanan</option>
-                                                        <option value="year">Tahunan</option>
-                                                    </select>
-                                                </div>
-                                            </div> -->
+        <div class="flex items-center justify-between">
+            <h3 class="text-[20px] font-semibold">Performa Affiliate Kamu</h3>
+        </div>
         <div class="mt-6 flex">
             <div class="w-8/12">
                 <div class="flex w-[100%] gap-5">
@@ -173,7 +166,7 @@
                             <p class="text-[#color: #969EBA] text-[14px]">
                                 Rp{{ number_format(Auth::user()->user_wallet->current_balance) }}</p>
                         </div>
-                        <a href="{{ url('/withdraw-affiliate') }}"
+                        <a href="{{ url('/member/balance') }}"
                             class="btn btn-primary flex w-full justify-items-center text-white">Cairkan</a>
                     </div>
                 </div>

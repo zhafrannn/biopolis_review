@@ -12,9 +12,10 @@ class MemberBankReplacementController extends Controller
 {
     public function store(Request $request)
     {
-        dd($request->all());
         UserBank::create([
             'user_id' => Auth::user()->id,
+            'nama_bank' => $request->nama_bank,
+            'nama_rekening' => $request->nama_rekening,
             'no_rekening' => $request->no_rekening,
             'status' => 'pending'
         ]);

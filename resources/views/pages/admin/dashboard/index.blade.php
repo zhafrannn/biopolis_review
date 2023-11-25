@@ -6,14 +6,6 @@
         <div>
             <h3 class="text-[20.32px] font-semibold">Dashboard</h3>
         </div>
-        <div>
-            <select name="" id="" class="h-[33.86px] w-[331.85px] rounded-[10.16px] border bg-white text-[12.7px] text-[#969EBA]">
-                <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
-                <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
-                <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
-            </select>
-
-        </div>
     </div>
 
 
