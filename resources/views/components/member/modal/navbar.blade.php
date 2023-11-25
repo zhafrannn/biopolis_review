@@ -23,7 +23,7 @@
             </button>
             <div class="flex cursor-pointer items-center gap-[8px]" onclick="HandleClose()">
                 <div tabindex="0" class="m-1 flex cursor-pointer items-center">
-                    <img src="{{ asset('images/icons/sample-avatar-profile.svg') }}" alt="">
+                    <img src="{{ asset('images/profile.png') }}" alt="">
                     <p class="ml-[13.54px] text-[16.93px] font-semibold">Farisku</p>
                     <img src="{{ asset('images/icons/arrow-down.svg') }}" class="ml-[6.77px]" alt="">
                 </div>

@@ -5,7 +5,7 @@
             <div class="flex items-center gap-[8px]">
                 <div class="dropdown-end dropdown">
                     <label tabindex="0" class="m-1 flex cursor-pointer items-center">
-                        <img src="{{ asset('images/icons/sample-avatar-profile.svg') }}" alt="">
+                        <img src="{{ asset('images/profile.png') }}" alt="">
                         <p class="ml-[13.54px] text-[16.93px] font-semibold">{{ Auth::user()->name }}</p>
                         <img src="{{ asset('images/icon/arrow-down.svg') }}" class="ml-[6.77px]" alt="">
                     </label>
@@ -33,7 +33,7 @@
             <div class="flex items-center gap-[8px]">
                 <div class="dropdown-end dropdown">
                     <label tabindex="0" class="m-1 flex cursor-pointer items-center">
-                        <img src="{{ asset('images/icons/sample-avatar-profile.svg') }}" alt="">
+                        <img src="{{ asset('images/profile.png') }}" alt="">
                         <p class="ml-[13.54px] text-[11px] font-semibold">{{ Auth::user()->name }}</p>
                         <img src="{{ asset('images/icon/arrow-down.svg') }}" class="ml-[6.77px]" alt="">
                     </label>

@@ -62,82 +62,41 @@ Checkout Product
             </div>
             <div class="mb-4">
                 <div class="flex justify-between">
-                    <h3 class="text-[16px] font-semibold">Pengguna Referral</h3>
+                    <h3 class="text-[18px] font-semibold">Pengguna Referral</h3>
                 </div>
-                <h4 class="mt-[10px] text-[16px] text-[#969EBA]">Total Pengguna Yang Menggunakan Referral Anda</h4>
-                <h3 class="text-[18px] font-semibold">{{ count($referals) }} Akun Referral</h3>
+                <h4 class="mt-[10px] text-[12px] text-[#969EBA]">Total Pengguna Yang Menggunakan Referral Anda</h4>
+                <h3 class="text-[16px] font-semibold">{{ count($referals) }} Akun Referral</h3>
             </div>
         </div>
     </div>
-    <!-- <div class="rounded-xl border p-[20.23px]">
-        <h3 class="mb-[34px] text-[16.93px] font-semibold">Riwayat Pembelian</h3>
-        <div class="p-[20.20px]">
+    <div class="rounded-xl border p-[10px]">
+        <h3 class="mb-[5px] text-[16.93px] font-semibold px-[10px]">Riwayat Pembelian</h3>
+        <div class="p-[10px]">
+            <div class="rounded-xl bg-white p-[20.32px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)] mt-5 overflow-x-auto">
 
-            <div class="flex items-center justify-end gap-[14px]">
-                <select name="" id="" class="h-[33.86px] w-[331.85px] rounded-[10.16px] border bg-white text-[12.7px] text-[#969EBA]">
-                    <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
-                    <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
-                    <option value="">30 Hari Terakhir (26 Sep 2023 - 26 Oct 2023)</option>
-                </select>
-            </div>
-            <div class="rounded-xl bg-white p-[20.32px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)] mt-5">
-
-                <table class="w-full">
+                <table class="w-full table-auto">
                     <thead class="text-md font-semibold">
                         <tr class="border-b border-[#969EBA]">
-                            <th class="p-[10px]">
-                                <div class="flex items-center gap-[2.66px]">
-                                    <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
-                                    <p>Jenis Transaksi</p>
-                                </div>
+                            <th class="p-[10px] text-[10px] text-center">
+                                <p>Nama Pengguna</p>
                             </th>
-                            <th class="p-[10px]">
-                                <div class="flex items-center gap-[2.66px]">
-                                    <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
-                                    <p>Nominal</p>
-                                </div>
-                            </th>
-                            <th class="p-[10px]">
-                                <div class="flex items-center gap-[2.66px]">
-                                    <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
-                                    <p>Total Komisi</p>
-                                </div>
-                            </th>
-                            <th class="p-[10px]">
-                                <div class="flex items-center gap-[2.66px]">
-                                    <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
-                                    <p>Tanggal</p>
-                                </div>
-                            </th>
-                            <th class="p-[10px]">
-
-                                <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
-
+                            <th class="p-[10px] text-[10px] text-center">
+                                <p>Tanggal</p>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b border-[#969EBA]">
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
+                        @foreach($referals as $referal)
+                        <tr class="border-b border-[rgb(150,158,186)]">
+                            <td class="p-[10px] text-[10px] text-center">{{ $referal->name }}</td>
+                            <td class="p-[10px] text-[10px] text-center">{{$referal->created_at}}</td>
                         </tr>
-                        <tr class="border-b border-[#969EBA]">
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                            <td class="p-[10px]">-</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-    </div> -->
+    </div>
 </section>
 <!-- end mobile -->
 @endsection

@@ -28,6 +28,7 @@ class MemberProfileController extends Controller
         $userBiodata = UserBiodata::where('user_id', $id)->first();
         $userBiodata->update(
             [
+                'alamat_lengkap' => $request->alamat_lengkap,
                 'nik' => $request->nik,
                 'no_whatsapp' => $request->no_whatsapp
             ]

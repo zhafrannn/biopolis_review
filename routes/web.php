@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminBankReplacementController;
 use App\Utilities\GenerateRefferal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestingController;
@@ -28,6 +29,7 @@ use App\Http\Controllers\admin\AdminTestimonyController;
 use App\Http\Controllers\admin\AdminUserManagementController;
 use App\Http\Controllers\guest\DownloadPdfController;
 use App\Http\Controllers\member\MemberBankReplacementController;
+use App\Http\Controllers\member\MemberProductPurchasedController;
 use App\Http\Controllers\member\MemberProfileController;
 use App\Http\Controllers\member\MemberReferalController;
 use App\Http\Controllers\member\MemberWithdrawController;
@@ -100,9 +102,7 @@ Route::prefix('member')->group(function () {
 
     Route::post('/bank-replacement', [MemberBankReplacementController::class, 'store'])->name('bank');
 
-    Route::get('/info-produk', function () {
-        return view('pages.member.info-produk.index');
-    });
+    Route::get('/info-produk', [MemberProductPurchasedController::class, 'index']);
 
     Route::get('/referral', [MemberReferalController::class, 'index']);
 });
@@ -190,10 +190,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/pengajuan-penukaran-poin', [AdminPointController::class, "store"]);
     Route::post('/pengajuan-penukaran-poin/cancel', [AdminPointController::class, "delete"]);
 
-    // 
-    Route::get('/pengajuan-penggantian-rekening', function () {
-        return view('pages.admin.pengajuan-penggantian-rekening.index');
-    });
+    Route::get('/pengajuan-penggantian-rekening', [AdminBankReplacementController::class, "index"]);
+    Route::post('/pengajuan-penggantian-rekening/{id}', [AdminBankReplacementController::class, "update"]);
 });
 
 
