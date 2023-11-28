@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\TestingController;
+use App\Models\City;
 use App\Models\Product;
+use App\Models\Province;
 use App\Models\User;
 use App\Models\UserBiodata;
 use App\Models\UserPayment;
@@ -22,14 +24,9 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        $raja_ongkir_get_cities = Http::withHeaders([
-            'key' => env('RAJA_ONGKIR_API_KEY'),
-        ])->get('https://api.rajaongkir.com/starter/city');
-        $cities = $raja_ongkir_get_cities['rajaongkir']['results'];
-        $raja_ongkir_get_province = Http::withHeaders([
-            'key' => env('RAJA_ONGKIR_API_KEY'),
-        ])->get('https://api.rajaongkir.com/starter/province');
-        $provincies = $raja_ongkir_get_province['rajaongkir']['results'];
+
+        $cities = City::all();
+        $provincies = Province::all();
 
         return view('pages.guest.register.index', compact('cities', 'provincies'));
     }
