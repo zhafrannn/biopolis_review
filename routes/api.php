@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TestingController;
@@ -25,3 +26,5 @@ Route::post('/webhook-xendit', [PaymentController::class, 'webhook_payment']);
 Route::get('/notification/user/{id}', [NotificationController::class, 'index']);
 
 Route::post('/testing-dummy', [TestingController::class, "dropAllTables"]);
+
+Route::get('/get-address', [AddressController::class, 'index']);

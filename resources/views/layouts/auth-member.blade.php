@@ -32,10 +32,7 @@
 
     <script>
         $('#page').hide()
-        console.log("di luar");
         $(document).ready(function() {
-            console.log("di dalam");
-
             setTimeout(() => {
                 $('#loading-page').hide()
                 $('#page').show()

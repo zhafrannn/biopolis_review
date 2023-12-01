@@ -14,12 +14,12 @@ Point
 </div>
 <h2 class="mb-[19.95px] text-[27.09px] font-semibold">Notifikasi</h2>
 <div class="rounded-2xl border border-[#E5E5E5] w-[100%] " style="box-shadow: 0px 4px 15px 7px rgba(0, 0, 0, 0.15);">
-    <div class="flex">
+    <!-- <div class="flex">
         <button class="py-4 px-8 text-[20px] text-primary font-semibold">Semua</button>
         <button class="py-4 px-8 text-[20px] text-[#0A0A0B] font-semibold">Transaksi</button>
         <button class="py-4 px-8 text-[20px] text-[#0A0A0B] font-semibold">Referral</button>
         <button class="py-4 px-8 text-[20px] text-[#0A0A0B] font-semibold">Info</button>
-    </div>
+    </div> -->
     <a href="">
         <div class="h-[151px] bg-[#F2FFF5] w-[100%] px-8 py-8">
             <div class="flex items-center gap-1 mb-4">

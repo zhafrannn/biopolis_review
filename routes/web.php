@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminBalanceController;
 use App\Http\Controllers\admin\AdminBankReplacementController;
 use App\Utilities\GenerateRefferal;
 use Illuminate\Support\Facades\Route;
@@ -181,9 +182,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         // });
     });
 
-    Route::get('/pengajuan-pencairan', function () {
-        return view('pages.admin.pengajuan-pencairan.index');
-    });
+    Route::get('/pengajuan-pencairan', [AdminBalanceController::class, "index"]);
+    Route::post('/pengajuan-pencairan/{id}', [AdminBalanceController::class, "update"]);
 
     // User Withdraw Point
     Route::get('/pengajuan-penukaran-poin', [AdminPointController::class, "index"]);

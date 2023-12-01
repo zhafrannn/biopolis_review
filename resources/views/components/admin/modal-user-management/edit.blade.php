@@ -52,22 +52,42 @@
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="no_rekening" value="{{$member->user_biodata->no_rekening}}">
                     </div>
                 </div>
+                <?php
+                $provinsi = explode("-", $member->user_biodata->provinsi);
+                $kota = explode("-", $member->user_biodata->kota);
+                ?>
                 <div class="flex justify-between">
                     <div class="mt-9 flex w-[450px] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Provinsi</label>
-                        <select required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->user_biodata->provinsi}}" name="provinsi">
+                        <select id="provincy-select-edit" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->user_biodata->provinsi}}" name="provinsi">
                             @foreach ($provincies as $item)
-                            <option value="{{ $item['province_id'] }}-{{ $item['province'] }}">{{ $item['province'] }}
+                            @if($provinsi[0] == $item['id'])
+                            <option value="{{ $item['id'] }}-{{ $item['province_name'] }}" selected>
+                                {{ $item['province_name'] }}
                             </option>
+                            @else
+                            <option value="{{ $item['id'] }}-{{ $item['province_name'] }}">
+                                {{ $item['province_name'] }}
+                            </option>
+                            @endif
                             @endforeach
                         </select>
                     </div>
                     <div class="mt-9 flex w-[450px] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Kota</label>
-                        <select type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->user_biodata->kota}}" name="kota">
+                        <select id="city-select-edit" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="kota">
+
                             @foreach ($cities as $item)
-                            <option value="{{ $item['city_id'] }}-{{ $item['city_name'] }}">{{ $item['city_name'] }}
+                            @if($kota[0] == $item['city_id'])
+                            <option value="{{ $item['city_id'] }}-{{ $item['city_name'] }}" selected>
+                                {{ $item['city_name'] }} ({{ $item['type'] }})
                             </option>
+                            @else
+                            <option value="{{ $item['city_id'] }}-{{ $item['city_name'] }}">
+                                {{ $item['city_name'] }} ({{ $item['type'] }})
+                            </option>
+                            @endif
+
                             @endforeach
                         </select>
                     </div>
@@ -102,3 +122,25 @@
         </div>
     </div>
 </dialog>
+
+<script>
+    $('#provincy-select-edit').on('change', (e) => {
+        showCity = [];
+        let element = '';
+        let value = e.target.value.split('-');
+        let selectValue = parseInt(value[0]);
+        console.log(selectValue);
+        cityArrayData.forEach(item => {
+            if (selectValue == item.province_id) {
+                element += `
+                    <option value="${item.city_id}-${item.city_name}">
+                        ${item.city_name} (${item.type})
+                    </option>
+                    `
+            };
+        });
+        $('#city-select-edit').html(element)
+    })
+
+    console.log("Data", provinceArrayData);
+</script>

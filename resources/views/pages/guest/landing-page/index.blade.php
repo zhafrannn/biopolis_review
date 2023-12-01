@@ -11,13 +11,13 @@ $str1 = explode(" ", $teks_judul_tentang_kami_1->value);
                 <p class="text-[8px] lg:mb-[37px] lg:text-[21px] lg:leading-[30px]">
                     {{ $teks_sub_judul_tentang_kami_1->value }}
                 </p>
-                <a href="{{route('register')}}" class="hidden justify-center bg-primary text-white lg:flex lg:w-[210px] lg:rounded-[16px] lg:px-[30px] lg:py-[20px]">Order
+                <a href="{{route('login')}}" class="hidden justify-center bg-primary text-white lg:flex lg:w-[210px] lg:rounded-[16px] lg:px-[30px] lg:py-[20px]">Order
                     Sekarang</a>
     </div>
     <div class="flex flex-col items-center">
         <img src="{{ asset('images/'. $gambar_tentang_kami_1->value) }}" alt="" class="w-[303.836px] lg:w-[359px]">
         <!-- button Mobile -->
-        <a href="{{route('register')}}" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
+        <a href="{{route('login')}}" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
             Sekarang</a>
         <!-- end button mobile -->
     </div>
@@ -97,7 +97,7 @@ $num = count($str2);
             <h1 class="mb-[10px] text-[50px] font-bold leading-[77.77px]">@for($i=0; $i< (count($str2)-1); $i++) {{ $str2[$i] . " " }} @endfor <span class="text-primary">{{ $str2[$num - 1] }}</span>
             </h1>
             <p class="mb-[37px] w-[554px] text-[20px]">{{$teks_sub_judul_tentang_kami_2->value}}</p>
-            <a href="{{route('register')}}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
+            <a href="{{route('login')}}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
         </div>
     </div>
 </section>
@@ -112,7 +112,7 @@ $num = count($str2);
             <h1 class="mb-[10px] text-[20px] font-bold leading-[77.77px]">@for($i=0; $i< (count($str2)-1); $i++) {{ $str2[$i] . " " }} @endfor <span class="text-primary">{{ $str2[$num - 1] }}</span>
             </h1>
             <p class="text-[10px]">{{$teks_sub_judul_tentang_kami_2->value}}</p>
-            <a href="{{route('register')}}" class="my-4 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
+            <a href="{{route('login')}}" class="my-4 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
                 Sekarang</a>
         </div>
     </div>
@@ -292,11 +292,11 @@ $str4 = explode(" ", $teks_judul_manfaat_1->value);
         <img src="{{ asset('images/'. $gambar_kemitraan_1) }}" alt="">
     </div>
     <div class="hidden justify-center lg:flex">
-        <a href="{{route('register')}}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
+        <a href="{{route('login')}}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
     </div>
     <!-- mobile -->
     <div class="flex justify-center lg:hidden">
-        <a href="{{route('register')}}" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
+        <a href="{{route('login')}}" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
             Sekarang</a>
     </div>
     <!-- end mobile -->
@@ -338,7 +338,7 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
                     </h3>
                     <div class="flex items-center gap-[28px]">
 
-                        <a href="{{route('register')}}" class="rounded-[16px] border border-primary bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
+                        <a href="{{route('login')}}" class="rounded-[16px] border border-primary bg-primary px-[30px] py-[20px] text-white">Order Sekarang</a>
 
                         <a href="{{ url('/reseller_biopolis') }}" class="flex items-center justify-center gap-5 rounded-[16px] border border-primary bg-white px-[30px] py-[20px] text-primary">
                             <p>
@@ -391,7 +391,7 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
 
                     <h3 class="mb-[29px] text-[16px] font-bold">{{$teks_sub_judul_kemitraan_11_3->value}}</h3>
                     <div class="flex items-center gap-[28px] px-[37px]">
-                        <a href="{{route('register')}}" class="rounded-[9px] border border-primary bg-primary p-[9.714px_14.571px] text-[9.714px] text-white">Order
+                        <a href="{{route('login')}}" class="rounded-[9px] border border-primary bg-primary p-[9.714px_14.571px] text-[9.714px] text-white">Order
                             Sekarang</a>
 
                         <a href="{{ url('/reseller_biopolis') }}" class="flex items-center justify-center gap-5 rounded-[9px] border border-primary bg-white p-[9.714px_14.571px] text-[9.714px] text-primary">
@@ -594,24 +594,21 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
                             {{ $testimony->name }}
                         </h3>
                         <p class="mb-[18px] text-[8.513px] text-[#969EBA]">{{ $testimony->age }} Tahun</p>
-                        <p class="mb-[18px] max-w-[400px] text-[6.81px] text-black">Saya seornag pekerja keras dan
-                            {{ $testimony->description }}
+                        <p class="mb-[18px] max-w-[400px] text-[6.81px] text-black">{{ $testimony->description }}
                         </p>
                         {{-- start: rating star --}}
                         <div class="flex gap-1">
-                            @for($i=0; $i<$testimony->rate; $i++) <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            @for($i=0; $i<$testimony->rate; $i++)
+                                <svg width="9.79" height="9.79" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M8.54894 0.927051C8.8483 0.00574017 10.1517 0.00573993 10.4511 0.927051L11.8574 5.25532C11.9913 5.66734 12.3752 5.9463 12.8085 5.9463H17.3595C18.3282 5.9463 18.731 7.18592 17.9473 7.75532L14.2654 10.4303C13.9149 10.685 13.7683 11.1364 13.9021 11.5484L15.3085 15.8766C15.6078 16.798 14.5533 17.5641 13.7696 16.9947L10.0878 14.3197C9.7373 14.065 9.2627 14.065 8.91221 14.3197L5.23037 16.9947C4.44665 17.5641 3.39217 16.798 3.69153 15.8766L5.09787 11.5484C5.23174 11.1364 5.08508 10.685 4.7346 10.4303L1.05275 7.75532C0.269035 7.18592 0.67181 5.9463 1.64053 5.9463H6.19155C6.62477 5.9463 7.00873 5.66734 7.1426 5.25532L8.54894 0.927051Z" fill="#FFCC00" />
                                 </svg>
                                 @endfor
-
                         </div>
                         {{-- end: rating star --}}
                     </div>
                     {{-- end: Card --}}
                 </div>
                 @endforeach
-
-
             </div>
         </div>
     </div>
@@ -695,7 +692,7 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
     <div class="flex justify-center">
         <div class="flex items-center gap-[28px]">
 
-            <a href="{{route('register')}}" class="rounded-[16px] border border-primary bg-primary px-[30px] py-[20px] text-white">Order
+            <a href="{{route('login')}}" class="rounded-[16px] border border-primary bg-primary px-[30px] py-[20px] text-white">Order
                 Sekarang</a>
 
             <a href="{{$link_button_whatsapp->value}}" target="_blank" class="flex items-center justify-center gap-5 rounded-[16px] border border-primary bg-white px-[30px] py-[20px] text-primary">
@@ -724,7 +721,7 @@ $str5 = explode(" ", $teks_judul_kemitraan_10->value);
     </div>
     <div class="flex justify-center">
         <div class="flex items-center gap-[10px]">
-            <a href="{{route('register')}}" class="text rounded-[8px] border border-primary bg-primary p-[9.714px_14.571px] text-[9.714px] text-white">Order
+            <a href="{{route('login')}}" class="text rounded-[8px] border border-primary bg-primary p-[9.714px_14.571px] text-[9.714px] text-white">Order
                 Sekarang</a>
             <a href="{{$link_button_whatsapp->value}}" target="_blank" class="flex items-center justify-center gap-1 rounded-[8px] border border-primary bg-white p-[9.714px_14.571px] text-[9.714px] text-primary">
                 <svg width="13.6" height="13.6" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">

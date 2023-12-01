@@ -23,12 +23,12 @@
                 </div>
                 <div class="flex justify-between">
                     <div class="mt-9 flex w-[450px] flex-col">
-                        <label for="" class="text-[13.54px] text-[#0A0A0B]">Nik</label>
-                        <input type="text" required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="nik">
+                        <label for="" class="text-[13.54px] text-[#0A0A0B]">NIK</label>
+                        <input type="number" required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="nik">
                     </div>
                     <div class="mt-9 flex w-[450px] flex-col">
-                        <label for="" class="text-[13.54px] text-[#0A0A0B]">Nomor Telepon</label>
-                        <input type="text" required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="no_whatsapp">
+                        <label for="" class="text-[13.54px] text-[#0A0A0B]">Nomor WhatsApp</label>
+                        <input type="number" required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="no_whatsapp">
                     </div>
                 </div>
                 <div class="flex justify-between">
@@ -48,24 +48,26 @@
                     </div>
                     <div class="mt-9 flex w-[450px] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nomor Rekening</label>
-                        <input type="text" required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="no_rekening">
+                        <input type="number" required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="no_rekening">
                     </div>
                 </div>
                 <div class="flex justify-between">
                     <div class="mt-9 flex w-[450px] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Provinsi</label>
-                        <select required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="provinsi">
+                        <select required id="provincy-select-create" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="provinsi">
                             @foreach ($provincies as $item)
-                            <option value="{{ $item['province_id'] }}-{{ $item['province'] }}">{{ $item['province'] }}
+                            <option value="{{ $item['id'] }}-{{ $item['province_name'] }}">
+                                {{ $item['province_name'] }}
                             </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mt-9 flex w-[450px] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Kota</label>
-                        <select required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="kota">
+                        <select required id="city-select-create" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="kota">
                             @foreach ($cities as $item)
-                            <option value="{{ $item['city_id'] }}-{{ $item['city_name'] }}">{{ $item['city_name'] }}
+                            <option value="{{ $item['city_id'] }}-{{ $item['city_name'] }}">
+                                {{ $item['city_name'] }} ({{ $item['type'] }})
                             </option>
                             @endforeach
                         </select>
@@ -83,7 +85,7 @@
                     </div>
                     <div class="mt-9 flex w-[450px] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nomor Kontak Darurat</label>
-                        <input type="text" required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="nomor_kontak_darurat">
+                        <input type="number" required class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="nomor_kontak_darurat">
                     </div>
                 </div>
                 <div class="flex justify-between">
@@ -105,3 +107,29 @@
         </div>
     </div>
 </dialog>
+
+<script>
+    let cityArrayData = @json($cities);
+    let provinceArrayData = @json($provincies);
+    let showCity = [];
+
+    $('#provincy-select-create').on('change', (e) => {
+        showCity = [];
+        let element = '';
+        let value = e.target.value.split('-');
+        let selectValue = parseInt(value[0]);
+        console.log(selectValue);
+        cityArrayData.forEach(item => {
+            if (selectValue == item.province_id) {
+                element += `
+                    <option value="${item.city_id}-${item.city_name}">
+                        ${item.city_name} (${item.type})
+                    </option>
+                    `
+            };
+        });
+        $('#city-select-create').html(element)
+    })
+
+    console.log("Data", provinceArrayData);
+</script>

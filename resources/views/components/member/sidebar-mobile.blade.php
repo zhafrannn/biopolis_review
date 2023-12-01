@@ -14,16 +14,15 @@
                         <p class="ml-[13.54px] text-[16.93px]">{{ Auth::user()->user_biodata->no_whatsapp }}</p>
                     </div>
                 </div>
-                <img src="{{ asset('images/icon/arrow-down.svg') }}" class="ml-[6.77px]" alt="">
             </div>
             <div class="flex flex-col gap-[40px] text-[16px]">
-                <a href="{{ url('/user/dashboard') }}" class="font-semibold">
+                <a href="{{ url('/member/dashboard') }}" class="font-semibold hover:text-primary {{ request()->is('member/dashboard') ? 'text-primary' : '' }}">
                     <p>Dashboard</p>
                 </a>
-                <a href="{{ url('/member/product') }}" class="font-semibold">
+                <a href="{{ url('/member/product') }}" class="font-semibold hover:text-primary {{ request()->is('member/product') ? 'text-primary' : '' }}">
                     <p>Produk</p>
                 </a>
-                <a href="{{ url('/member/transaction') }}" class="font-semibold">
+                <a href="{{ url('/member/transaction') }}" class="font-semibold hover:text-primary {{ request()->is('member/transaction') ? 'text-primary' : '' }}">
                     <p>Transaksi</p>
                 </a>
             </div>
@@ -33,11 +32,11 @@
             <div class="flex flex-col justify-between">
                 <div class="rounded-xl border p-[12px_16px]">
                     <p class="text-[16px] font-semibold ">Pengaturan Akun</p>
-                    <button onclick="HandleUbahProfile()" class="flex items-center gap-2 mt-3">
+                    <button onclick="HandleUbahProfile()" class="flex items-center gap-2 mt-3 hover:text-primary">
                         <img src="{{asset('images/icons/edit.svg')}}" alt="edit" class="w-[30px]">
                         <p class="text-[16px] font-medium">Ubah profile</p>
                     </button>
-                    <button onclick="HandleUbahRekening()" class="flex items-center gap-2 mt-3">
+                    <button onclick="HandleUbahRekening()" class="flex items-center gap-2 mt-3 hover:text-primary">
                         <img src="{{asset('images/icons/card-profile.svg')}}" alt="" class="w-[30px]">
                         <p class="text-[16px] font-medium">Ubah Rekening</p>
                     </button>

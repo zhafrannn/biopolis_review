@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class MemberProfileController extends Controller
 {
+    public function index()
+    {
+    }
     public function update($id, Request $request)
     {
         $user = User::where('id', $id)->first();
