@@ -15,11 +15,7 @@ class AdminDashboardController extends Controller
 
     public function index()
     {
-        $user = Auth::user(); // Mengambil informasi user yang sedang login
-        // Cek apakah pengguna sudah login dan perannya adalah 'admin'
-        if (!$user || $user->role !== 'admin') {
-            return abort(403); // Redirect ke halaman login jika bukan admin
-        }
+
 
 
         $paids = UserPayment::where('status', 'paid')->get();

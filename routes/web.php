@@ -64,13 +64,12 @@ Route::get('/logout', [LogoutController::class, 'index'])->middleware('auth');
 
 // -----------Start User---------------------
 Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->middleware('auth');
-
 Route::post('/user-payment-activation', [UserPaymentController::class, 'store'])->middleware('auth');
 // -----------End User---------------------
 
 
 // -----------Start Member---------------------
-Route::prefix('member')->group(function () {
+Route::middleware(['auth'])->prefix('member')->group(function () {
     // Dashboard
     Route::get('/dashboard', [MemberDashboardController::class, 'index'])->middleware('auth');
     // Product
@@ -108,26 +107,12 @@ Route::prefix('member')->group(function () {
     Route::get('/referral', [MemberReferalController::class, 'index']);
 });
 
-Route::get('/withdraw-affiliate', function () {
-    return view('pages.member.withdraw-affiliate.index');
-});
-Route::get('/notification', function () {
-    return view('pages.member.notification.index');
-});
+
 // -----------End Member---------------------
 
 
 // -----------Start Role Admin---------------------
-Route::get('/testing-asd', function () {
-    return view('pages.admin.content-management-system.index');
-});
-
-Route::get('/testing-123', function () {
-    return view('pages.admin.content-management-system.index');
-})->name('cms_update');
-
-
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index']);
 
     Route::get('/content-management', [AdminContentManagementSystemController::class, 'edit']);
@@ -173,13 +158,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::get('/', [AdminUserManagementController::class, 'index']);
         Route::post('/create', [RegisterController::class, 'store']);
         Route::put('/update/{id}', [AdminUserManagementController::class, 'update']);
-
-        // Route::get('/show', function () {
-        //     return view('pages.admin.user-management.show');
-        // });
-        // Route::get('/edit', function () {
-        //     return view('pages.admin.user-management.edit');
-        // });
     });
 
     Route::get('/pengajuan-pencairan', [AdminBalanceController::class, "index"]);
@@ -197,3 +175,30 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 Route::get('/testing-email', [EmailController::class, "index"]);
 // -----------End Role Admin---------------------
+
+
+// Bisi Kepake
+// Route::get('/withdraw-affiliate', function () {
+//     return view('pages.member.withdraw-affiliate.index');
+// });
+// Route::get('/notification', function () {
+//     return view('pages.member.notification.index');
+// });
+// Route::get('/show', function () {
+//     return view('pages.admin.user-management.show');
+// });
+// Route::get('/edit', function () {
+//     return view('pages.admin.user-management.edit');
+// });
+// Route::get('/testing-asd', function () {
+//     return view('pages.admin.content-management-system.index');
+// });
+
+// Route::get('/testing-123', function () {
+//     return view('pages.admin.content-management-system.index');
+// })->name('cms_update');
+
+Route::get('/send-password', function () {
+    $password = "asdqwe123";
+    return bcrypt($password);
+});

@@ -18,7 +18,7 @@ class MemberTransactionController extends Controller
 
         $transaction = UserPayment::where('user_id', Auth::user()->id)->where("status", "!=", "pending")->latest()->get();
 
-        $user_payment_failed = UserPayment::where('status', 'pending')->whereDate('valid_until', '<=', $currentDate)->latest()->get();
+        $user_payment_failed = UserPayment::where('status', 'pending')->where('user_id', Auth::user()->id)->whereDate('valid_until', '<=', $currentDate)->latest()->get();
 
         return view('pages.member.transaksi.index', compact('transaction', 'user_payment_failed'));
     }
