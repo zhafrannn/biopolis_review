@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendEmailBalance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Xendit\Configuration;
 use Illuminate\Support\Str;
 use Xendit\Invoice\InvoiceApi;
@@ -65,31 +67,22 @@ class TestingController extends Controller
         // return dd($createInvoice);
     }
 
-    // $params = [
-    //     'external_id' => string Str:uuid(),
-    // ];
-
-    // $city_id = explode('-', '440-Sumedang');
-
-    // $response = Http::withHeaders([
-    //     'key' => env('RAJA_ONGKIR_API_KEY'),
-    // ])->post('https://api.rajaongkir.com/starter/cost', [
-    //     'origin' => env('RAJA_ONGKIR_ORIGIN_ID'),
-    //     'destination' => $city_id[0],
-    //     'weight' => 1000,
-    //     "courier" => 'jne'
-    // ]);
-    // $courier_cost = $response['rajaongkir']['results'][0]['costs'][1]['cost'][0]['value'];
-
-
-    // dd($response->json(), $courier_cost);
-    // return 'asdasdasdasd';
-    //     }
+    public function testing_email_balance()
+    {
+        $email = [
+            "kode_pencairan" => "WDB-123-123-123",
+            "tanggal" => "12 Januari 2024",
+            "total_pencairan" => 300000,
+            "keterangan" => "Pencairan komisi senilai Rp.300.000,-",
+            "rekening" => "1239102303" . " " . "(BCA)",
+        ];
+        Mail::to("hanggityasri@gmail.com")->send(new SendEmailBalance($email));
+        return 'email was sent';
+    }
 
     public function dropAllTables(Request $request)
     {
         // Export dulu terus taruh ke folder storage
-
         // Kirim ke drive
 
         // Delete

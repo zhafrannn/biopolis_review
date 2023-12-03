@@ -176,6 +176,9 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
 
 
 Route::get('/testing-email', [EmailController::class, "index"]);
+Route::get('/testing-email-balance', [TestingController::class, "testing_email_balance"]);
+
+
 // -----------End Role Admin---------------------
 
 
