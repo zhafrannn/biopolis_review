@@ -160,7 +160,9 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
         Route::put('/update/{id}', [AdminUserManagementController::class, 'update']);
     });
 
+    // User Withdraw Balance
     Route::get('/pengajuan-pencairan', [AdminBalanceController::class, "index"]);
+    Route::post('/pengajuan-pencairan', [AdminBalanceController::class, "store"]);
     Route::post('/pengajuan-pencairan/{id}', [AdminBalanceController::class, "update"]);
 
     // User Withdraw Point

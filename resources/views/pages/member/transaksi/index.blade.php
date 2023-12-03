@@ -11,16 +11,17 @@
         </div>
 
         <!-- <div class="mb-[28px] flex flex-col items-center justify-between gap-2 lg:flex-row">
-                        <div class="flex flex-col items-center lg:flex-row">
-                            <p class="mr-[27px] text-[13px] font-semibold">Status</p>
-                            <div class="flex items-center gap-2 lg:gap-[13px]">
-                                <button id="button-tab-all" onclick="HandleTab('tab-all')" class="rounded-xl border border-primary bg-primary bg-opacity-20 px-[20.32px] py-[6.77px] text-[13.54px] text-primary">Semua</button>
-                                <button id="button-tab-packing" onclick="HandleTab('tab-packing')" class="rounded-xl border border-[#969EBA] px-[20.32px] py-[6.77px] text-[13.54px] text-[#969EBA]">Dikemas</button>
-                                <button id="button-tab-completed" onclick="HandleTab('tab-completed')" class="rounded-xl border border-[#969EBA] px-[20.32px] py-[6.77px] text-[13.54px] text-[#969EBA]">Sudah
-                                    Dikirim</button>
-                            </div>
-                        </div>
-                    </div> -->
+                                                                                                                    <div class="flex flex-col items-center lg:flex-row">
+                                                                                                                        <p class="mr-[27px] text-[13px] font-semibold">Status</p>
+                                                                                                                        <div class="flex items-center gap-2 lg:gap-[13px]">
+                                                                                                                            <button id="button-tab-all" onclick="HandleTab('tab-all')" class="rounded-xl border border-primary bg-primary bg-opacity-20 px-[20.32px] py-[6.77px] text-[13.54px] text-primary">Semua</button>
+                                                                                                                            <button id="button-tab-packing" onclick="HandleTab('tab-packing')" class="rounded-xl border border-[#969EBA] px-[20.32px] py-[6.77px] text-[13.54px] text-[#969EBA]">Dikemas</button>
+                                                                                                                            <button id="button-tab-completed" onclick="HandleTab('tab-completed')" class="rounded-xl border border-[#969EBA] px-[20.32px] py-[6.77px] text-[13.54px] text-[#969EBA]">Sudah
+                                                                                                                                Dikirim</button>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div> -->
+
 
         <a href="{{ url('/member/transaction/waiting-order') }}">
             <div class="mb-[20px] flex justify-between rounded-xl border border-[#969EBA] p-[13.54px]">
@@ -30,6 +31,13 @@
                     <p class="text-[16.93px]">Menunggu Pembayaran</p>
                 </div>
                 <div class="flex items-center">
+
+                    @if ($count_waiting_transaction !== 0)
+                        <div class="min-w-[20px] rounded-md bg-error px-1 text-center text-white">
+                            {{ $count_waiting_transaction }}
+                        </div>
+                    @endif
+
                     <img src="{{ asset('images/icons/arrow-right.svg') }}" alt="">
                 </div>
             </div>
@@ -41,7 +49,7 @@
                 {{-- start: Card --}}
                 <div class="mb-[20px] rounded-xl bg-white p-[20.32px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)]">
                     <div class="mb-[20.86px] flex flex-col gap-[13.54px] lg:flex-row lg:items-center">
-                        <div class="flex items-start gap-[3.39px] lg:items-center">
+                        <div class="flex items-start justify-between gap-[3.39px] lg:items-center">
                             <img src="{{ asset('images/icons/profile.svg') }}" alt="">
                             <p class="font-semibold">{{ Auth::user()->name }}</p>
                             <p class="text-[13px]">{{ $item->date }}</p>
@@ -52,6 +60,12 @@
                                 </div>
                             @endif
 
+                            @if ($item->shipping_status == 'deliver')
+                                <div class="rounded-[5px] bg-[#FFF7F2] px-[6.67px] py-[3.39px] text-[#FF8345]">
+                                    <p class="text-[10px] font-semibold">Dikirim</p>
+                                </div>
+                            @endif
+
                         </div>
                         <div class="flex items-center gap-1">
                             <p class="text-[13.54px] font-semibold">No Invoice : </p>
@@ -59,7 +73,12 @@
                         </div>
                         <div class="flex items-center gap-1">
                             <p class="items-center text-[13.54px] font-semibold">No Resi :</p>
-                            <p class="text-[13.54px]">{{ $item->shipping_code }}</p>
+                            @if ($item->shipping_status == 'deliver')
+                                <p class="text-[13.54px]">{{ $item->shipping_code }}</p>
+                            @endif
+                            @if ($item->shipping_status == 'packing')
+                                <p class="text-[13.54px]">Menunggu dikirim</p>
+                            @endif
                         </div>
                     </div>
 
@@ -152,7 +171,10 @@
                                             </tr>
                                             <tr>
                                                 <td>No Resi</td>
-                                                <td>: -</td>
+                                                <td>: @if ($item->shipping_status != 'packing')
+                                                        {{ $item->shipping_code }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>

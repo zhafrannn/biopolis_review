@@ -99,7 +99,7 @@ class MemberPointController extends Controller
                     $my_point_from_buy_a_product += $product->point;
 
                     $income_point_data_buy_product[] = [
-                        "description" =>  "Anda mendapatkan point dari pembelian produk ",
+                        "description" =>  "Kamu mendapatkan point dari pembelian produk " . $product->product_name . ' Propolis Biopolis',
                         "date" => $payment->date,
                         "point" => $product->point,
                     ];

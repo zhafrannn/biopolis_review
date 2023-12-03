@@ -53,7 +53,7 @@
                             <p class="text-[13px]">{{ $item->created_at }}</p>
                         </div>
                         <div>
-                            <p class="text-[15px] font-semibold">No Pencairan : {{ $item->withdraw_code }}</p>
+                            <p class="text-[15px] font-semibold">Kode Pencairan : {{ $item->withdraw_code }}</p>
                         </div>
                     </div>
                     <div class="grid grid-cols-2">
@@ -194,7 +194,7 @@
                                 <p class="text-[13px]">{{ $item->created_at }}</p>
                             </div>
                             <div>
-                                <p class="text-[15px] font-semibold">No Pencairan : {{ $item->withdraw_code }}</p>
+                                <p class="text-[15px] font-semibold">Kode Pencairan : {{ $item->withdraw_code }}</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-2">
@@ -253,7 +253,7 @@
                                 <p class="text-[13px]">{{ $item->created_at }}</p>
                             </div>
                             <div>
-                                <p class="text-[15px] font-semibold">No Pencairan : {{ $item->withdraw_code }}</p>
+                                <p class="text-[15px] font-semibold">Kode Pencairan : {{ $item->withdraw_code }}</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-2">
