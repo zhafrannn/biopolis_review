@@ -180,12 +180,9 @@
                                                                         <tr>
 
                                                                             <td style="padding-bottom:16px">
-
                                                                                 <p
                                                                                     style="margin:0 0 2px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#727579">
-
-                                                                                    Tanggal Pencairan
-
+                                                                                    Tanggal Pengajuan
                                                                                 </p>
 
                                                                                 <p

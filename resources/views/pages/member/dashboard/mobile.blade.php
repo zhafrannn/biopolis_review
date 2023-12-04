@@ -5,8 +5,9 @@
     </div> -->
     <div class="mt-6">
         <div class="w-full">
-            <div class="mb-6 w-[100%]">
-                <div class="relative z-0 rounded-xl px-6 pb-6 pt-6" style="box-shadow: 0px 4px 15px 7px rgba(0, 0, 0, 0.15);">
+            <div class="mb-6 w-full">
+                <div class="relative z-0 rounded-xl px-6 pb-6 pt-6"
+                    style="box-shadow: 0px 4px 15px 7px rgba(0, 0, 0, 0.15);">
                     <div class="absolute left-0 top-0 h-[5px] w-[100%] px-6 py-0">
                         <div class="h-1 w-[100%] rounded-[0px_0px_16px_16px] border-primary bg-primary"></div>
                     </div>
@@ -16,55 +17,69 @@
                     </div>
                     <div class="mb-2">
                         <p class="text-[20px] font-semibold">
-                            Rp{{ number_format(Auth::user()->user_wallet->current_balance) }}</p>
+                            Rp{{ number_format(Auth::user()->user_wallet->current_balance) }}
+                        </p>
                         <p class="text-[#color: #969EBA] text-[14px]">
-                            Rp{{ number_format(Auth::user()->user_wallet->current_balance) }}</p>
+                            Rp{{ number_format($data['my_balance_from_user_register_use_my_referal'] + $data['my_balance_from_user_repeat_order']) }},-
+                        </p>
                     </div>
-                    <a href="{{ url('/member/balance') }}" class="btn btn-primary flex w-full justify-items-center text-white">Cairkan</a>
+                    <a href="{{ url('/member/balance') }}"
+                        class="btn btn-primary flex w-full justify-items-center text-white">Cairkan</a>
                 </div>
             </div>
-
             <div class="w-full">
-                <div class="flex w-[100%] gap-2">
-                    <div class="w-[100%] rounded-xl border border-[#E5E5E5] p-[0px_8px_8px_8px]">
-                        <p class="text-[16px]">Total Poin</p>
-                        <div class="mt-4">
+                <div class="grid-cols-1lex grid w-[100%] gap-2">
+                    <div class="w-[100%] rounded-xl border border-[#E5E5E5] p-[8px_8px_8px_8px]">
+                        <p class="text-[16px]">Poinmu</p>
+                        <div class="">
                             <div>
-                                <p class="text-[20px] font-semibold">{{ $data['refferal_point']['current_point'] }}
-                                    Poin
+                                <p class="text-[20px] font-semibold">
+                                    {{ Auth::user()->user_wallet->current_point }} Poin
+                                </p>
                             </div>
                             <div class="mt-2 flex justify-between">
-                                <p class="text-[11px] text-[#969EBA]">Poin Affiliate</p>
-                                <p class="text-[11px] text-[#969EBA]">
-                                    {{ $data['refferal_point']['total_point'] - $data['point_user_buy_product'] }}
+                                <p class="text-[14px] text-[#969EBA]">Poin Affiliate</p>
+                                <p class="text-[14px] text-[#969EBA]">
+                                    {{ $data['my_point_from_user_register_use_my_referal'] }} Poin
                                 </p>
                             </div>
                             <div class="flex justify-between">
-                                <p class="text-[11px] text-[#969EBA]">Total Referral</p>
-                                <p class="text-[11px] text-[#969EBA]">{{ $data['refferal_point']['total_refferal'] }}
+                                <p class="text-[14px] text-[#969EBA]">Poin Affiliate Pembelian Produk</p>
+                                <p class="text-[14px] text-[#969EBA]">
+                                    {{ $data['my_point_from_user_repeat_order'] }} Poin
                                 </p>
                             </div>
                             <div class="flex justify-between">
-                                <p class="text-[11px] text-[#969EBA]">Poin Pembelian Produk</p>
-                                <p class="text-[11px] text-[#969EBA]">{{ $data['point_user_buy_product'] }}
+                                <p class="text-[14px] text-[#969EBA]">Total Referral</p>
+                                <p class="text-[14px] text-[#969EBA]">
+                                    {{ $data['my_total_referal_use'] }} User
+                                </p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="text-[14px] text-[#969EBA]">Poin Pembelian Produk</p>
+                                <p class="text-[14px] text-[#969EBA]">
+                                    {{ $data['my_point_from_buy_a_product'] }} Poin
                                 </p>
                             </div>
                         </div>
-                        <a href="{{ url('/member/point') }}" class="mt-3 flex items-end justify-end text-[11px] text-primary">
+                        <a href="{{ url('/member/point') }}"
+                            class="mt-3 flex items-end justify-end text-[16px] text-primary">
                             Lihat Detail
                         </a>
                     </div>
-                    <div class="relative w-[100%] rounded-xl border border-[#E5E5E5] p-[0px_8px_8px_8px]">
+                    <div class="relative w-[100%] rounded-xl border border-[#E5E5E5] p-[8px_8px_8px_8px]">
                         <p class="text-[16px]">Total Produk Dibeli</p>
-                        <div class="mt-4 flex items-center justify-between">
+                        <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-[20px] font-semibold">{{ $data['user_total_buy_packet'] }}</p>
-                                <p class="text-[11px] font-semibold text-[#969EBA]" id="total-packet-season">
-                                    {{ $data['user_total_packet']['weekly'] }} Paket
+                                <p class="text-[20px] font-semibold">{{ $data['my_total_packet_buy_a_product'] }} Paket
+                                </p>
+                                <p class="text-[16px] font-semibold text-primary" id="total-packet-season">
+                                    Rp{{ number_format($data['my_total_packet_buy_a_product_price']) }},-
                                 </p>
                             </div>
                         </div>
-                        <a href="{{ url('/member/info-produk') }}" class="mt-[54px] flex items-end justify-end text-[11px] text-primary">
+                        <a href="{{ url('/member/info-produk') }}"
+                            class="mt-[54px] flex items-end justify-end text-[16px] text-primary">
                             Lihat Detail
                         </a>
                     </div>
@@ -90,7 +105,6 @@
                     <a href="{{ url('/member/referral') }}" class="font-[11px] text-primary">Lihat Detail</a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

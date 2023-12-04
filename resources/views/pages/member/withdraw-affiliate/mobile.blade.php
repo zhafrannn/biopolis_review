@@ -9,116 +9,105 @@
                 <div class="mb-4">
                     <h3 class="text-[16px] font-semibold">Pendapatan Saya</h3>
                     <h4 class="mt-[10px] text-[16px] text-[#969EBA]">Total Saldo</h4>
-                    <h3 class="text-[18px] font-semibold">{{ Auth::user()->user_wallet->current_balance }}</h3>
+                    <h3 class="text-[18px] font-semibold">
+                        Rp.{{ number_format(Auth::user()->user_wallet->current_balance) }},-</h3>
                 </div>
                 <div class="w-[100%]">
-                    <button onclick="modal_mobile_exchange_balance.showModal()" class="btn w-[100%] bg-primary font-semibold text-white">Tukar Saldo</button>
+                    <button onclick="modal_mobile_exchange_balance.showModal()"
+                        class="btn w-[100%] bg-primary font-semibold text-white">Tukar Saldo</button>
                     @include('components.member.modal-withdraw.mobile')
                 </div>
             </div>
-            <!-- <div class="w-full mt-5">
+            <div class="mt-5 w-full">
                 <h2 class="mb-[10px] text-[20px] font-semibold">Rincian Saldo</h2>
-                <div class=" w-[100%]">
+                <div class="w-[100%]">
                     <div class="flex justify-between">
                         <h4 class="mb-[10px] text-[15px] text-[#0A0A0B]">Order Affiliate</h4>
-                        <h3 class="text-[15px] text-[#0A0A0B]">Rp2.000.000</h3>
+                        <h3 class="text-[15px] text-[#0A0A0B]">
+                            Rp{{ number_format($data['my_balance_from_user_repeat_order']) }},-</h3>
                     </div>
                     <div class="flex justify-between">
-                        <h4 class="mb-[10px] text-[15px] text-[#0A0A0B]">Referral</h4>
-                        <h3 class="text-[15px] text-[#0A0A0B]">Rp100.000</h3>
+                        <h4 class="mb-[10px] text-[15px] text-[#0A0A0B]">User Register</h4>
+                        <h3 class="text-[15px] text-[#0A0A0B]">
+                            Rp{{ number_format($data['my_balance_from_user_register_use_my_referal']) }},-</h3>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
     <div class="rounded-xl border p-[20.23px]">
         <h3 class="mb-[10px] text-[16.93px] font-semibold">Riwayat Saldo</h3>
         <div class="p-[10px]">
             <div class="flex items-center justify-between gap-[14px]">
-                <div class="items-centera flex h-[33.86px] justify-between w-full">
-                    <button id="button-income-mobile" onclick="HandleTabMobile('income')" class="rounded-[10px] border bg-primary p-[7px_20px] text-[10px] text-white transition duration-300 hover:bg-primary hover:text-white">Uang
+                <div class="items-centera flex h-[33.86px] w-full justify-between">
+                    <button id="button-income-mobile" onclick="HandleTabMobile('income')"
+                        class="rounded-[10px] border bg-primary p-[7px_20px] text-[10px] text-white transition duration-300 hover:bg-primary hover:text-white">Uang
                         Masuk</button>
-                    <button id="button-outcome-mobile" onclick="HandleTabMobile('outcome')" class="ml-5 rounded-[10px] border bg-white p-[7px_20px] text-[10px] text-[#969EBA] transition duration-300 hover:bg-primary hover:text-white">Riwayat
+                    <button id="button-outcome-mobile" onclick="HandleTabMobile('outcome')"
+                        class="ml-5 rounded-[10px] border bg-white p-[7px_20px] text-[10px] text-[#969EBA] transition duration-300 hover:bg-primary hover:text-white">Riwayat
                         Penukaran</button>
                 </div>
             </div>
             {{-- Tab income --}}
-            <div id="tab-income-mobile" class="mt-5 rounded-xl bg-white p-[10px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)] overflow-x-auto">
+            <div id="tab-income-mobile"
+                class="mt-5 overflow-x-auto rounded-xl bg-white p-[10px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)]">
                 <table class="w-full">
-                    <thead class="text-md font-semibold">
-                        <tr class="border-b border-[#969EBA]">
-                            <th class="p-[10px] text-[10px] text-center">Jenis Transaksi</th>
-                            <th class="p-[10px] text-[10px] text-center">
-                                <div class="flex items-center gap-[2.66px]">
 
-                                    <p>Nominal</p>
-                                </div>
-                            </th>
-                            <th class="p-[10px] text-[10px] text-center">
-                                <div class="flex items-center gap-[2.66px]">
-
-                                    <p>Total Saldo</p>
-                                </div>
-                            </th>
-                            <th class="p-[10px] text-[10px] text-center">
-                                <div class="flex items-center gap-[2.66px]">
-
-                                    <p>Tanggal</p>
-                                </div>
-                            </th>
-                            <th class="p-[10px] text-[10px] text-center">
-                                <div class="flex items-center gap-[2.66px]">
-
-                                    <p>Status</p>
-                                </div>
-                            </th>
-                        </tr>
-                    </thead>
                     <tbody>
-                        <tr class="border-b border-[#969EBA]">
-                            <td class="p-[10px] text-[10px] text-center">-</td>
-                            <td class="p-[10px] text-[10px] text-center">-</td>
-                            <td class="p-[10px] text-[10px] text-center">-</td>
-                            <td class="p-[10px] text-[10px] text-center">-</td>
-                            <td class="p-[10px] text-[10px] text-center">-</td>
+                        @foreach ($data['income_data'] as $item)
+                            <tr class="border-b border-[#969EBA80]">
 
-                        </tr>
+                                <td class="p-[10px]">
+                                    <p>{{ $item['date'] }}</p>
+                                    <p>
+
+                                        {{ $item['description'] }}
+                                    </p>
+                                    <div class="flex justify-end">
+                                        <div class="min-w-[50px] rounded-full bg-primary p-1 text-center text-white">
+                                            + Rp.{{ number_format($item['balance']) }},-
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
             {{-- End tab income --}}
             {{-- Tab income --}}
-            <div id="tab-outcome-mobile" class="mt-5 hidden rounded-xl bg-white p-[10px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)] overflow-x-auto">
+            <div id="tab-outcome-mobile"
+                class="mt-5 hidden overflow-x-auto rounded-xl bg-white p-[10px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)]">
                 <table class="w-full">
-                    <thead class="text-md font-semibold">
-                        <tr class="border-b border-[#969EBA]">
-                            <th class="p-[10px] text-[10px] text-center">
-                                Tanggal
-                            </th>
-                            <th class="p-[10px] text-[10px] text-center">
-                                Kode Pencairan
-                            </th>
-                            <th class="p-[10px] text-[10px] text-center">
-                                Nominal
-                            </th>
-                            <th class="p-[10px] text-[10px] text-center">
-                                Status
-                            </th>
-                        </tr>
-                    </thead>
+
                     <tbody>
-                        @if ($user_balance)
-                        @endif
-                        @foreach ($user_balance as $item)
-                        <tr class="border-b border-[#969EBA]">
+                        @foreach (Auth::user()->user_withdraw_balance as $item)
+                            <tr class="border-b border-[#969EBA]">
+                                <td class="p-[10px]">
 
-                            <td class="p-[10px] text-[10px] text-center">{{ $item->created_at }}</td>
-                            <td class="p-[10px] text-[10px] text-center">{{ $item->withdraw_code }}</td>
-                            <td class="p-[10px] text-[10px] text-center">{{ $item->withdraw_total_balance }}</td>
-                            <td class="p-[10px] text-[10px] text-center">{{ $item->status }}</td>
-                        </tr>
+                                    <p class="text-sm">Kode Pencairan: {{ $item->withdraw_code }}</p>
+                                    <p>{{ $item->created_at }}</p>
+                                    <p>Rp.{{ number_format($item->withdraw_total_balance) }},-</p>
+                                    <p>{{ $item->description }}</p>
+                                    <div class="flex justify-end">
+                                        @if ($item->status == 'completed')
+                                            <div
+                                                class="rounded-[5px] bg-primary bg-opacity-20 px-[6.67px] py-[3.39px] text-primary">
+                                                <p class="text-[10px] font-semibold">{{ $item->status }}</p>
+                                            </div>
+                                        @endif
+                                        @if ($item->status == 'pending')
+                                            <div
+                                                class="rounded-[5px] bg-[#FF8345] bg-opacity-20 px-[6.67px] py-[3.39px] text-[#FF8345]">
+                                                <p class="text-[10px] font-semibold">{{ $item->status }}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </td>
+
+                            </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>

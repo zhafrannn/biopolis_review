@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminBalanceController;
 use App\Http\Controllers\admin\AdminBankReplacementController;
+use App\Http\Controllers\admin\AdminBenefitController;
 use App\Utilities\GenerateRefferal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestingController;
@@ -45,6 +46,7 @@ use App\Http\Controllers\member\MemberWithdrawController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 // ----------------- Start Guest -------------
 Route::get('/testing', [TestingController::class, 'index']);

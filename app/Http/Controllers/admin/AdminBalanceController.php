@@ -27,19 +27,18 @@ class AdminBalanceController extends Controller
     {
         $user_withdraw = UserWithdrawBalance::where('id', $request->user_withdraw_balance_id)->with(['user.user_biodata'])->first();
 
-        // $user_withdraw->update([
-        //     "status" => "completed"
-        // ]);
+        $user_withdraw->update([
+            "status" => "completed"
+        ]);
 
-        // dd($user_withdraw->user->user_biodata);
+        Notification::create([
+            "user_id" => $user_withdraw->user_id,
+            "description" => "Pengajuan withdraw komisi anda dengan kode " . $user_withdraw->withdraw_code . " berhasil",
+        ]);
 
-        // Notification::create([
-        //     "user_id" => $user_withdraw->user_id,
-        //     "description" => "Pengajuan withdraw komisi anda dengan kode " . $user_withdraw->withdraw_code . " berhasil",
-        // ]);
 
         $email = [
-            "to" => "hanggityasri@gmail.com",
+            "to" => $user_withdraw->user->email,
             "title" => "Terima kasih telah bermitra dengan kami!",
             "kode_pencairan" => $user_withdraw->withdraw_code,
             "tanggal" => $user_withdraw->created_at,

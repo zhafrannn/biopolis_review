@@ -3,13 +3,13 @@
 <button onclick="modal_point_mobile.showModal()" class="btn w-[100%] bg-primary font-semibold text-white">Tukar
     Poin</button>
 <dialog id="modal_point_mobile" class="modal px-7 py-5">
-    <div class="relative w-full rounded-[15px] bg-white overflow-y-auto">
-        <div class="flex items-center border-b gap-2 px-6 py-3 shadow-[0_2px_4px_0_rgba(0,0,0,0.15)]">
+    <div class="relative w-full overflow-y-auto rounded-[15px] bg-white">
+        <div class="flex items-center gap-2 border-b px-6 py-3 shadow-[0_2px_4px_0_rgba(0,0,0,0.15)]">
             <form method="dialog">
                 <button class="h-[24px] w-[24px] rounded-full border-2 border-black">✕</button>
             </form>
             <div>
-                <h3 class="text-[16px] font-semibold pl">Tukar Poin</h3>
+                <h3 class="pl text-[16px] font-semibold">Tukar Poin</h3>
             </div>
         </div>
         {{-- Content --}}
@@ -27,21 +27,23 @@
         {{-- Choose Point --}}
         <div>
             @foreach ($point_exchange as $item)
-            {{-- Point Item --}}
-            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] px-6 py-3 transition duration-300 hover:border-green-500" id="point-{{ $item->id }}" onclick="HandleClickJsonData({{ json_encode($item) }})">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h4 class="text-[16px] font-semibold">{{ $item->description }}</h4>
-                        <h4 class="text-[12px]">{{ $item->point }} Poin</h4>
-                    </div>
-                    <div>
-                        <div class="point-border flex h-[24px] w-[24px] items-center justify-center rounded-full border-[3px] border-[#969EBA]">
-                            <div class="point-bullet h-[16px] w-[16px] rounded-full bg-[#969EBA]"></div>
+                {{-- Point Item --}}
+                <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] px-6 py-3 transition duration-300 hover:border-green-500"
+                    id="point-{{ $item->id }}" onclick="HandleClickJsonData({{ json_encode($item) }})">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="text-[16px] font-semibold">{{ $item->description }}</h4>
+                            <h4 class="text-[12px]">{{ $item->point }} Poin</h4>
+                        </div>
+                        <div>
+                            <div
+                                class="point-border flex h-[24px] w-[24px] items-center justify-center rounded-full border-[3px] border-[#969EBA]">
+                                <div class="point-bullet h-[16px] w-[16px] rounded-full bg-[#969EBA]"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            {{-- end: Point Item --}}
+                {{-- end: Point Item --}}
             @endforeach
         </div>
         {{-- end: Choose Point --}}
@@ -58,7 +60,8 @@
                         @csrf
                         <input name="point_exchange_id" id="point_exchange_id" type="text" class="hidden" required>
                         <input name="type" value="point" type="text" class="hidden" required>
-                        <button type="submit" class="flex h-[40px] w-[127px] items-center justify-center rounded-xl bg-primary font-semibold text-white transition duration-300 active:scale-95">
+                        <button type="submit"
+                            class="flex h-[40px] w-[127px] items-center justify-center rounded-xl bg-primary font-semibold text-white transition duration-300 active:scale-95">
                             Tukar
                         </button>
                     </form>

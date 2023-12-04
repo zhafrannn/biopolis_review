@@ -130,7 +130,7 @@
     </div>
 
     <!-- mobile -->
-    {{-- include('pages.member.dashboard.mobile') --}}
+    @include('pages.member.dashboard.mobile')
     <!-- end mobile -->
 
     {{-- Javascript --}}

@@ -26,7 +26,7 @@ class SendEmailPoint extends Mailable
      */
     public function build()
     {
-        return $this->subject('Pengajuan Komisi Biopolis Propolis')->markdown('email.point', ['data' => $this->data]);
+        return $this->subject('Pengajuan Penukaran Poin Biopolis Propolis')->markdown('email.point', ['data' => $this->data]);
     }
 
     /**

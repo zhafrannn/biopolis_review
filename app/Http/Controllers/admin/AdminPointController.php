@@ -20,10 +20,11 @@ class AdminPointController extends Controller
 
     public function store(Request $request)
     {
-        $user_withdraw = UserWithdrawPoint::where('id', $request->user_withdraw_point_id)->with(['user.user_biodata'])->first();
+        $user_withdraw = UserWithdrawPoint::where('id', $request->user_withdraw_point_id)->with(['user.user_biodata', 'point_exchange'])->first();
         $user_withdraw->update([
             "status" => "completed"
         ]);
+
         Notification::create([
             "user_id" => $user_withdraw->user->id,
             "description" => "Pengajuan withdraw point anda dengan kode " . $user_withdraw->withdraw_code . " berhasil",
@@ -34,8 +35,8 @@ class AdminPointController extends Controller
             "title" => "Terima kasih telah bermitra dengan kami!",
             "kode_pencairan" => $user_withdraw->withdraw_code,
             "tanggal" => $user_withdraw->created_at,
-            "total_pencairan" => $user_withdraw->withdraw_total_balance,
-            "keterangan" => "Pencairan komisi senilai " . "Rp." . number_format($user_withdraw->withdraw_total_balance) . ",-",
+            "total_pencairan" => $user_withdraw->point_exchange->point,
+            "keterangan" => "Penukaran poin anda mendapatkan " . $user_withdraw->point_exchange->description,
             "rekening" => $user_withdraw->user->user_biodata->no_rekening . " " . "(" . strtoupper($user_withdraw->user->user_biodata->nama_bank) . ")",
             "status" => "Success",
         ];

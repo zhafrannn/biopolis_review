@@ -86,7 +86,7 @@
             <div class="flex items-center justify-between gap-[14px]">
                 <div class="items-centera flex h-[33.86px] justify-between">
                     <button id="button-income" onclick="HandleTab('income')"
-                        class="rounded-[10px] border bg-primary p-[7px_20px] text-[12.7px] text-white transition duration-300 hover:bg-primary hover:text-white">Uang
+                        class="rounded-[10px] border bg-primary p-[7px_20px] text-[12.7px] text-white transition duration-300 hover:bg-primary hover:text-white">Poin
                         Masuk</button>
                     <button id="button-outcome" onclick="HandleTab('outcome')"
                         class="ml-5 rounded-[10px] border bg-white p-[7px_20px] text-[12.7px] text-[#969EBA] transition duration-300 hover:bg-primary hover:text-white">Riwayat
@@ -191,7 +191,7 @@
     </section>
 
     <!-- mobile -->
-    {{-- include('pages.member.poin.mobile') --}}
+    @include('pages.member.poin.mobile')
     <!-- end mobile -->
 
     <script>

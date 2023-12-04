@@ -115,7 +115,7 @@
                                                                                 <p
                                                                                     style="margin:0 0 2px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#727579">
 
-                                                                                    Total Pencairan
+                                                                                    Jumlah Poin
 
                                                                                 </p>
 
@@ -124,7 +124,7 @@
 
 
 
-                                                                                    Rp{{ number_format($data['total_pencairan']) }},-
+                                                                                    {{ $data['total_pencairan'] }} Poin
 
 
                                                                                 </p>
@@ -184,7 +184,7 @@
                                                                                 <p
                                                                                     style="margin:0 0 2px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#727579">
 
-                                                                                    Tanggal Pencairan
+                                                                                    Tanggal Penukaran
 
                                                                                 </p>
 
