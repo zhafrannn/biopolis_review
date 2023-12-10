@@ -62,8 +62,7 @@ class AdminUserManagementController extends Controller
                 'referal_use' => $request->input('kode_referal'),
                 'alamat_lengkap' => $request->input('alamat_lengkap'),
             ]);
-            Auth::login($user);
-            return redirect('/user/dashboard');
+            return back();
         }
 
         return back()->withErrors(['msg' => 'Data tidak sesuai']);

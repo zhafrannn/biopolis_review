@@ -1,7 +1,7 @@
 <dialog id="edit_user{{ $member->id }}" class="modal overflow-hidden">
     <div class="modal-box w-11/12 max-w-5xl">
         <div class="px-[20px] overflow-hidden">
-            <div class="relative flex left-[740px] top-[1050px] z-0">
+            <div class="relative flex left-[700px] top-[1050px] z-0">
                 <form method="dialog" class="">
                     <button class="btn">Cancel</button>
                 </form>
@@ -12,27 +12,27 @@
                 <div class=" flex justify-between">
                     <h3 class="text-[13.54px] text-[#0A0A0B] font-semibold">Edit Data User</h3>
                 </div>
-                <div class="flex justify-between">
-                    <div class="mt-9 flex w-[450px] flex-col">
+                <div class="flex justify-between gap-5">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nama</label>
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="name" value="{{$member->name}}">
                     </div>
-                    <div class="mt-9 flex w-[450px] flex-col">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Email</label>
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->email}}" name="email">
                     </div>
                 </div>
-                <div class="flex justify-between">
-                    <div class="mt-9 flex w-[450px] flex-col">
+                <div class="flex justify-between gap-5">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nik</label>
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->user_biodata->nik}}" name="nik">
                     </div>
-                    <div class="mt-9 flex w-[450px] flex-col">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nomor Telepon</label>
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->user_biodata->no_whatsapp}}" name="no_whatsapp">
                     </div>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-between gap-5">
                     <div class="mt-9 flex w-full flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nama Bank</label>
                         <select type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="nama_bank">
@@ -42,12 +42,12 @@
                         </select>
                     </div>
                 </div>
-                <div class="flex justify-between">
-                    <div class="mt-9 flex w-[450px] flex-col">
+                <div class="flex justify-between gap-5">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nama Rekening</label>
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="nama_rekening" value="{{$member->user_biodata->nama_rekening}}">
                     </div>
-                    <div class="mt-9 flex w-[450px] flex-col">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nomor Rekening</label>
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="no_rekening" value="{{$member->user_biodata->no_rekening}}">
                     </div>
@@ -56,8 +56,8 @@
                 $provinsi = explode("-", $member->user_biodata->provinsi);
                 $kota = explode("-", $member->user_biodata->kota);
                 ?>
-                <div class="flex justify-between">
-                    <div class="mt-9 flex w-[450px] flex-col">
+                <div class="flex justify-between gap-5">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Provinsi</label>
                         <select id="provincy-select-edit" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->user_biodata->provinsi}}" name="provinsi">
                             @foreach ($provincies as $item)
@@ -73,8 +73,8 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mt-9 flex w-[450px] flex-col">
-                        <label for="" class="text-[13.54px] text-[#0A0A0B]">Kota</label>
+                    <div class="mt-9 flex w-[50%] flex-col">
+                        <label for="" class="text-[13.54px] text-[#030305]">Kota</label>
                         <select id="city-select-edit" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="kota">
 
                             @foreach ($cities as $item)
@@ -97,18 +97,18 @@
                     <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] px-[20px] pt-2 text-[#0A0A0B]" name="alamat_lengkap">{{$member->user_biodata->alamat_lengkap}}
                     </textarea>
                 </div>
-                <div class="flex justify-between">
-                    <div class="mt-9 flex w-[450px] flex-col">
+                <div class="flex justify-between gap-5">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nama Kontak Darurat</label>
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->user_biodata->nama_kontak_darurat}}" name="nama_kontak_darurat">
                     </div>
-                    <div class="mt-9 flex w-[450px] flex-col">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Nomor Kontak Darurat</label>
                         <input type="text" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" value="{{$member->user_biodata->nomor_kontak_darurat}}" name="nomor_kontak_darurat">
                     </div>
                 </div>
-                <div class="flex justify-between">
-                    <div class="mt-9 flex w-[450px] flex-col">
+                <div class="flex justify-between gap-5">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#0A0A0B]">Password</label>
                         <input type="password" class="h-[56px] rounded-xl border border-[#E5E5E5] px-[24px] text-[#0A0A0B]" name="password">
                     </div>

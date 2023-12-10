@@ -27,6 +27,8 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\member\MemberBalanceController;
 use App\Http\Controllers\admin\AdminFaqController;
+use App\Http\Controllers\admin\AdminIncomeController;
+use App\Http\Controllers\admin\AdminMemberController;
 use App\Http\Controllers\admin\AdminTestimonyController;
 use App\Http\Controllers\admin\AdminUserManagementController;
 use App\Http\Controllers\guest\DownloadPdfController;
@@ -65,7 +67,7 @@ Route::get('/logout', [LogoutController::class, 'index'])->middleware('auth');
 
 
 // -----------Start User---------------------
-Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->middleware('auth');
+Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::post('/user-payment-activation', [UserPaymentController::class, 'store'])->middleware('auth');
 // -----------End User---------------------
 
@@ -132,12 +134,10 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::put('/content-management-system/benefit/update/{id}', [AdminBenefitController::class, 'update']);
     Route::get('/content-management-system/benefit/delete/{id}', [AdminBenefitController::class, 'destroy']);
 
-    Route::get('/mitra', function () {
-        return view('pages.admin.mitra.index');
-    });
-    Route::get('/penjualan', function () {
-        return view('pages.admin.penjualan.index');
-    });
+    Route::get('/penjualan', [AdminIncomeController::class, 'index']);
+
+    Route::get('/mitra', [AdminMemberController::class, 'index']);
+
     Route::prefix('produk')->group(function () {
         Route::get('/', function () {
             return view('pages.admin.produk.index');

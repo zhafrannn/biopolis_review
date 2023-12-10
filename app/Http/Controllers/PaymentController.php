@@ -146,7 +146,7 @@ class PaymentController extends Controller
             ];
 
             $email = $payment->user->email;
-            Mail::to("zhafran858@gmail.com")->send(new SendEmail($data));
+            Mail::to($email)->send(new SendEmail($data));
         }
 
         return response()->json(["data" => "Pembayaran Selesai"]);

@@ -1,7 +1,7 @@
 <dialog id="edit_banner_rating" class="modal overflow-hidden">
     <div class="modal-box w-11/12 max-w-5xl">
         <div class="px-[20px] overflow-hidden">
-            <div class="relative flex left-[740px] top-12 z-0">
+            <div class="relative flex left-[700px] top-12 z-0">
                 <form method="dialog" class="">
                     <button class="btn">Close</button>
                 </form>
@@ -17,22 +17,22 @@
                         </button>
                     </div>
                 </div>
-                <div class="flex justify-between">
-                    <div class="flex flex-col mt-9 w-[400px]">
+                <div class="flex justify-between gap-5">
+                    <div class="flex flex-col mt-9 w-[50%]">
                         <label for="" class="text-[13.54px]">Angka</label>
                         <input name="data[{{ $angka_banner_rating_1->key }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[56px] px-[24px] font-semibold" value="{{ $angka_banner_rating_1->value }}">
                     </div>
-                    <div class="flex flex-col mt-9 w-[400px]    ">
+                    <div class="flex flex-col mt-9 w-[50%]">
                         <label for="" class="text-[13.54px]">Teks</label>
                         <input name="data[{{ $teks_banner_rating_1->key }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[56px] px-[24px]" value="{{ $teks_banner_rating_1->value }}">
                     </div>
                 </div>
-                <div class="flex justify-between">
-                    <div class="flex flex-col mt-9 w-[400px]">
+                <div class="flex justify-between gap-5">
+                    <div class="flex flex-col mt-9 w-[50%]">
                         <label for="" class="text-[13.54px]">Angka</label>
                         <input name="data[{{ $angka_banner_rating_2->key }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[56px] px-[24px] font-semibold" value="{{ $angka_banner_rating_2->value }}">
                     </div>
-                    <div class="flex flex-col mt-9 w-[400px]    ">
+                    <div class="flex flex-col mt-9 w-[50%]    ">
                         <label for="" class="text-[13.54px]">Teks</label>
                         <input name="data[{{ $teks_banner_rating_2->key }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[56px] px-[24px]" value="{{ $teks_banner_rating_2->value }}">
                     </div>
@@ -42,16 +42,16 @@
                     <input name="data[{{ $teks_banner_rating_3->key }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[56px] px-[24px]" value="{{ $teks_banner_rating_3->value }}">
                 </div>
 
-                <div class="flex justify-between">
-                    <div class="flex flex-col mt-9">
+                <div class="flex justify-between gap-5">
+                    <div class="flex flex-col mt-9 w-1/3">
                         <label for="" class="text-[13.54px]">Gambar</label>
                         <input name="data[{{ $gambar_banner_rating_1->key }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[57px] w-[279px] px-[24px]" value="{{ $gambar_banner_rating_1->value }}">
                     </div>
-                    <div class="flex flex-col mt-9">
+                    <div class="flex flex-col mt-9 w-1/3">
                         <label for="" class="text-[13.54px]">Gambar</label>
                         <input name="data[{{ $gambar_banner_rating_2->key }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[57px] w-[279px] px-[24px]" value="{{ $gambar_banner_rating_2->value }}">
                     </div>
-                    <div class="flex flex-col mt-9">
+                    <div class="flex flex-col mt-9 w-1/3">
                         <label for="" class="text-[13.54px]">Gambar</label>
                         <input name="data[{{ $gambar_banner_rating_3->key }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[57px] w-[279px] px-[24px]" value="{{ $gambar_banner_rating_3->value }}">
                     </div>

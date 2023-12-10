@@ -1,7 +1,7 @@
 <dialog id="edit_kemitraan_3" class="modal overflow-hidden">
     <div class="modal-box w-11/12 max-w-5xl">
         <div class="px-[20px] overflow-hidden">
-            <div class="relative flex left-[740px] top-12 z-0">
+            <div class="relative flex left-[700px] top-12 z-0">
                 <form method="dialog" class="">
                     <button class="btn">Close</button>
                 </form>

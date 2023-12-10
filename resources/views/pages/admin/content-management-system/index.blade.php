@@ -52,7 +52,7 @@
             </div>
             <div class="mt-9 flex flex-col">
                 <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                <div class="flex w-[500px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
+                <div class="flex w-[50%] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
                     <img src="{{ asset('images/' . $gambar_tentang_kami_1->value) }}" alt="" class="w-[300px] px-[24px] text-[#969EBA]">
                     <p>{{ $gambar_tentang_kami_1->value }}</p>
                 </div>
@@ -71,22 +71,22 @@
                 </button>
                 @include('components/admin/content-management-system/tentang-kami/modal-banner-rating')
             </div>
-            <div class="flex justify-between">
-                <div class="mt-9 flex w-[500px] flex-col">
+            <div class="flex justify-between gap-5">
+                <div class="mt-9 flex w-[50%] flex-col">
                     <label for="" class="text-[13.54px] text-[#969EBA]">Angka</label>
                     <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] font-semibold text-[#969EBA]" value="{{ $angka_banner_rating_1->value }}">
                 </div>
-                <div class="mt-9 flex w-[500px] flex-col">
+                <div class="mt-9 flex w-[50%] flex-col">
                     <label for="" class="text-[13.54px] text-[#969EBA]">Teks</label>
                     <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] text-[#969EBA]" value="{{ $teks_banner_rating_1->value }}">
                 </div>
             </div>
-            <div class="flex justify-between">
-                <div class="mt-9 flex w-[500px] flex-col">
+            <div class="flex justify-between gap-5">
+                <div class="mt-9 flex w-[50%] flex-col">
                     <label for="" class="text-[13.54px] text-[#969EBA]">Angka</label>
                     <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] font-semibold text-[#969EBA]" value="{{ $angka_banner_rating_2->value }}">
                 </div>
-                <div class="mt-9 flex w-[500px] flex-col">
+                <div class="mt-9 flex w-[50%] flex-col">
                     <label for="" class="text-[13.54px] text-[#969EBA]">Teks</label>
                     <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] text-[#969EBA]" value="{{ $teks_banner_rating_2->value }}">
                 </div>
@@ -96,24 +96,24 @@
                 <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] text-[#969EBA]" value="{{ $teks_banner_rating_3->value }}">
             </div>
 
-            <div class="flex justify-between">
-                <div class="mt-9 flex flex-col">
+            <div class="flex justify-between gap-5">
+                <div class="mt-9 flex flex-col w-1/3">
                     <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                    <div class="flex w-[300px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
+                    <div class="flex flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
                         <img src="{{ asset('images/' . $gambar_banner_rating_1->value) }}" alt="" class="w-[150px] px-[24px] text-[#969EBA]">
                         <p>{{ $gambar_banner_rating_1->value }}</p>
                     </div>
                 </div>
-                <div class="mt-9 flex flex-col">
+                <div class="mt-9 flex flex-col w-1/3">
                     <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                    <div class="flex w-[300px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
+                    <div class="flex flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
                         <img src="{{ asset('images/' . $gambar_banner_rating_2->value) }}" alt="" class="w-[150px] px-[24px] text-[#969EBA]">
                         <p>{{ $gambar_banner_rating_2->value }}</p>
                     </div>
                 </div>
-                <div class="mt-9 flex flex-col">
+                <div class="mt-9 flex flex-col w-1/3">
                     <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                    <div class="flex w-[300px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
+                    <div class="flex flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
                         <img src="{{ asset('images/' . $gambar_banner_rating_3->value) }}" alt="" class="w-[150px] px-[24px] text-[#969EBA]">
                         <p>{{ $gambar_banner_rating_3->value }}</p>
                     </div>
@@ -135,7 +135,7 @@
             </div>
             <div class="mt-9 flex flex-col">
                 <label for="" class="text-[13.54px] text-[#969EBA]">Gambar Judul</label>
-                <div class="flex w-[500px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
+                <div class="flex w-[50%] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
                     <img src="{{ asset('images/' . $gambar_tentang_kami_2->value) }}" alt="" class="w-[756px] px-[24px] text-[#969EBA]">
                     <p>{{ $gambar_tentang_kami_2->value }}</p>
                 </div>
@@ -380,7 +380,7 @@
             </div>
             <div class="mt-9 flex flex-col">
                 <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                <div class="flex w-[500px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
+                <div class="flex w-[50%] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
                     <img src="{{ asset('images/' . $gambar_kemitraan_2->value) }}" alt="" class="w-[300px] px-[24px] text-[#969EBA]">
                     <p>{{ $gambar_kemitraan_2->value }}</p>
                 </div>
@@ -407,14 +407,7 @@
                 <label for="" class="text-[13.54px] text-[#969EBA]">Teks Sub Judul</label>
                 <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[20px] pt-2 text-[#969EBA]" readonly>{{ $teks_sub_judul_kemitraan_7->value }}
                 </textarea>
-            </div>
-            <div class="mt-9 flex flex-col">
-                <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                <div class="flex w-[200px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
-                    <img src="{{ asset('storage/icons/' . $gambar_kemitraan_3->value) }}" alt="" class="w-[100px] px-[24px] text-[#969EBA]">
-                    <p>{{ $gambar_kemitraan_3->value }}</p>
-                </div>
-            </div>
+            </div> 
 
             <div class="my-[32px] border border-[#E5E5E5]"></div>
 
@@ -426,14 +419,7 @@
                 <label for="" class="text-[13.54px] text-[#969EBA]">Teks Sub Judul</label>
                 <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[20px] pt-2 text-[#969EBA]" readonly>{{ $teks_sub_judul_kemitraan_8->value }}
                 </textarea>
-            </div>
-            <div class="mt-9 flex flex-col">
-                <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                <div class="flex w-[200px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
-                    <img src="{{ asset('storage/icons/' . $gambar_kemitraan_4->value) }}" alt="" class="w-[100px] px-[24px] text-[#969EBA]">
-                    <p>{{ $gambar_kemitraan_4->value }}</p>
-                </div>
-            </div>
+            </div> 
 
             <div class="my-[32px] border border-[#E5E5E5]"></div>
 
@@ -445,14 +431,7 @@
                 <label for="" class="text-[13.54px] text-[#969EBA]">Teks Sub Judul</label>
                 <textarea class="flex h-[98px] items-center justify-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[20px] pt-2 text-[#969EBA]" readonly>{{ $teks_sub_judul_kemitraan_9->value }}
                 </textarea>
-            </div>
-            <div class="mt-9 flex flex-col">
-                <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                <div class="flex w-[200px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
-                    <img src="{{ asset('storage/icons/' . $gambar_kemitraan_5->value) }}" alt="" class="w-[100px] px-[24px] text-[#969EBA]">
-                    <p>{{ $gambar_kemitraan_5->value }}</p>
-                </div>
-            </div>
+            </div> 
         </div>
     </div>
     <!-- End kemitraan_3 -->
@@ -469,8 +448,8 @@
             </div>
             <div class="mt-9 flex flex-col">
                 <label for="" class="text-[13.54px] text-[#969EBA]">Gambar</label>
-                <div class="flex w-[500px] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
-                    <img src="{{ asset('images/' . $gambar_testimoni_1->value) }}" alt="" class="w-[500px] px-[24px] text-[#969EBA]">
+                <div class="flex w-[50%] flex-col items-center rounded-xl border border-[#E5E5E5] bg-[#F5F5F5]">
+                    <img src="{{ asset('images/' . $gambar_testimoni_1->value) }}" alt="" class="w-[50%] px-[24px] text-[#969EBA]">
                     <p>{{ $gambar_testimoni_1->value }}</p>
                 </div>
             </div>
@@ -501,11 +480,11 @@
                 </div>
                 @include('components/admin/content-management-system/testimoni/edit')
                 <div class="flex justify-between">
-                    <div class="mt-9 flex w-[500px] flex-col">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#969EBA]">Nama</label>
                         <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] font-semibold text-[#969EBA]" value="{{$testimony->name}}">
                     </div>
-                    <div class="mt-9 flex w-[500px] flex-col">
+                    <div class="mt-9 flex w-[50%] flex-col">
                         <label for="" class="text-[13.54px] text-[#969EBA]">Umur</label>
                         <input type="text" readonly class="h-[56px] rounded-xl border border-[#E5E5E5] bg-[#F5F5F5] px-[24px] text-[#969EBA]" value="{{$testimony->age}} Tahun">
                     </div>

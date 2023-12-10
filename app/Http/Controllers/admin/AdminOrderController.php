@@ -5,13 +5,19 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\UserPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+
 
 class AdminOrderController extends Controller
 {
     public function index()
     {
+        $currentDate = Carbon::now();
+        
         $orders = UserPayment::where("status", "paid")->latest()->get();
-        return view('pages.admin.order.index', compact('orders'));
+        
+        $count_waiting_order = count(UserPayment::where('status', 'pending')->whereDate('valid_until', '>=', $currentDate)->latest()->get());
+        return view('pages.admin.order.index', compact('orders', 'count_waiting_order'));
     }
 
     public function store(Request $request)

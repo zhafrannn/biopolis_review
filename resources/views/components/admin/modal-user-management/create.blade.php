@@ -1,7 +1,7 @@
 <dialog id="create_user" class="modal overflow-hidden">
     <div class="modal-box w-11/12 max-w-5xl">
         <div class="px-[20px] overflow-hidden">
-            <div class="relative flex left-[740px] top-[1050px] z-0">
+            <div class="relative flex left-[700px] top-[1050px] z-0">
                 <form method="dialog" class="">
                     <button class="btn">Cancel</button>
                 </form>

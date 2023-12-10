@@ -90,11 +90,11 @@
                 <div class=" mb-[30px] w-full border"></div>
                 <div class="mb-[10px] flex flex-col">
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Provinsi</label>
-                    <input type="text" class="rounded-[9.904px] border p-[10.56px]" value="{{ $str1[1]}}" name="provinsi" readonly>
+                    <select id="provincy-mobile-select" type="text" class="rounded-[9.904px] border p-[10.56px]" name="provinsi"></select>
                 </div>
                 <div class="mb-[10px] flex flex-col">
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Kota</label>
-                    <input type="text" class="rounded-[9.904px] border p-[10.56px]" value="{{ $str2[1] }}" name="kota" readonly>
+                    <select id="city-mobile-select" type="text" class="rounded-[9.904px] border p-[10.56px]" name="kota"></select>
                 </div>
                 <div class="mb-[10px] flex flex-col">
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Alamat Lengkap</label>
@@ -136,7 +136,16 @@
                 <div class="mb-[20px] w-full border"></div>
                 <div class="mb-[10px] flex flex-col">
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Nama Bank</label>
-                    <input type="text" class="rounded-[9.904px] border p-[10.56px]" value="{{ Auth::user()->user_biodata->nama_bank }}" name="nama_bank">
+                    <select type="text" class="rounded-[9.904px] border p-[10.56px]" name="nama_bank">
+                        <option value="bca" @if(Auth::user()->user_biodata->nama_bank=='bca') selected @endif>Bank Central Asia (BCA)</option>
+                        <option value="mandiri" @if(Auth::user()->user_biodata->nama_bank=='mandiri') selected @endif>Mandiri</option>
+                        <option value="bri" @if(Auth::user()->user_biodata->nama_bank=='bri') selected @endif>Bank Rakyat Indonesia (BRI)</option>
+                        <option value="bni" @if(Auth::user()->user_biodata->nama_bank=='bni') selected @endif>Bank Negara Indonesia (BNI)</option>
+                        <option value="bsi" @if(Auth::user()->user_biodata->nama_bank=='bsi') selected @endif>Bank Syariah Indonesia (BSI)</option>
+                        <option value="cimb" @if(Auth::user()->user_biodata->nama_bank=='cimb') selected @endif>Cimb Niaga</option>
+                        <option value="btn" @if(Auth::user()->user_biodata->nama_bank=='btn') selected @endif>Bank Tabungan Negara (BTN)</option>
+                        <option value="danamon" @if(Auth::user()->user_biodata->nama_bank=='danamon') selected @endif>Danamon</option>
+                    </select>
                 </div>
                 <div class="mb-[10px] flex flex-col">
                     <label for="" class="mb-[10px] text-[14px] text-[#969EBA] font-semibold">Nama Rekening</label>

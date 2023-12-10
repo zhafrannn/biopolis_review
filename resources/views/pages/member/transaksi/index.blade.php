@@ -85,7 +85,10 @@
                     <div class="items-center justify-between lg:flex">
                         <div class="flex items-center gap-[13.54px]">
                             <div class="h-[102px] w-[102px] bg-[#D9D9D9]">
-                                <img src="" class="h-full w-full" alt="">
+                                <figure class="">
+                                    <img class="bg-[#D9D9D9] object-cover object-center" src="{{ asset('/images/biopolis.png') }}"
+                                        alt="biopolis-propolis" />
+                                </figure>
                             </div>
                             <div>
                                 <h3 class="text-[16px] font-semibold">Paket Biopolis</h3>

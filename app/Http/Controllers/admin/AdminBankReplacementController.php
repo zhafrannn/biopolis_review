@@ -12,7 +12,7 @@ class AdminBankReplacementController extends Controller
 {
     public function index()
     {
-        $banks = UserBank::where('status', 'pending')->with('user')->get();
+        $banks = UserBank::with('user')->get();
         return view('pages.admin.pengajuan-penggantian-rekening.index', compact('banks'));
     }
 

@@ -1,7 +1,7 @@
 <dialog id="edit_tentang_kami_2" class="modal overflow-hidden">
     <div class="modal-box w-11/12 max-w-5xl">
         <div class="px-[20px] overflow-hidden">
-            <div class="relative flex left-[740px] top-12 z-0">
+            <div class="relative flex left-[700px] top-12 z-0">
                 <form method="dialog" class="">
                     <button class="btn">Close</button>
                 </form>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="flex flex-col mt-9">
                     <label for="" class="text-[13.54px]">Teks Judul</label>
-                    <input name="data[{{ $teks_sub_judul_tentang_kami_3->value }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[56px] px-[24px]" value="{{ $teks_sub_judul_tentang_kami_3->value }}">
+                    <textarea name="data[{{ $teks_sub_judul_tentang_kami_3->value }}]" type="text" class="border border-[#E5E5E5] rounded-xl h-[98px] px-[24px] pt-2" >{{ $teks_sub_judul_tentang_kami_3->value }}</textarea>
                 </div>
             </form>
         </div>

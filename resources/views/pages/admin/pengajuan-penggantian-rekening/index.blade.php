@@ -33,36 +33,47 @@
                         </div>
                     </div>
                     {{-- Input --}}
-                    {{-- Input --}}
-                    <div class="flex flex-col gap-[3.54px]">
-                        <div class="w-3/12">
-                            <h2 class="text-[17px] font-semibold text-[#969EBA]">Pemilik Rekening</h2>
+                    <div class="flex gap-5">
+                        {{-- Input --}}
+                        <div class="flex flex-col w-1/2">
+                            <div class="">
+                                <h2 class="text-[17px] font-semibold text-[#969EBA]">Pemilik Rekening</h2>
+                            </div>
+                            <div class="flex-1">
+                                <input type="text" class="w-full rounded-xl border p-[13px]" readonly name="nama_rekening" value="{{ $bank->nama_rekening }}">
+                            </div>
                         </div>
-                        <div class="flex-1">
-                            <input type="text" class="w-full rounded-xl border p-[13px]" readonly name="nama_rekening" value="{{ $bank->nama_rekening }}">
+                        {{-- Input --}}
+                        {{-- Input --}}
+                        <div class="flex flex-col w-1/2">
+                            <div class="">
+                                <h2 class="text-[17px] font-semibold text-[#969EBA]">Nomor Rekening</h2>
+                            </div>
+                            <div class="flex-1">
+                                <input type="text" class="w-full rounded-xl border p-[13px]" readonly name="no_rekening" value="{{ $bank->no_rekening }}">
+                            </div>
                         </div>
+                        {{-- Input --}}
                     </div>
-                    {{-- Input --}}
-                    {{-- Input --}}
-                    <div class="flex flex-col gap-[3.54px]">
-                        <div class="w-3/12">
-                            <h2 class="text-[17px] font-semibold text-[#969EBA]">Bank</h2>
-                        </div>
-                        <div class="flex-1">
-                            <input type="text" class="w-full rounded-xl border p-[13px]" readonly name="no_rekening" value="{{ $bank->no_rekening }}">
-                        </div>
-                    </div>
-                    {{-- Input --}}
                 </div>
             </div>
 
             <div class="flex justify-end mt-5">
+                @if($bank->no_rekening == 'pending')
                 <button class="rounded-[10px] bg-primary px-[20.32px] py-[6.77px] text-[17px] font-semibold text-white">Konfirmasi
                     Rekening</button>
+                @else
+                <div class="flex items-center justify-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-primary">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p class="font-semibold text-primary">Pengajuan Selesai</p>
+                </div>
+                @endif
             </div>
         </div>
-        </form>
-        @endforeach
+    </form>
+    @endforeach
 
 </section>
 @endsection

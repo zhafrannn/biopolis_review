@@ -20,16 +20,16 @@
             <div class="mb-[11.61px] flex items-center justify-between">
                 <div>
                     <h2 class="text-[27.09px] font-semibold">Rp{{ number_format($total_sale) }}</h2>
-                    <div class="flex items-center">
+                    <!-- <div class="flex items-center">
                         <p class="text-[20.32px] text-primary">Rp0</p>
                         <img src="{{ asset('images/icons/arrow-up.svg') }}" alt="">
-                    </div>
+                    </div> -->
                 </div>
-                <div>
+                <!-- <div>
                     <p class="text-[20.32px] text-primary">+0%</p>
-                </div>
+                </div> -->
             </div>
-            <a href="" class="text-right">
+            <a href="{{ url('admin/penjualan') }}" class="text-right">
                 <p class="text-[13.54px] text-primary">Lihat Detail</p>
             </a>
         </div>
@@ -46,16 +46,9 @@
             <div class="mb-[11.61px] flex items-center justify-between">
                 <div>
                     <h2 class="text-[27.09px] font-semibold">{{ $total_member }} Mitra</h2>
-                    <!-- <div class="flex items-center">
-                        <p class="text-[20.32px] text-error">Rp0</p>
-                        <img src="{{ asset('images/icons/arrow-down-red.svg') }}" alt="">
-                    </div> -->
                 </div>
-                <!-- <div>
-                    <p class="text-[20.32px] text-error">+0%</p>
-                </div> -->
             </div>
-            <a href="" class="text-right">
+            <a href="{{ url('/admin/mitra') }}" class="text-right">
                 <p class="text-[13.54px] text-primary">Lihat Detail</p>
             </a>
         </div>
@@ -70,8 +63,6 @@
     <div>
         <canvas id="myChart"></canvas>
     </div>
-
-
 </section>
 
 <section class="rounded-xl border p-[20.32px]">
@@ -97,39 +88,20 @@
                         <th class="p-[10px]">
                             <div class="flex items-center gap-[2.66px]">
                                 <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
-                                <p>Total Pembelian</p>
-                            </div>
-                        </th>
-                        <th class="p-[10px]">
-                            <div class="flex items-center gap-[2.66px]">
-                                <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
                                 <p>Total Poin</p>
                             </div>
-                        </th>
-                        <th class="p-[10px]">
-
-                            <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
-
                         </th>
                     </tr>
                 </thead>
                 <tbody>
+                    @for ($i = 0; $i < 3; $i++) 
                     <tr class="border-b border-[#969EBA]">
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
+                        <td class="p-[10px]">{{ $i + 1 }}</td>
+                        <td class="p-[10px]">{{ $ranking[$i]->user->name }}</td>
+                        <td class="p-[10px]">{{ ($ranking[$i]->created_at) }}</td>
+                        <td class="p-[10px]">{{ $ranking[$i]->total_point }}</td>
                     </tr>
-                    <tr class="border-b border-[#969EBA]">
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                        <td class="p-[10px]">-</td>
-                    </tr>
+                    @endfor
                 </tbody>
             </table>
         </div>
@@ -140,15 +112,19 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const ctx = document.getElementById('myChart');
+    const chartData = @json($chart_data); // Variabel chartData diinisialisasi dengan data dari PHP
+    const chartLabel = chartData.map(item => item.month_name);
+    const chartValue = chartData.map(item => item.total);
 
-    new Chart(ctx, {
+
+    const ctx = document.getElementById('myChart');
+    const myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: chartLabel,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Pendapatan Komisi',
+                data: chartValue,
                 borderWidth: 4, // Mengatur ketebalan garis menjadi 4px
                 borderColor: '#20B15A'
             }]
