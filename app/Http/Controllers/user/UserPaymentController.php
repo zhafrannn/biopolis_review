@@ -7,6 +7,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ShippingController;
 use App\Models\Product;
 use App\Models\UserPayment;
+use App\Models\UserPaymentVariant;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -16,8 +18,27 @@ class UserPaymentController extends Controller
 {
     public function store(Request $request)
     {
+        // Inisiasi
+        $variant_item =  [];
 
         $product = Product::where('id', 1)->first();
+        $total_packet_product = $product->packet_quantity;
+
+        $variants = Variant::all();
+
+        foreach ($variants as $variant) {
+            $variant_item[] = [
+                "variant_id" => $variant->id,
+                "quantity" => 0
+            ];
+        }
+
+        $iterations = $total_packet_product;
+        $arrayLength = count($variants);
+        for ($i = 1; $i <= $iterations; $i++) {
+            $index = ($i - 1) % $arrayLength;
+            $variant_item[$index]['quantity'] += 1;
+        }
 
         $shipping = new ShippingController();
 
@@ -52,8 +73,8 @@ class UserPaymentController extends Controller
 
         $shipping_courier = ($request->shipping_type == 'on_send') ? 'jne' : null;
 
-        // dd($payment_invoice['expiry_date']);
-        UserPayment::create([
+
+        $user_payment_data = UserPayment::create([
             "user_id" => Auth::user()->id,
             "product_id" => $product->id,
             "payment_code" => 'P00' . "-" . Auth::user()->id . '-' . $date->format('Ymd-His'),
@@ -65,6 +86,16 @@ class UserPaymentController extends Controller
             "shipping_type" => $request->shipping_type,
             "shipping_courier" => $shipping_courier
         ]);
+
+        foreach ($variants as $variant) {
+            UserPaymentVariant::create([
+                "user_payment_id" => $user_payment_data->id,
+                "variant_id" => $variant['variant_id'],
+                "quantity" => $variant['quantity'],
+            ]);
+        }
+
+
 
         return redirect()->away($payment_invoice['invoice_url']);
     }
