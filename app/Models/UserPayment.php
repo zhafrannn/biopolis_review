@@ -17,4 +17,8 @@ class UserPayment extends Model
     {
         return $this->belongsTo(Product::class, "product_id"); // Sesuaikan dengan model Biodata Anda
     }
+    public function user_payment_variant()
+    {
+        return $this->hasMany(UserPaymentVariant::class, "user_payment_id"); // Sesuaikan dengan model Biodata Anda
+    }
 }

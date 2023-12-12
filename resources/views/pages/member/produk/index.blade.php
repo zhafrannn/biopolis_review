@@ -74,7 +74,7 @@ Product | Biopolis Propolis
                                 <div class="ml-4 flex flex-col justify-around">
                                     <p class="text-[20px] font-semibold text-[#0A0A0B]">Paket Biopolis</p>
                                     <div>
-                                        <span class="text-[16px] text-[#969EBA] line-through">Rp4.000.0000</span>
+                                        <span class="text-[16px] text-[#969EBA] line-through">Rp{{ $multiple * 1950000 }}</span>
                                         <span class="text-[16px] text-[#20B15A]">Rp{{ number_format($item->price) }}</span>
                                     </div>
                                 </div>

@@ -23,7 +23,7 @@
             </div>
         </a>
         {{-- end: nav item --}}
-        {{-- start: nav item dropdown --}}
+        <!-- {{-- start: nav item dropdown --}}
         <div class="">
             <button class="dropdown-coll w-full">
                 <div class="relative flex items-center justify-between gap-[6.77px] px-[14px] group-target:border">
@@ -36,16 +36,16 @@
                 </div>
             </button>
             <div class="dropdown-ctn max-h-0 overflow-hidden transition-all duration-300">
-                <a href="{{ url('/admin/produk/create') }}">
+                <a href="{{ url('/admin/produk') }}">
                     <div class="relative mb-[12.17px] pl-10">
-                        <p class="">Tambah Produk</p>
+                        <p class="">Daftar Paket</p>
                         {{-- if active remove hidden --}}
                         <div class="absolute left-0 top-0 z-50 hidden h-full w-[3.39px] rounded-r-[12.7px] bg-primary">
                         </div>
                         {{-- if active remove hidden --}}
                     </div>
                 </a>
-                <a href="{{ url('/admin/produk') }}">
+                <a href="{{ url('/admin/variant') }}">
                     <div class="relative pl-10">
                         <p class="">Daftar Produk</p>
                         {{-- if active remove hidden --}}
@@ -56,18 +56,29 @@
                 </a>
             </div>
         </div>
-        {{-- end: nav item dropdown --}}
-        <!-- {{-- start: nav item --}}
+        {{-- end: nav item dropdown --}} -->
+        {{-- start: nav item --}}
         <a href="{{ url('/admin/produk') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
-                <img src="{{ asset('images/icons/truck-time.svg') }}" alt="">
-                <p class="font-semibold {{ request()->is('admin/produk') ? 'text-primary' : '' }}">Produk</p>
+                <img src="{{ asset('images/icons/box.svg') }}" alt="">
+                <p class="font-semibold {{ request()->is('admin/produk') ? 'text-primary' : '' }}">Paket</p>
                 {{-- if active remove hidden --}}
                 <div class="absolute left-0 h-full w-[3.39px] rounded-r-[12.7px] bg-primary {{ request()->is('admin/produk') ? '' : 'hidden' }}"></div>
                 {{-- if active remove hidden --}}
             </div>
         </a>
-        {{-- end: nav item --}} -->
+        {{-- end: nav item --}}
+        {{-- start: nav item --}}
+        <a href="{{ url('/admin/variant') }}">
+            <div class="relative flex items-center gap-[6.77px] px-[14px]">
+                <img src="{{ asset('images/icons/box.svg') }}" alt="">
+                <p class="font-semibold {{ request()->is('admin/variant') ? 'text-primary' : '' }}">Produk</p>
+                {{-- if active remove hidden --}}
+                <div class="absolute left-0 h-full w-[3.39px] rounded-r-[12.7px] bg-primary {{ request()->is('admin/variant') ? '' : 'hidden' }}"></div>
+                {{-- if active remove hidden --}}
+            </div>
+        </a>
+        {{-- end: nav item --}}
         {{-- start: nav item --}}
         <a href="{{ url('/admin/order') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
@@ -90,7 +101,7 @@
             </div>
         </a>
         {{-- end: nav item --}}
-        {{-- start: nav item --}}
+        <!-- {{-- start: nav item --}}
         <a href="{{ url('/admin/content-management') }}">
             <div class="relative flex items-center gap-[6.77px] px-[14px]">
                 <img src="{{ asset('images/icons/element-equal.svg') }}" alt="">
@@ -100,7 +111,7 @@
                 {{-- if active remove hidden --}}
             </div>
         </a>
-        {{-- end: nav item --}}
+        {{-- end: nav item --}} -->
 
         {{-- start: nav item --}}
         <a href="{{ url('/admin/pengajuan-penukaran-poin') }}">

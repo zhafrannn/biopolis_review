@@ -1,39 +1,34 @@
 @extends('layouts.guest')
 
 @section('content')
-    <?php
-    $str1 = explode(' ', $teks_judul_tentang_kami_1->value);
-    ?>
+<?php
+$str1 = explode(' ', $teks_judul_tentang_kami_1->value);
+?>
 
-    <section
-        class="flex w-full flex-col items-center px-[20px] text-center lg:mb-[75px] lg:flex-row lg:justify-between lg:px-[120px] lg:pt-[98px] lg:text-left"
-        id="tentang-kami-section">
-        <div class="p-[22px] lg:w-[633px]">
-            <h1 class="text-[20px] font-bold lg:mb-[10px] lg:text-[50px] lg:leading-[65px]"><span
-                    class="text-primary">{{ $str1[0] . ' ' . $str1[1] }}</span>
-                @for ($i = 2; $i < count($str1); $i++)
-                    {{ ' ' . $str1[$i] }}
-                @endfor
-            </h1>
-            <p class="text-[8px] lg:mb-[37px] lg:text-[21px] lg:leading-[30px]">
-                {{ $teks_sub_judul_tentang_kami_1->value }}
-            </p>
-            <a href="{{ route('login') }}"
-                class="hidden justify-center bg-primary text-white lg:flex lg:w-[210px] lg:rounded-[16px] lg:px-[30px] lg:py-[20px]">Order
-                Sekarang</a>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="{{ asset('images/' . $gambar_tentang_kami_1->value) }}" alt=""
-                class="w-[303.836px] lg:w-[359px]">
-            <!-- button Mobile -->
-            <a href="{{ route('login') }}"
-                class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
-                Sekarang</a>
-            <!-- end button mobile -->
-        </div>
-    </section>
+<section class="flex w-full flex-col items-center px-[20px] text-center lg:flex-row lg:justify-between lg:px-[120px] lg:text-left" id="tentang-kami-section">
+    <div class="p-[22px] lg:w-1/2">
+        <h1 class="text-[20px] font-bold lg:mb-[10px] lg:text-[50px] lg:leading-[65px]">
+            <span class="text-primary">{{ $str1[0] . ' ' . $str1[1] }}</span>
+            @for ($i = 2; $i < count($str1); $i++) {{ ' ' . $str1[$i] }} @endfor </h1>
+                <p class="text-[8px] lg:mb-[37px] lg:text-[21px] lg:leading-[30px]">
+                    {{ $teks_sub_judul_tentang_kami_1->value }}
+                </p>
+                <a href="{{ route('login') }}" class="hidden justify-center bg-primary text-white lg:flex lg:w-[210px] lg:rounded-[16px] lg:px-[30px] lg:py-[20px]">Beli
+                    Sekarang</a>
 
-    <div class="lg:px-[120px]">
+    </div>
+    <div class="flex flex-col items-center justify-end lg:w-1/2">
+        <img src="{{ asset('images/' . $gambar_tentang_kami_1->value) }}" alt="" class="w-[250px] lg:w-[359px]">
+        <!-- button Mobile -->
+        <div class="flex gap-5">
+            <a href="{{ route('register') }}" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Daftar</a>
+            <a href="{{ route('login') }}" class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] p-[8.01px_12.015px] text-[10px] border border-primary text-primary lg:hidden">Masuk</a>
+        </div>
+        <!-- end button mobile -->
+    </div>
+</section>
+
+<!-- <div class="lg:px-[120px]">
         <section
             class="mb-[148px] hidden items-center justify-between rounded-[30px] bg-[#D6FFDE] px-[30px] py-[23px] lg:flex">
             <div class="flex items-center rounded-[16px] bg-primary px-[30px] py-[22px] text-white">
@@ -62,175 +57,152 @@
                 </div>
             </div>
         </section>
+    </div> -->
+
+<!-- Mobile -->
+<!-- <div class="px-[20px] pb-[60px] pt-[20px] lg:hidden">
+    <section class="mb-[20px] rounded-[16px] bg-[#D6FFDE] px-[11px] pb-[11px] pt-[20px]">
+        <div class="flex justify-center pb-5 text-center">
+            <div class="w-[213px]">
+                <p class="text-[11px]">
+                    {{ $teks_banner_rating_3->value }}
+                </p>
+            </div>
+        </div>
+        <div class="flex items-center rounded-[16px] bg-primary py-[17px] pl-[15px] pr-[22px] text-white">
+            <div class="flex h-[87px] w-[135px] flex-col items-center justify-center border-r-2 border-white">
+                <h2 class="text-[39.334px] font-bold leading-[65px]">{{ $angka_banner_rating_1->value }}</h2>
+                <p class="text-[15.734px] leading-[30px]">{{ $teks_banner_rating_1->value }}</p>
+            </div>
+            <div class="flex h-[109px] flex-col items-center justify-center">
+                <div class="pl-[30px] text-center">
+                    <h2 class="text-[39.334px] font-bold leading-[65px]">{{ $angka_banner_rating_2->value }}</h2>
+                    <p class="text-[15.734px] leading-[30px]">{{ $teks_banner_rating_2->value }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="flex items-center justify-between gap-[25px]">
+        <img src="{{ asset('images/' . $gambar_banner_rating_1->value) }}" alt="" class="w-[88.195px]">
+        <img src="{{ asset('images/' . $gambar_banner_rating_2->value) }}" alt="" class="w-[88.195px]">
+        <img src="{{ asset('images/' . $gambar_banner_rating_3->value) }}" alt="" class="w-[88.195px]">
+    </div>
+</div> -->
+<!-- end mobile -->
+
+<?php
+$str2 = explode(' ', $teks_judul_tentang_kami_2->value);
+$num = count($str2);
+?>
+<!-- <section class="mb-[130px] hidden grid-cols-2 lg:grid">
+    <div>
+        <img src="{{ asset('images/' . $gambar_tentang_kami_2->value) }}" class="w-screen" alt="">
+    </div>
+    <div class="flex flex-col items-center justify-center">
+        <div>
+            <h1 class="mb-[10px] text-[50px] font-bold leading-[77.77px]">
+                @for ($i = 0; $i < count($str2) - 1; $i++) {{ $str2[$i] . ' ' }} @endfor <span class="text-primary">{{ $str2[$num - 1] }}</span>
+            </h1>
+            <p class="mb-[37px] w-[554px] text-[20px]">{{ $teks_sub_judul_tentang_kami_2->value }}</p>
+            <a href="{{ route('login') }}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order
+                Sekarang</a>
+        </div>
+    </div>
+</section> -->
+
+<!-- Mobile -->
+<!-- <section class="mb-[50px] lg:hidden">
+    <div>
+        <img src="{{ asset('images/promotion-babe-haikal.png') }}" class="w-screen" alt="">
+    </div>
+    <div class="flex flex-col items-center justify-center px-[23.5px] text-center">
+        <div class="flex flex-col items-center">
+            <h1 class="mb-[10px] text-[20px] font-bold leading-[77.77px]">
+                @for ($i = 0; $i < count($str2) - 1; $i++) {{ $str2[$i] . ' ' }} @endfor <span class="text-primary">{{ $str2[$num - 1] }}</span>
+            </h1>
+            <p class="text-[10px]">{{ $teks_sub_judul_tentang_kami_2->value }}</p>
+            <a href="{{ route('login') }}" class="my-4 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
+                Sekarang</a>
+        </div>
+    </div>
+</section> -->
+<!-- end mobile -->
+
+<?php
+$str3 = explode(' ', $teks_judul_tentang_kami_3->value);
+?>
+<!-- <section class="mb-[241px] hidden h-[313px] flex-col items-center justify-center bg-[#F2FFF5] lg:flex">
+    <h1 class="font-bold lg:text-[50px]"> {{ $str3[0] . ' ' }} <span class="mb-[15px] text-primary">{{ $str3[1] }}</span>
+        @for ($i = 2; $i < count($str3); $i++) {{ ' ' . $str3[$i] }} @endfor </h1>
+            <p class="px-[180px] text-center text-[20px]">{{ $teks_sub_judul_tentang_kami_3->value }}</p>
+</section> -->
+
+<!-- Mobile -->
+<!-- <section class="mb-[50px] flex flex-col items-center justify-center bg-[#F2FFF5] lg:hidden">
+    <div class="p-[20px] text-center">
+        <h1 class="mb-[9px] px-[38px] text-[20px] font-bold">{{ $str3[0] . ' ' }} <span class="text-primary">{{ $str3[1] }}</span>
+            @for ($i = 2; $i < count($str3); $i++) {{ ' ' . $str3[$i] }} @endfor </h1>
+                <p class="text-[10px]">{{ $teks_sub_judul_tentang_kami_3->value }}</p>
+    </div>
+</section> -->
+<!-- end mobile -->
+
+<?php
+$str4 = explode(' ', $teks_judul_manfaat_1->value);
+?>
+<!-- <section class="mb-[60px] lg:mb-[241px]" id="manfaat-section">
+    <div class="hidden h-[313px] flex-col items-center justify-center lg:flex">
+        <h1 class="text-[50px] font-bold">
+            {{ $str4[0] . ' ' }}
+            <span class="mb-[15px] text-primary">{{ $str4[1] }}</span>
+            @for ($i = 2; $i < count($str4); $i++) {{ ' ' . $str4[$i] }} @endfor </h1>
+                <p class="px-[180px] text-center text-[20px]">
+                    {{ $teks_sub_judul_manfaat_1->value }}
+                </p>
+    </div> -->
+<!-- Mobile -->
+<!-- <div class="flex flex-col items-center justify-center px-[20px] text-center lg:hidden">
+        <h1 class="mb-[15px] text-[20px] font-bold">
+            {{ $str4[0] . ' ' }}
+            <span class="text-primary">{{ $str4[1] }}</span>
+            @for ($i = 2; $i < count($str4); $i++) {{ ' ' . $str4[$i] }} @endfor </h1>
+                <p class="text-center text-[10px]">
+                    {{ $teks_sub_judul_manfaat_1->value }}
+                </p>
+    </div> -->
+<!-- end mobile -->
+
+<!-- <div class="my-[22px] flex justify-center px-[20px] lg:mb-[50px] lg:px-[121px]">
+        <img src="{{ asset('images/' . $gambar_manfaat_1->value) }}" alt="" class="">
     </div>
 
-    <!-- Mobile -->
-    <div class="px-[20px] pb-[60px] pt-[20px] lg:hidden">
-        <section class="mb-[20px] rounded-[16px] bg-[#D6FFDE] px-[11px] pb-[11px] pt-[20px]">
-            <div class="flex justify-center pb-5 text-center">
-                <div class="w-[213px]">
-                    <p class="text-[11px]">
-                        {{ $teks_banner_rating_3->value }}
-                    </p>
+    <div class="flex flex-col gap-[15px] px-[20px] lg:gap-[30px] lg:px-[121px]">
+        {{-- start: Collapsible --}}
+        @foreach ($benefits as $benefit)
+        <div class="group rounded-[7.424px] border border-[#D9D9D9] p-[12.993px_25.985px] lg:rounded-[16px] lg:px-[56px] lg:py-[28px]" tabindex="0">
+            <div class="flex items-center justify-between">
+                <div class="text-[14px] font-medium lg:text-[32px]">
+                    <h2>{{ $benefit->title }}</h2>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+
+            </div>
+            <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
+                <div class="mt-3 text-justify text-[12px] lg:mt-5 lg:text-[28px]">
+                    <p>{{ $benefit->description }}</p>
                 </div>
             </div>
-            <div class="flex items-center rounded-[16px] bg-primary py-[17px] pl-[15px] pr-[22px] text-white">
-                <div class="flex h-[87px] w-[135px] flex-col items-center justify-center border-r-2 border-white">
-                    <h2 class="text-[39.334px] font-bold leading-[65px]">{{ $angka_banner_rating_1->value }}</h2>
-                    <p class="text-[15.734px] leading-[30px]">{{ $teks_banner_rating_1->value }}</p>
-                </div>
-                <div class="flex h-[109px] flex-col items-center justify-center">
-                    <div class="pl-[30px] text-center">
-                        <h2 class="text-[39.334px] font-bold leading-[65px]">{{ $angka_banner_rating_2->value }}</h2>
-                        <p class="text-[15.734px] leading-[30px]">{{ $teks_banner_rating_2->value }}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="flex items-center justify-between gap-[25px]">
-            <img src="{{ asset('images/' . $gambar_banner_rating_1->value) }}" alt="" class="w-[88.195px]">
-            <img src="{{ asset('images/' . $gambar_banner_rating_2->value) }}" alt="" class="w-[88.195px]">
-            <img src="{{ asset('images/' . $gambar_banner_rating_3->value) }}" alt="" class="w-[88.195px]">
         </div>
+        @endforeach
+        {{-- start: Collapsible --}}
+
     </div>
-    <!-- end mobile -->
+</section> -->
 
-    <?php
-    $str2 = explode(' ', $teks_judul_tentang_kami_2->value);
-    $num = count($str2);
-    ?>
-    <section class="mb-[130px] hidden grid-cols-2 lg:grid">
-        <div>
-            <img src="{{ asset('images/' . $gambar_tentang_kami_2->value) }}" class="w-screen" alt="">
-        </div>
-        <div class="flex flex-col items-center justify-center">
-            <div>
-                <h1 class="mb-[10px] text-[50px] font-bold leading-[77.77px]">
-                    @for ($i = 0; $i < count($str2) - 1; $i++)
-                        {{ $str2[$i] . ' ' }}
-                    @endfor
-                    <span class="text-primary">{{ $str2[$num - 1] }}</span>
-                </h1>
-                <p class="mb-[37px] w-[554px] text-[20px]">{{ $teks_sub_judul_tentang_kami_2->value }}</p>
-                <a href="{{ route('login') }}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order
-                    Sekarang</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile -->
-    <section class="mb-[50px] lg:hidden">
-        <div>
-            <img src="{{ asset('images/promotion-babe-haikal.png') }}" class="w-screen" alt="">
-        </div>
-        <div class="flex flex-col items-center justify-center px-[23.5px] text-center">
-            <div class="flex flex-col items-center">
-                <h1 class="mb-[10px] text-[20px] font-bold leading-[77.77px]">
-                    @for ($i = 0; $i < count($str2) - 1; $i++)
-                        {{ $str2[$i] . ' ' }}
-                    @endfor
-                    <span class="text-primary">{{ $str2[$num - 1] }}</span>
-                </h1>
-                <p class="text-[10px]">{{ $teks_sub_judul_tentang_kami_2->value }}</p>
-                <a href="{{ route('login') }}"
-                    class="my-4 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
-                    Sekarang</a>
-            </div>
-        </div>
-    </section>
-    <!-- end mobile -->
-
-    <?php
-    $str3 = explode(' ', $teks_judul_tentang_kami_3->value);
-    ?>
-    <section class="mb-[241px] hidden h-[313px] flex-col items-center justify-center bg-[#F2FFF5] lg:flex">
-        <h1 class="font-bold lg:text-[50px]"> {{ $str3[0] . ' ' }} <span
-                class="mb-[15px] text-primary">{{ $str3[1] }}</span>
-            @for ($i = 2; $i < count($str3); $i++)
-                {{ ' ' . $str3[$i] }}
-            @endfor
-        </h1>
-        <p class="px-[180px] text-center text-[20px]">{{ $teks_sub_judul_tentang_kami_3->value }}</p>
-    </section>
-
-    <!-- Mobile -->
-    <section class="mb-[50px] flex flex-col items-center justify-center bg-[#F2FFF5] lg:hidden">
-        <div class="p-[20px] text-center">
-            <h1 class="mb-[9px] px-[38px] text-[20px] font-bold">{{ $str3[0] . ' ' }} <span
-                    class="text-primary">{{ $str3[1] }}</span>
-                @for ($i = 2; $i < count($str3); $i++)
-                    {{ ' ' . $str3[$i] }}
-                @endfor
-            </h1>
-            <p class="text-[10px]">{{ $teks_sub_judul_tentang_kami_3->value }}</p>
-        </div>
-    </section>
-    <!-- end mobile -->
-
-    <?php
-    $str4 = explode(' ', $teks_judul_manfaat_1->value);
-    ?>
-    <section class="mb-[60px] lg:mb-[241px]" id="manfaat-section">
-        <div class="hidden h-[313px] flex-col items-center justify-center lg:flex">
-            <h1 class="text-[50px] font-bold">
-                {{ $str4[0] . ' ' }}
-                <span class="mb-[15px] text-primary">{{ $str4[1] }}</span>
-                @for ($i = 2; $i < count($str4); $i++)
-                    {{ ' ' . $str4[$i] }}
-                @endfor
-            </h1>
-            <p class="px-[180px] text-center text-[20px]">
-                {{ $teks_sub_judul_manfaat_1->value }}
-            </p>
-        </div>
-        <!-- Mobile -->
-        <div class="flex flex-col items-center justify-center px-[20px] text-center lg:hidden">
-            <h1 class="mb-[15px] text-[20px] font-bold">
-                {{ $str4[0] . ' ' }}
-                <span class="text-primary">{{ $str4[1] }}</span>
-                @for ($i = 2; $i < count($str4); $i++)
-                    {{ ' ' . $str4[$i] }}
-                @endfor
-            </h1>
-            <p class="text-center text-[10px]">
-                {{ $teks_sub_judul_manfaat_1->value }}
-            </p>
-        </div>
-        <!-- end mobile -->
-
-        <div class="my-[22px] flex justify-center px-[20px] lg:mb-[50px] lg:px-[121px]">
-            <img src="{{ asset('images/' . $gambar_manfaat_1->value) }}" alt="" class="">
-        </div>
-
-        <div class="flex flex-col gap-[15px] px-[20px] lg:gap-[30px] lg:px-[121px]">
-            {{-- start: Collapsible --}}
-            @foreach ($benefits as $benefit)
-                <div class="group rounded-[7.424px] border border-[#D9D9D9] p-[12.993px_25.985px] lg:rounded-[16px] lg:px-[56px] lg:py-[28px]"
-                    tabindex="0">
-                    <div class="flex items-center justify-between">
-                        <div class="text-[14px] font-medium lg:text-[32px]">
-                            <h2>{{ $benefit->title }}</h2>
-                        </div>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="h-6 w-6 transition-all duration-300 group-focus:rotate-90">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                        </svg>
-
-                    </div>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 group-focus:max-h-[1000px]">
-                        <div class="mt-3 text-justify text-[12px] lg:mt-5 lg:text-[28px]">
-                            <p>{{ $benefit->description }}</p>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-            {{-- start: Collapsible --}}
-
-        </div>
-    </section>
-
-    <section class="px-[20px] lg:px-[121px]" id="mitra-section">
+<!-- <section class="px-[20px] lg:px-[121px]" id="mitra-section">
         <h1 class="mb-[20px] text-center text-[20px] font-bold lg:mb-[68px] lg:text-[50px]">Keuntungan Menjadi Mitra
             Biopolis</h1>
 
@@ -278,10 +250,10 @@
                 <p class="text-[16px]">{{ $teks_sub_judul_kemitraan_6->value }}</p>
             </div>
             {{-- end: Card --}}
-        </div>
+        </div> -->
 
-        <!-- Mobile -->
-        <div class="flex flex-col items-center lg:hidden">
+<!-- Mobile -->
+<!-- <div class="flex flex-col items-center lg:hidden">
             {{-- start: Card --}}
             <div class="mx-[18px] flex flex-col items-center py-[20px] text-center">
                 <img src="{{ asset('images/icons/pendapatan-penjualan.svg') }}" class="mb-[14px] w-[67px]"
@@ -330,31 +302,31 @@
                 <p class="text-[11px]">{{ $teks_sub_judul_kemitraan_6->value }}</p>
             </div>
             {{-- end: Card --}}
-        </div>
-        <!-- end mobile -->
-    </section>
+        </div> -->
+<!-- end mobile -->
+<!-- </section> -->
 
-    <section class="mb-[50px] px-[20px] lg:mb-[213px] lg:px-[217px]">
+<!-- <section class="mb-[50px] px-[20px] lg:mb-[213px] lg:px-[217px]">
         <div class="mb-[20px] flex justify-center lg:mb-[60px]">
             <img src="{{ asset('images/umroh.png') }}" alt="">
         </div>
         <div class="hidden justify-center lg:flex">
             <a href="{{ route('login') }}" class="rounded-[16px] bg-primary px-[30px] py-[20px] text-white">Order
                 Sekarang</a>
-        </div>
-        <!-- mobile -->
-        <div class="flex justify-center lg:hidden">
+        </div> -->
+<!-- mobile -->
+<!-- <div class="flex justify-center lg:hidden">
             <a href="{{ route('login') }}"
                 class="my-6 flex h-[35px] w-[110px] justify-center rounded-[6.408px] bg-primary p-[8.01px_12.015px] text-[10px] text-white lg:hidden">Order
                 Sekarang</a>
-        </div>
-        <!-- end mobile -->
-    </section>
+        </div> -->
+<!-- end mobile -->
+<!-- </section> -->
 
-    <?php
-    $str5 = explode(' ', $teks_judul_kemitraan_10->value);
-    ?>
-    <section class="mb-[191.63px] hidden lg:block">
+<!-- <?php
+        $str5 = explode(' ', $teks_judul_kemitraan_10->value);
+        ?> -->
+<!--<section class="mb-[191.63px] hidden lg:block">
         <h3 class="mb-[103.25px] text-center text-[50px] font-bold">Harga Khusus Mitra</h3>
         <div class="flex items-center justify-between px-[120px]">
             <div>
@@ -426,10 +398,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <!-- mobile -->
-    <section class="mb-[60px] px-[28px] lg:hidden">
+<!-- mobile -->
+<!-- <section class="mb-[60px] px-[28px] lg:hidden">
         <h3 class="mb-[20px] text-center text-[20px] font-bold">Harga Khusus Mitra</h3>
         <div class="flex flex-col items-center justify-between px-[20px]">
             <div>
@@ -494,10 +466,10 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- end mobile -->
+    </section> -->
+<!-- end mobile -->
 
-    <section class="mb-[241px] hidden px-[121px] lg:block">
+<!-- <section class="mb-[241px] hidden px-[121px] lg:block">
         <div class="flex h-[200px] w-full items-center justify-between rounded-[30px] bg-[#D6FFDE] px-[30px] py-[44px]">
             {{-- start: Item --}}
             <div class="flex items-start gap-[15px]">
@@ -588,10 +560,10 @@
             </div>
             {{-- end: item --}}
         </div>
-    </section>
+    </section> -->
 
-    <!-- mobile -->
-    <section class="mb-[60px] px-[20px] lg:hidden">
+<!-- mobile -->
+<!-- <section class="mb-[60px] px-[20px] lg:hidden">
         <div
             class="flex w-full flex-col items-center justify-between gap-[50px] rounded-[30px] bg-[#D6FFDE] px-[30px] py-[50px]">
             {{-- start: Item --}}
@@ -684,10 +656,10 @@
             </div>
             {{-- end: item --}}
         </div>
-    </section>
-    <!-- end mobile -->
+    </section> -->
+<!-- end mobile -->
 
-    <section class="mb-[241px] hidden lg:block">
+<!-- <section class="mb-[241px] hidden lg:block">
         <h1 class="mb-[15px] text-center text-[50px] font-bold text-black">Apa Kata Mereka?</h1>
         <h3 class="mb-[55px] text-center text-[20px]">Ini kata mereka yang merasakan manfaat dari biopolis.</h3>
         {{-- start: Slider --}}
@@ -728,10 +700,10 @@
             </div>
         </div>
         {{-- end: Slider --}}
-    </section>
+    </section> -->
 
-    <!-- mobile -->
-    <section class="mb-[60px] lg:hidden">
+<!-- mobile -->
+<!-- <section class="mb-[60px] lg:hidden">
         <h1 class="mb-[10px] text-center text-[20px] font-bold text-black">Apa Kata Mereka</h1>
         <h3 class="mb-[30px] px-[20px] text-center text-[11px]">Ini kata mereka yang merasakan manfaat dari biopolis.</h3>
         {{-- start: Slider --}}
@@ -769,10 +741,10 @@
             </div>
         </div>
         {{-- end: Slider --}}
-    </section>
-    <!-- end mobile -->
+    </section> -->
+<!-- end mobile -->
 
-    <section class="mb-[246px] hidden lg:block">
+<!-- <section class="mb-[246px] hidden lg:block">
         <h1 class="mb-[15px] text-center text-[50px] font-bold text-black">FaQ</h1>
 
         <h4 class="mb-[50px] text-center text-[20px] text-black">Pertanyaan yang sering ditanyakan</h4>
@@ -802,10 +774,10 @@
             {{-- end: Collapsible --}}
         </div>
 
-    </section>
+    </section> -->
 
-    <!-- mobile -->
-    <section class="mb-[60px] lg:hidden">
+<!-- mobile -->
+<!-- <section class="mb-[60px] lg:hidden">
         <h1 class="mb-[15px] text-center text-[20px] font-bold text-black">FaQ</h1>
 
         <h4 class="mb-[50px] text-center text-[11px] text-black">Pertanyaan yang sering ditanyakan</h4>
@@ -835,10 +807,10 @@
             {{-- end: Collapsible --}}
         </div>
 
-    </section>
-    <!-- end mobile -->
+    </section> -->
+<!-- end mobile -->
 
-    <section class="mb-[246px] hidden lg:block">
+<!-- <section class="mb-[246px] hidden lg:block">
         <div class="mb-[90px] flex justify-center">
             <img src="{{ asset('images/biopolis.png') }}" alt="">
         </div>
@@ -874,10 +846,10 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <!-- mobile -->
-    <section class="mb-[60px] lg:hidden">
+<!-- mobile -->
+<!-- <section class="mb-[60px] lg:hidden">
         <div class="flex justify-center px-[10px]">
             <img src="{{ asset('images/biopolis.png') }}" alt="" class="w-[315px]">
         </div>
@@ -908,12 +880,11 @@
                 </a>
             </div>
         </div>
-    </section>
-    <!-- end mobile -->
-    @include('components.footer')
+    </section> -->
+<!-- end mobile -->
 
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 2.2,
@@ -927,5 +898,5 @@
                 clickable: true,
             },
         });
-    </script>
+    </script> -->
 @endsection

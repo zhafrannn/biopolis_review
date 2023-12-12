@@ -29,8 +29,10 @@ use App\Http\Controllers\member\MemberBalanceController;
 use App\Http\Controllers\admin\AdminFaqController;
 use App\Http\Controllers\admin\AdminIncomeController;
 use App\Http\Controllers\admin\AdminMemberController;
+use App\Http\Controllers\admin\AdminProductController;
 use App\Http\Controllers\admin\AdminTestimonyController;
 use App\Http\Controllers\admin\AdminUserManagementController;
+use App\Http\Controllers\admin\AdminVariantController;
 use App\Http\Controllers\guest\DownloadPdfController;
 use App\Http\Controllers\member\MemberBankReplacementController;
 use App\Http\Controllers\member\MemberProductPurchasedController;
@@ -138,16 +140,17 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
 
     Route::get('/mitra', [AdminMemberController::class, 'index']);
 
+    Route::prefix('variant')->group(function () {
+        Route::get('/', [AdminVariantController::class, 'index']);
+        Route::post('/create', [AdminVariantController::class, 'store']);
+        Route::put('/update/{id}', [AdminVariantController::class, 'update']);
+        Route::get('/delete/{id}', [AdminVariantController::class, 'destroy']);
+    });
+
     Route::prefix('produk')->group(function () {
-        Route::get('/', function () {
-            return view('pages.admin.produk.index');
-        });
-        Route::get('/create', function () {
-            return view('pages.admin.produk.create');
-        });
-        Route::get('/edit', function () {
-            return view('pages.admin.produk.edit');
-        });
+        Route::get('/', [AdminProductController::class, 'index']);
+        Route::post('/create', [AdminProductController::class, 'store']);
+        Route::put('/update/{id}', [AdminProductController::class, 'update']);
     });
 
     Route::prefix('order')->group(function () {
