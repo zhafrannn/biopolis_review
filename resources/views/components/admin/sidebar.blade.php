@@ -8,7 +8,7 @@
 </style>
 <aside class="fixed h-screen w-[264.13px] border bg-white px-[20.32px] py-[47.41px] text-[#0A0A0B] drop-shadow-[1.6px_0px_5px_#00000040]">
     <a href="{{ url('/admin') }}">
-        <img src="{{ asset('images/logo.svg') }}" class="mb-[44.02px]" alt="">
+        <img src="{{ asset('images/fast-network-logo.png') }}" alt="logo" class="w-[120px] mb-[44.02px]">
     </a>
     {{-- start: Side Menu --}}
     <div class="flex flex-col justify-between gap-[20.32px] rounded-[12.7px] border border-[#E5E5E5] py-[20.32px]">

@@ -2,7 +2,7 @@
 <nav class="fixed left-0 top-0 z-[500] hidden lg:flex h-[84px] w-[100%] items-center justify-between bg-white shadow-md">
     <div class="m-5 flex w-[867px] items-center pl-5">
         <a href="{{ url('/user/dashboard') }}">
-            <img src="{{ asset('images/logo.svg') }}" alt="logo" class="w-[63px]">
+            <img src="{{ asset('images/fast-network-logo.png') }}" alt="logo" class="w-[120px]">
         </a>
         <div class="ml-[64px] flex h-[80px] w-[400px] items-center justify-between">
             <a href="{{ url('/member/dashboard') }}" class="font-semibold mr-4 {{ request()->is('member/dashboard') ? 'text-primary' : '' }}">
@@ -60,9 +60,9 @@ $kota = explode('-', Auth::user()->user_biodata->kota);
 
 <!-- mobile -->
 <nav class="lg:hidden fixed left-0 -top-[3px] z-[900] flex w-[100%] items-center justify-between bg-white shadow-md">
-    <div class="flex w-full justify-between items-center px-5 py-[10px]">
+    <div class="flex w-full justify-between items-center px-5 py-[20px]">
         <a href="{{ url('/user/dashboard') }}">
-            <img src="{{ asset('images/logo.svg') }}" alt="logo" class="w-[63px]">
+            <img src="{{ asset('images/fast-network-logo.png') }}" alt="logo" class="w-[80px]">
         </a>
         <div class="flex items-center justify-between gap-3">
 
@@ -254,13 +254,13 @@ $kota = explode('-', Auth::user()->user_biodata->kota);
                 (data.provincies).forEach(province => {
                     if (province['id'] == provinsi) {
                         provinceElement += `
-                            <option value"${province['id']}-${province['province_name']}" selected>
+                            <option value="${province['id']}-${province['province_name']}" selected>
                                 <p>${province['province_name']}</p>
                             </option>
                         `
                     } else {
                         provinceElement += `
-                        <option value"${province['id']}-${province['province_name']}">
+                        <option value="${province['id']}-${province['province_name']}">
                             <p>${province['province_name']}</p>
                         </option>
                     `

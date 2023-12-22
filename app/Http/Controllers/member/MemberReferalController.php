@@ -12,15 +12,15 @@ class MemberReferalController extends Controller
 {
     public function index()
     {
-        $members = UserBiodata::where('referal_use', Auth::user()->kode_referal)->get();
-        $referals = [];
-        foreach ($members as $item) {
-            $user = User::where('id', $item->id)->first();
-            if ($user->role == 'member') {
-                $referals[] = $user;
-            }
-        }
+        $members = UserBiodata::where('referal_use', Auth::user()->kode_referal)->with('user')->get();
+        // $referals = [];
+        // foreach ($members as $item) {
+        //     $user = User::where('id', $item->id)->first();
+        //     if ($user->role == 'member') {
+        //         $referals[] = $user;
+        //     }
+        // }
 
-        return view('pages.member.referral.index', compact('referals'));
+        return view('pages.member.referral.index', compact('members'));
     }
 }

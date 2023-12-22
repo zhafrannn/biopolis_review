@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Utilities\GenerateRefferal;
 use Illuminate\Support\Env;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 
@@ -71,6 +72,7 @@ class RegisterController extends Controller
                 'alamat_lengkap' => $request->input('alamat_lengkap'),
             ]);
             Auth::login($user);
+            toast('Berhasil Melakukan Register!', 'success');
             return redirect('/user/dashboard');
         }
 

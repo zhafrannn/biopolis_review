@@ -10,15 +10,16 @@
                 {{-- start: Card --}}
                 <div class="mb-[20px] rounded-xl bg-white p-[20.32px] shadow-[0_3.3px_12px_rgba(0,0,0,0.15)]">
                     <div class="flex flex-col gap-[13px]">
-                        <div class="flex">
+                        <div class="flex mb-3">
                             <h2 class="text-[17px] font-semibold">Informasi Paket</h2>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-start">
                             <div class="w-3/12">
                                 <h2 class="text-[17px] font-semibold">Nama Paket</h2>
                             </div>
                             <div class="flex-1">
-                                <input type="text" class="w-full rounded-xl border p-[13px]" name="product_name" value="{{ $product->product_name}}">
+                                <input type="text" class="w-full rounded-xl border p-[13px] bg-[#F5F5F5] text-[#969EBA]" name="product_name" value="{{ $product->product_name}}" readonly>
+                                <p class="text-[14px] font-semibold">* Tidak Bisa Diganti</p>
                             </div>
                         </div>
                         <div class="flex items-start">

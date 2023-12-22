@@ -58,13 +58,11 @@
                                 <div class="w-4/12 text-[14px] font-semibold text-black">
                                     <p>500 Poin</p>
                                     <p>1000 Poin</p>
-                                    <p>2000 Poin</p>
                                     <p>3000 Poin</p>
                                 </div>
                                 <div class="w-8/12 text-[14px]">
                                     <p>Rp4.000.000</p>
                                     <p>Rp10.000.000</p>
-                                    <p>Motor + Rp5.000.000</p>
                                     <p>Umroh + Rp10.000.000</p>
                                 </div>
                             </div>

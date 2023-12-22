@@ -22,7 +22,9 @@
     </style>
 </head>
 
-<body class="bg-white">
+<body class="">
+    @include('sweetalert::alert')
+
     @include('components.navbar')
     <main class="mt-[70px] lg:mt-[109px]">@yield('content')</main>
 

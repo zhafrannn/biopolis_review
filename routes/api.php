@@ -4,6 +4,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TestingController;
+use App\Http\Controllers\user\UserPaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,5 +27,7 @@ Route::post('/webhook-xendit', [PaymentController::class, 'webhook_payment']);
 Route::get('/notification/user/{id}', [NotificationController::class, 'index']);
 
 Route::post('/testing-dummy', [TestingController::class, "dropAllTables"]);
+
+Route::get('/testing', [UserPaymentController::class, "store"]);
 
 Route::get('/get-address', [AddressController::class, 'index']);

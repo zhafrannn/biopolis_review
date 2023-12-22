@@ -88,6 +88,7 @@ Route::middleware(['auth'])->prefix('member')->group(function () {
     // Transaction
     Route::prefix('transaction')->group(function () {
         Route::get('/', [MemberTransactionController::class, 'index']);
+        Route::post('/', [MemberTransactionController::class, 'index']);
         Route::get('/waiting-order', [MemberWaitingCheckoutController::class, 'index']);
     });
     // Point

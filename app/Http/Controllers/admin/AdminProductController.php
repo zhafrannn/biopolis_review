@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminProductController extends Controller
 {
@@ -28,6 +29,9 @@ class AdminProductController extends Controller
                 'price' => $request->price,
             ]
         );
+
+        toast('Berhasil Melakukan Perubahan Pada Paket' . $request->product_code . '!', 'success');
+
         return back();
     }
 }

@@ -11,6 +11,7 @@ use App\Models\UserPayment;
 use App\Models\UserWithdrawBalance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MemberBalanceController extends Controller
 {
@@ -121,6 +122,8 @@ class MemberBalanceController extends Controller
             "user_id" => Auth::user()->id,
             "description" => "Pengajuan penukaran uang di proses dan menunggu konfirmasi",
         ]);
+
+        toast('Pengajuan Pencairan Saldo Diajukan!', 'success');
 
         return back();
     }

@@ -19,6 +19,8 @@
 </style>
 
 <body>
+    @include('sweetalert::alert')
+
     @include('components.user.navbar')
 
     <section class="flex min-h-screen flex-col items-center justify-center lg:p-[40px] lg:pt-[100px] p-[20px] pt-[80px]">

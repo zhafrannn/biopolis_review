@@ -10,7 +10,7 @@
                     <h3 class="text-[18px] font-semibold">Pengguna Referral</h3>
                 </div>
                 <h4 class="mt-[10px] text-[12px] text-[#969EBA]">Total Pengguna Yang Menggunakan Referral Anda</h4>
-                <h3 class="text-[16px] font-semibold">{{ count($referals) }} Akun Referral</h3>
+                <h3 class="text-[16px] font-semibold">{{ count($members) }} Akun Referral</h3>
             </div>
         </div>
     </div>
@@ -31,10 +31,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($referals as $referal)
+                        @foreach($members as $member)
                         <tr class="border-b border-[rgb(150,158,186)]">
-                            <td class="p-[10px] text-[10px] text-center">{{ $referal->name }}</td>
-                            <td class="p-[10px] text-[10px] text-center">{{$referal->created_at}}</td>
+                            <td class="p-[10px] text-[10px] text-center">{{ $member->user->name }}</td>
+                            <td class="p-[10px] text-[10px] text-center">{{$member->user->created_at}}</td>
                         </tr>
                         @endforeach
                     </tbody>

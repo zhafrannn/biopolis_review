@@ -59,8 +59,6 @@ Checkout Product
             @endforeach
         </div>
     </div>
-
-
 </section>
 
 <!-- mobile -->

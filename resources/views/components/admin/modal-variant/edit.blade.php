@@ -4,7 +4,7 @@
             <div class="mb-10">
                 <h3 class="text-[20.32px] font-semibold">Ubah Produk </h3>
             </div>
-            <form action="{{ url('admin/variant/update/'.$variant->id) }}" method="post">
+            <form action="{{ url('admin/variant/update/'.$variant->id) }}" enctype="multipart/form-data" method="post">
                 @csrf
                 @method('PUT')
                 {{-- start: Card --}}
@@ -45,14 +45,14 @@
                             </div>
                             <div class="flex-1">
                                 <div class="h-[105px] w-[105px]">
-
-                                    <div id="preview" class="bg-centerw-[105px] flex h-[105px] items-center justify-center rounded-xl border-4 border-dotted bg-contain">
-                                        <input type="file" id="fileInput" class="invisible absolute" name="variant_image">
-                                        <button type="button" id="button-image">
-                                            <img src="{{ asset('images/icons/img-upload.svg') }}" alt="">
-                                        </button>
+                                    <div class="bg-centerw-[105px] flex h-[105px] items-center justify-center rounded-xl border-4 border-dotted bg-contain">
+                                        <img id="imagePreview" src="{{ asset('images/'. $variant->variant_image ) }}" alt="">
+                                        <!-- <button type="button" id="button-image">
+                                        </button> -->
+                                        <!-- <div id="imagePreview"></div> -->
                                     </div>
                                 </div>
+                                <input type="file" id="imageInput" class="mt-2" name="variant_image" value="{{ $variant->variant_image }}">
                             </div>
                         </div>
                     </div>
@@ -96,8 +96,23 @@
     </div>
 </dialog>
 
+<script>
+        document.getElementById('imageInput').addEventListener('change', function() {
+            // Get the selected file
+            const file = this.files[0];
 
-<section class="my-10">
+            if (file) {
+                // Create a FileReader
+                const reader = new FileReader();
 
+                // Set the FileReader to load when the file is read
+                reader.onload = function(e) {
+                    // Get the result (base64 encoded image) and display it
+                    document.getElementById('imagePreview').setAttribute =  ('src', ${e.target.result});
+                };
 
-</section>
+                // Read the file as Data URL (base64 encoding)
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>

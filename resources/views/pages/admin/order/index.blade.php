@@ -162,6 +162,8 @@
         </div>
         {{-- end: Card --}}
         @endforeach
+
+        {{ $orders->links() }}
     </div>
 </section>
 

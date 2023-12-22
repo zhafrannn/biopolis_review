@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserBiodata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MemberProfileController extends Controller
 {
@@ -36,6 +37,8 @@ class MemberProfileController extends Controller
                 'no_whatsapp' => $request->no_whatsapp
             ]
         );
+        toast('Data Akun Berhasil Diubah!', 'success');
+
         return back();
     }
 }

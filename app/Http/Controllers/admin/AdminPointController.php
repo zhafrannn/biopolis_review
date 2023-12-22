@@ -8,6 +8,7 @@ use App\Models\UserWithdrawPoint;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminPointController extends Controller
 {
@@ -42,6 +43,8 @@ class AdminPointController extends Controller
         ];
         Mail::to($email['to'])->send(new SendEmailPoint($email));
 
+        toast('Pengajuan Penukaran Point Diterima!', 'success');
+
 
         return back();
     }
@@ -60,6 +63,8 @@ class AdminPointController extends Controller
             "description" => "Pengajuan withdraw point anda dengan kode " . $user_withdraw->withdraw_code . " telah dibatalkan",
         ]);
         $user_withdraw->delete();
+
+        toast('Pengajuan Point Dibatalkan!', 'error');
         return back();
     }
 }

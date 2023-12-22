@@ -39,6 +39,7 @@
                         </div>
                     </th>
 
+
                     <!-- <th class="p-[10px]">
 
                         <img src="{{ asset('images/icons/arrow-3.svg') }}" alt="">
@@ -63,6 +64,7 @@
                     <!-- <td class="p-[10px]"></td> -->
                 </tr>
                 @endforeach
+                {{ $members->links() }}
             </tbody>
         </table>
     </div>

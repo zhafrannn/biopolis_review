@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserBank;
 use App\Models\UserBiodata;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminBankReplacementController extends Controller
 {
@@ -22,15 +23,15 @@ class AdminBankReplacementController extends Controller
         $banks->update([
             'status' => 'completed'
         ]);
-        
+
         $user = UserBiodata::where('user_id', $banks->user_id);
         $user->update([
             'nama_bank' => $request->nama_bank,
             'no_rekening' => $request->no_rekening,
             'nama_rekening' => $request->nama_rekening,
         ]);
-        
 
+        toast('Pengajuan Penggantian Akun Bank Disetujui!', 'success');
         return back();
     }
 }

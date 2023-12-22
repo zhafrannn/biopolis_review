@@ -90,6 +90,7 @@ class MemberPointController extends Controller
 
         // HITUNG POINT YANG SAYA DAPAT KETIKA SAYA MEMBELI PRODUCT
         $my_product_buy = UserPayment::where('user_id', Auth::user()->id)->where('status', "paid")->get();
+        
         foreach ($my_product_buy as $item) {
             $product = Product::where('id', $item->product_id)->first();
             if ($product) {
@@ -100,7 +101,7 @@ class MemberPointController extends Controller
 
                     $income_point_data_buy_product[] = [
                         "description" =>  "Kamu mendapatkan point dari pembelian produk " . $product->product_name . ' Propolis Biopolis',
-                        "date" => $product->date,
+                        "date" => $item->date,
                         "point" => $product->point,
                     ];
                 }
@@ -111,6 +112,7 @@ class MemberPointController extends Controller
         usort($income_data, function ($a, $b) {
             return strtotime($a['date']) - strtotime($b['date']);
         });
+        
         $income_data = array_reverse($income_data);
 
         $data = [

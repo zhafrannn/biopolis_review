@@ -10,6 +10,7 @@ use App\Models\UserBiodata;
 use App\Utilities\GenerateRefferal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminUserManagementController extends Controller
 {
@@ -18,7 +19,7 @@ class AdminUserManagementController extends Controller
         $cities = City::all();
         $provincies = Province::all();
 
-        $members = User::with('user_biodata')->get();
+        $members = User::with('user_biodata')->latest()->paginate(20);
 
         return view('pages.admin.user-management.index', compact('members', 'cities', 'provincies'));
     }
@@ -62,6 +63,9 @@ class AdminUserManagementController extends Controller
                 'referal_use' => $request->input('kode_referal'),
                 'alamat_lengkap' => $request->input('alamat_lengkap'),
             ]);
+
+            toast('Berhasil Menambahkan Akun Baru!', 'success');
+
             return back();
         }
 
@@ -98,6 +102,9 @@ class AdminUserManagementController extends Controller
                 'nomor_kontak_darurat' => $request->nomor_kontak_darurat
             ]
         );
+
+        toast('Berhasil Melakukan Perubahan Pada Akun' . $request->name . '!', 'success');
+
         return back();
     }
 }

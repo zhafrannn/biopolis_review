@@ -9,6 +9,7 @@ use App\Models\UserBiodata;
 use App\Models\UserWithdrawBalance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminBalanceController extends Controller
 {
@@ -49,6 +50,8 @@ class AdminBalanceController extends Controller
         ];
         Mail::to($email['to'])->send(new SendEmailBalance($email));
 
+        toast('Pengajuan Pencairan Saldo Diterima!', 'success');
+
         return back();
     }
 
@@ -67,6 +70,8 @@ class AdminBalanceController extends Controller
             "description" => "Pengajuan withdraw point anda dengan kode " . $user_withdraw->withdraw_code . " telah dibatalkan",
         ]);
         $user_withdraw->delete();
+
+        toast('Pengajuan Pencairan Saldo Dibatalkan!', 'error');
         return back();
     }
 
@@ -77,6 +82,7 @@ class AdminBalanceController extends Controller
             'status' => 'completed'
         ]);
 
+        toast('Pengajuan Pencairan Saldo Diterima!', 'success');
         return back();
     }
 }

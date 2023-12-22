@@ -1,7 +1,7 @@
-<nav class="fixed left-0 top-0 z-[999] hidden h-[109px] w-screen items-center justify-between bg-white px-[120px] lg:flex">
+<nav class="fixed left-0 top-0 z-[500] hidden lg:flex h-[84px] w-[100%] items-center justify-between bg-white shadow-md px-[120px]">
     <div class="flex items-center justify-center">
         <a href="{{ url('/') }}" class="flex items-center">
-            <img src="{{ asset('images/logo.svg') }}" alt="">
+            <img src="{{ asset('images/fast-network-logo.png') }}" alt="logo" class="w-[120px]">
         </a>
     </div>
     <div class="flex items-center lg:gap-[30px] lg:text-[16px]">
@@ -27,10 +27,10 @@
 
 <!-- Mobile -->
 <nav class="fixed left-0 top-0 z-[900] w-screen -translate-y-[2px] bg-white lg:hidden">
-    <div class="flex items-center justify-between px-5 py-[10px]">
+    <div class="flex items-center justify-between px-5 py-[20px]">
         <div class="flex items-center justify-center">
             <a href="{{ url('/') }}">
-                <img src="{{ asset('images/logo.svg') }}" alt="">
+                <img src="{{ asset('images/fast-network-logo.png') }}" alt="logo" class="w-[80px]">
             </a>
         </div>
         <div class="flex items-center justify-center">

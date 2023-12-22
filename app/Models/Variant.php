@@ -12,6 +12,6 @@ class Variant extends Model
 
     public function user_payment_variant()
     {
-        return $this->belongsTo(User::class, "user_id"); // Sesuaikan dengan model Biodata Anda
+        return $this->belongsTo(UserPayment::class, "variant_id"); // Sesuaikan dengan model Biodata Anda
     }
 }
