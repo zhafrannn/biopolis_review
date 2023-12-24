@@ -143,46 +143,22 @@
 </script>
 
 <script>
-    let currentBalanceUser = parseInt("{{ Auth::user()->user_wallet->current_balance }}");
-
-    $('#total_exchange_balance').on('change', (e) => {
-
-        let valueExchange = parseInt($('#total_exchange_balance').val());
-
-        if (currentBalanceUser <= 99999) {
-            $('#alert-error').text('Saldo anda tidak mencukupi');
-            $('#alert-error').removeClass('hidden');
-            $('#button-submit').prop('disabled', true);
-            return;
-        }
-
-        if (e.target.value <= 99999) {
-            $('#alert-error').text('Minimal penukaran saldo Rp.100.000,-');
-            $('#alert-error').removeClass('hidden');
-            $('#button-submit').prop('disabled', true);
-            return;
-        }
-
-
-        $('#button-submit').removeAttr('disabled')
-    });
-
     let currentMobileBalanceUser = parseInt("{{ Auth::user()->user_wallet->current_balance }}");
 
     $('#total_mobile_exchange_balance').on('change', (e) => {
 
-        let valueExchange = parseInt($('#total_mobile_exchange_balance').val());
+        let valueExchangeMobile = parseInt($('#total_mobile_exchange_balance').val());
 
         if (currentMobileBalanceUser <= 99999) {
-            $('#alert-error').text('Saldo anda tidak mencukupi');
-            $('#alert-error').removeClass('hidden');
+            $('#alert-error-mobile').text('Saldo anda tidak mencukupi');
+            $('#alert-error-mobile').removeClass('hidden');
             $('#button-mobile-submit').prop('disabled', true);
             return;
         }
 
         if (e.target.value <= 99999) {
-            $('#alert-error').text('Minimal penukaran saldo Rp.100.000,-');
-            $('#alert-error').removeClass('hidden');
+            $('#alert-error-mobile').text('Minimal penukaran saldo Rp.100.000,-');
+            $('#alert-error-mobile').removeClass('hidden');
             $('#button-mobile-submit').prop('disabled', true);
             return;
         }

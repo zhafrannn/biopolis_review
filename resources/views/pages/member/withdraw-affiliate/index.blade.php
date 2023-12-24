@@ -198,29 +198,5 @@ Balance
 
         $('#button-submit').removeAttr('disabled')
     });
-
-    let currentMobileBalanceUser = parseInt("{{ Auth::user()->user_wallet->current_balance }}");
-
-    $('#total_mobile_exchange_balance').on('change', (e) => {
-
-        let valueExchange = parseInt($('#total_mobile_exchange_balance').val());
-
-        if (currentMobileBalanceUser <= 99999) {
-            $('#alert-error').text('Saldo anda tidak mencukupi');
-            $('#alert-error').removeClass('hidden');
-            $('#button-mobile-submit').prop('disabled', true);
-            return;
-        }
-
-        if (e.target.value <= 99999) {
-            $('#alert-error').text('Minimal penukaran saldo Rp.100.000,-');
-            $('#alert-error').removeClass('hidden');
-            $('#button-mobile-submit').prop('disabled', true);
-            return;
-        }
-
-
-        $('#button-mobile-submit').removeAttr('disabled')
-    });
 </script>
 @endsection

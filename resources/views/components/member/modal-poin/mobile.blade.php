@@ -27,23 +27,21 @@
         {{-- Choose Point --}}
         <div>
             @foreach ($point_exchange as $item)
-                {{-- Point Item --}}
-                <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] px-6 py-3 transition duration-300 hover:border-green-500"
-                    id="point-{{ $item->id }}" onclick="HandleClickJsonData({{ json_encode($item) }})">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h4 class="text-[16px] font-semibold">{{ $item->description }}</h4>
-                            <h4 class="text-[12px]">{{ $item->point }} Poin</h4>
-                        </div>
-                        <div>
-                            <div
-                                class="point-border flex h-[24px] w-[24px] items-center justify-center rounded-full border-[3px] border-[#969EBA]">
-                                <div class="point-bullet h-[16px] w-[16px] rounded-full bg-[#969EBA]"></div>
-                            </div>
+            {{-- Point Item --}}
+            <div class="point-item cursor-pointer border-b-4 border-[#E5E5E5] px-6 py-3 transition duration-300 hover:border-green-500" id="point-mobile-{{ $item->id }}" onclick="HandleClickJsonDataMobile({{ json_encode($item) }})">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-[16px] font-semibold">{{ $item->description }}</h4>
+                        <h4 class="text-[12px]">{{ $item->point }} Poin</h4>
+                    </div>
+                    <div>
+                        <div class="point-border-mobile flex h-[24px] w-[24px] items-center justify-center rounded-full border-[3px] border-[#969EBA]">
+                            <div class="point-bullet-mobile h-[16px] w-[16px] rounded-full bg-[#969EBA]"></div>
                         </div>
                     </div>
                 </div>
-                {{-- end: Point Item --}}
+            </div>
+            {{-- end: Point Item --}}
             @endforeach
         </div>
         {{-- end: Choose Point --}}
@@ -52,16 +50,15 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h4 class="text-[14px] font-semibold">Penukaran Poin</h4>
-                    <h4 class="text-[20px]" id="point-exchange">-</h4>
+                    <h4 class="text-[20px]" id="point-mobile-exchange">-</h4>
                     <input type="number" class="hidden">
                 </div>
                 <div>
                     <form action="{{ url('/member/point') }}" method="POST">
                         @csrf
-                        <input name="point_exchange_id" id="point_exchange_id" type="text" class="hidden" required>
+                        <input name="point_exchange_id" id="point_mobile_exchange_id" type="text" class="hidden" required>
                         <input name="type" value="point" type="text" class="hidden" required>
-                        <button type="submit"
-                            class="flex h-[40px] w-[127px] items-center justify-center rounded-xl bg-primary font-semibold text-white transition duration-300 active:scale-95">
+                        <button type="submit" class="flex h-[40px] w-[127px] items-center justify-center rounded-xl bg-primary font-semibold text-white transition duration-300 active:scale-95">
                             Tukar
                         </button>
                     </form>
@@ -74,30 +71,22 @@
 </dialog>
 
 <script>
-    const currentUserPoint = {
-        {
-            Auth::user() - > user_wallet - > current_point
-        }
-    }
-    const pointLength = {
-        {
-            count($point_exchange)
-        }
-    };
-    const HandleClickJsonData = (data) => {
-        if (currentUserPoint < data.point) {
+    const currentUserPointMobile = {{ Auth::user()->user_wallet->current_point }}
+    const pointLengthMobile = {{ count($point_exchange) }};
+    const HandleClickJsonDataMobile = (data) => {
+        if (currentUserPointMobile < data.point) {
             return alert('point belum cukup')
         }
-        for (let index = 1; index <= pointLength; index++) {
-            $(`#point-${index}`).removeClass('border-green-500');
-            $(`#point-${index} .point-border`).removeClass('border-green-500');
-            $(`#point-${index} .point-bullet`).removeClass('bg-primary');
+        for (let index = 1; index <= pointLengthMobile; index++) {
+            $(`#point-mobile-${index}`).removeClass('border-green-500');
+            $(`#point-mobile-${index} .point-mobile-border`).removeClass('border-green-500');
+            $(`#point-mobile-${index} .point-mobile-bullet`).removeClass('bg-primary');
         }
 
-        $(`#point-${data.id}`).addClass('border-green-500');
-        $(`#point-${data.id} .point-border`).addClass('border-green-500');
-        $(`#point-${data.id} .point-bullet`).addClass('bg-primary');
-        $('#point-exchange').text(`${data.point} point`);
-        $(`#point_exchange_id`).val(data.id);
+        $(`#point-mobile-${data.id}`).addClass('border-green-500');
+        $(`#point-mobile-${data.id} .point-mobile-border`).addClass('border-green-500');
+        $(`#point-mobile-${data.id} .point-mobile-bullet`).addClass('bg-primary');
+        $('#point-mobile-exchange').text(`${data.point} point`);
+        $(`#point-mobile_exchange_id`).val(data.id);
     }
 </script>

@@ -34,6 +34,11 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        if($request->password !== $request->confirmation_password) {
+            toast('Password Yang Dimasukkan Tidak Sama!', 'error');
+
+            return back();
+        }
         $request->validate([
             'name' => 'required',
             'nik' => 'required',

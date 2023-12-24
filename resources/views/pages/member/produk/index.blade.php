@@ -73,6 +73,9 @@ Product | Biopolis Propolis
                             <div class="mb-6 mt-6 h-[1px] w-[100%] border-[3px]"></div>
                             <p class="text-[20px] font-semibold text-[#0A0A0B]">Parfume</p>
                             <p class="text-[14px] text-[#0A0A0B]">Kota Bandung</p>
+                            <div class="flex w-full justify-end">
+                                <p class="text-[14px] text-[#0A0A0B] font-semibold py-2">Pilih Sebanyak {{ $item->packet_quantity }} Parfume</p>
+                            </div>
 
                             {{-- --}}
                             @php

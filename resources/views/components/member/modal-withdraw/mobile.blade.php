@@ -12,7 +12,7 @@
                     <p clas>Minimal penukaran Rp.100.000,-</p>
                     <input type="number" id="total_mobile_exchange_balance" name="total_exchange_balance" placeholder="0" class="input input-bordered w-full" />
                     <div class="">
-                        <small id="alert-error" class="hidden text-error"></small>
+                        <small id="alert-error-mobile" class="hidden text-error"></small>
                     </div>
                 </div>
                 <div class="flex justify-end">

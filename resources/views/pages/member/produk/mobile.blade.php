@@ -6,7 +6,7 @@
         @if ($item->product_code != 'P00')
         <div class="m-3 h-[310px] w-[150px] rounded-xl bg-base-100 shadow-md">
             <figure>
-                <img class="h-[150px] w-[150px] rounded-[12px_12px_0px_0px] bg-[#D9D9D9] object-cover" src="{{ asset('/images/biopolis.png') }}" alt="Shoes" />
+                <img class="h-[150px] w-[150px] rounded-[12px_12px_0px_0px] bg-[#D9D9D9] object-cover" src="{{ asset('/images/'.$item->image) }}" alt="Shoes" />
             </figure>
 
             <div class="p-2">

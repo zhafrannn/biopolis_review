@@ -41,6 +41,8 @@ class UserPaymentController extends Controller
         }
 
         $shipping = new ShippingController();
+        
+       
 
         if ($request->shipping_type == 'on_send') {
             $shipping_cost = $shipping->get_shipping_cost_by_city($request);
@@ -64,6 +66,7 @@ class UserPaymentController extends Controller
                 "given_names" => Auth::user()->name,
             ],
         ];
+        
 
         $payment = new PaymentController();
         $payment_invoice = $payment->create_payment($create_invoice_request);
@@ -87,10 +90,10 @@ class UserPaymentController extends Controller
             "shipping_courier" => $shipping_courier
         ]);
 
-        foreach ($variants as $variant) {
+        foreach ($variant_item as $variant) {
             UserPaymentVariant::create([
-                "user_payment_id" => $user_payment_data->id,
                 "variant_id" => $variant['variant_id'],
+                "user_payment_id" => $user_payment_data->id,
                 "quantity" => $variant['quantity'],
             ]);
         }

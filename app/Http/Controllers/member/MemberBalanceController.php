@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\UserBiodata;
 use App\Models\UserPayment;
+use App\Models\UserWallet;
 use App\Models\UserWithdrawBalance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -107,24 +108,36 @@ class MemberBalanceController extends Controller
 
     public function store(Request $request)
     {
-        $withdraw_code = "WDB" . date('YmdHis') . Auth::user()->id;
-        UserWithdrawBalance::create([
-            "user_id" => Auth::user()->id,
-            "withdraw_total_balance" => $request->total_exchange_balance,
-            "withdraw_code" => $withdraw_code,
-        ]);
+        $balance = UserWallet::where('user_id', Auth::user()->id)->first();
+        
+        if ($balance->current_balance >= $request->total_exchange_balance) {
+            $withdraw_code = "WDB" . date('YmdHis') . Auth::user()->id;
 
-        Auth::user()->user_wallet->update([
-            'current_balance' => Auth::user()->user_wallet->current_balance - $request->total_exchange_balance,
-        ]);
+            UserWithdrawBalance::create([
+                "user_id" => Auth::user()->id,
+                "withdraw_total_balance" => $request->total_exchange_balance,
+                "withdraw_code" => $withdraw_code,
+            ]);
+    
+            Notification::create([
+                "user_id" => Auth::user()->id,
+                "description" => "Pengajuan penukaran uang di proses dan menunggu konfirmasi",
+            ]);
 
-        Notification::create([
-            "user_id" => Auth::user()->id,
-            "description" => "Pengajuan penukaran uang di proses dan menunggu konfirmasi",
-        ]);
+            $total_balance = $balance->current_balance - $request->total_exchange_balance;
 
-        toast('Pengajuan Pencairan Saldo Diajukan!', 'success');
-
-        return back();
+            $balance->update(
+                [
+                    'current_balance' => $total_balance,
+                ]
+            );
+            toast('Pengajuan Pencairan Saldo Diajukan!', 'success');
+            
+            return back();
+        } 
+        else {
+            toast('Saldo Anda Tidak Cukup!', 'error');
+            return back();
+        }
     }
 }
