@@ -48,7 +48,7 @@ Checkout Product
 </section>
 <!-- mobile -->
 <section class="lg:hidden flex h-full w-screen flex-col items-center justify-center pt-4 px-5 text-center">
-    <img src="{{ asset('images/img-hero.png') }}" class="h-[180px]" alt="">
+    <img src="{{ asset('images/parfume-gambar.png') }}" class="h-[180px]" alt="">
     <div class="mb-5 w-full">
         <h1 class="text-xl font-bold text-primary">Anda harus melakukan pembelian produk terlebih dahulu</h1>
     </div>
@@ -57,8 +57,8 @@ Checkout Product
         <form action="{{ url('/user-payment-activation') }}" method="post">
             @csrf
             <div>
-                <h3 class="text-xl font-semibold">Paket Biopolis</h3>
-                <p>{{ $product->description }}</p>
+                <h3 class="text-xl font-semibold">1 Paket Parfume</h3>
+                <p>{{ $product->packet_quantity }} Botol Parfume</p>
             </div>
             <div class="mb-5 flex flex-col items-center gap-2 mt-5">
                 <label for="" class="text-lg font-semibold">Pengambilan</label>
